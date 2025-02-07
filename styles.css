@@ -1,1 +1,47 @@
-
+.header{
+  background: url(imgs/carousel/header-background2.jpg) center/cover no-repeat;
+  height: 90vh;
+  position: relative;
+  align-content: center;
+  justify-items: center;
+  
+}
+.header::before{
+  content:"";
+  
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.title, .sub-title, .create-recipe{
+  position: relative;
+  z-index: 2;
+}
+.title{
+  font-size: var(--size-xl);
+  font-weight: var(--bold);
+  text-transform: capitalize;
+  color: var(--main-yellow-shade2);
+  letter-spacing: -0.8px;
+  margin-bottom: var(--ws-small-x3);
+}
+.sub-title{
+  font-size: var(--size-small);
+  font-weight: var(--regular);
+  letter-spacing: 1px;
+  margin-bottom: var(--ws-small);
+}
+.create-recipe{
+  font-size: var(--size-small-x1);
+  font-weight: var(--semi-bold);
+  color: var(--main-yellow-shade2);
+  text-transform: capitalize;
+  background-color: var(--main-yellow);
+  padding: 1.6rem 3.2rem;
+  border-radius: 100px;
+}
+.create-recipe:hover, .create-recipe:active{
+  box-shadow: inset 0 0 10px 5px rgba(25, 20, 9, 0.1);
+}

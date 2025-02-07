@@ -42,13 +42,33 @@ Medium:
   /* COLORS */
   /* MAIN */
   --main-yellow:#FFC857;
+  --main-yellow-shade1:#332811; 
+  --main-yellow-shade2:#191409;
   /* GREY */
   --grey: #706F6F;
   /* ACCENT */
   --accent-red: #D9534F;
   
   /* FONT-SIZES */
+  --size-xl: 5.2rem;
+  --size-large: 4.4rem;
+  --size-medium: 3.6rem;
+  --size-small: 2.4rem;
+  --size-small-x1: 1.6rem;
+  --size-small-x2: 1.2rem;
   /* FONT WEIGHTS */
+  --bold: 700;
+  --semi-bold:600;
+  --regular:400;
+
+  /* WHITESPACE */
+  --ws-xl: 6.4rem;
+  --ws-large: 4.8rem;
+  --ws-medium: 3.2rem;
+  --ws-small:2.4rem;
+  --ws-small-x1:1.6rem;
+  --ws-small-x2:1.2rem;
+  --ws-small-x3:0.4rem;
 }
 *{
   margin: 0;
@@ -67,4 +87,12 @@ body {
   color: var(--grey);
   
   font-family: "Inter", sans-serif;
+}
+
+.default-btn {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
 }
