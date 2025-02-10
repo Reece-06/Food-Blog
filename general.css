@@ -1,4 +1,3 @@
-
 /* 
 --- 01 TYPOGRAPHY SYSTEM
 
@@ -37,20 +36,23 @@ Medium:
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 */
 
-
-:root{
+:root {
   /* COLORS */
   /* MAIN */
   --main-yellow-tint2: #ffefcd;
   --main-yellow-tint1: #ffe4ab;
-  --main-yellow:#FFC857;
-  --main-yellow-shade1:#332811; 
-  --main-yellow-shade2:#191409;
+  --main-yellow: #ffc857;
+  --main-yellow-shade1: #80642c;
+  --main-yellow-shade2: #4c3c1a;
+  --main-yellow-shade3: #332811;
+  --main-yellow-shade4: #191409;
   /* GREY */
-  --grey: #706F6F;
+  --grey: #706f6f;
+  --grey-shade1: #5a5959;
+  --grey-shade2: #434343;
   /* ACCENT */
-  --accent-red: #D9534F;
-  
+  --accent-red: #d9534f;
+
   /* FONT-SIZES */
   --size-xl: 5.2rem;
   --size-large: 4.4rem;
@@ -60,8 +62,8 @@ Medium:
   --size-small-x2: 1.2rem;
   /* FONT WEIGHTS */
   --bold: 700;
-  --semi-bold:600;
-  --regular:400;
+  --semi-bold: 600;
+  --regular: 400;
 
   /* WHITESPACE */
   --ws-xl-x5: 20rem;
@@ -72,12 +74,12 @@ Medium:
   --ws-xl: 6.4rem;
   --ws-large: 4.8rem;
   --ws-medium: 3.2rem;
-  --ws-small:2.4rem;
-  --ws-small-x1:1.6rem;
-  --ws-small-x2:1.2rem;
-  --ws-small-x3:0.4rem;
+  --ws-small: 2.4rem;
+  --ws-small-x1: 1.6rem;
+  --ws-small-x2: 1.2rem;
+  --ws-small-x3: 0.4rem;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -102,4 +104,7 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s;
+}
+.emphasis {
+  font-weight: var(--bold);
 }
