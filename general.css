@@ -39,8 +39,9 @@ Medium:
 :root {
   /* COLORS */
   /* MAIN */
-  --main-yellow-tint2: #ffefcd;
-  --main-yellow-tint1: #ffe4ab;
+  --main-yellow-tint3: #ffefcd;
+  --main-yellow-tint2: #ffe4ab;
+  --main-yellow-tint1: #ffd379;
   --main-yellow: #ffc857;
   --main-yellow-shade1: #80642c;
   --main-yellow-shade2: #4c3c1a;
@@ -94,7 +95,7 @@ html {
 
 body {
   color: var(--grey);
-  background-color: var(--main-yellow-tint2);
+  background-color: var(--main-yellow-tint3);
   font-family: "Inter", sans-serif;
 }
 
@@ -107,4 +108,5 @@ body {
 }
 .emphasis {
   font-weight: var(--bold);
+  color: var(--accent-red);
 }

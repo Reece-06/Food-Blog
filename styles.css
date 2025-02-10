@@ -50,15 +50,21 @@
 .main {
   padding-top: var(--ws-xl-x5);
 }
+
 .recipe {
   max-width: 100rem;
   margin: 0 auto;
+}
+.recipe-header,
+.ingredients,
+.instructions {
+  padding: var(--ws-large);
 }
 .recipe-header {
   position: relative;
   background-color: var(--main-yellow);
   border-radius: 100px 100px 0 0;
-  padding: var(--ws-large);
+
   padding-top: calc(15% + var(--ws-small-x1));
 }
 .recipe-img-container {
@@ -136,4 +142,42 @@
 .recipe-more-dets {
   font-size: var(--size-small-x1);
   font-weight: var(--semi-bold);
+}
+.ingredients {
+  background-color: var(--main-yellow-tint2);
+}
+.ingredients-label {
+  color: var(--main-yellow-shade4);
+  font-size: var(--size-small);
+  font-weight: var(--semi-bold);
+  margin-bottom: var(--ws-small-x1);
+}
+.servings {
+  color: var(--grey-shade2);
+  font-size: var(--size-small-x1);
+  font-weight: var(--regular);
+  margin-bottom: var(--ws-small-x1);
+}
+.ingredient-sets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x1);
+}
+.set-label {
+  color: var(--main-yellow-shade4);
+  font-size: var(--size-small-x1);
+  font-weight: var(--semi-bold);
+  margin-bottom: var(--ws-small-x2);
+}
+.ingredient {
+  display: flex;
+  gap: var(--ws-small-x3);
+  align-items: center;
+}
+.ingredient:not(:last-child) {
+  margin-bottom: var(--ws-small-x3);
+}
+.ingredient-p {
+  color: var(--main-yellow-shade4);
+  font-size: var(--size-small-x1);
 }
