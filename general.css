@@ -117,3 +117,13 @@ body {
   /* For iOS < 15 to remove gradient background */
   background-color: #fff;
 }
+.divider {
+  margin: 0 auto;
+  border: 1px solid var(--main-yellow-shade1);
+}
+.divider--margin-bot {
+  margin-bottom: var(--ws-small);
+}
+.divider--size {
+  width: 90%;
+}

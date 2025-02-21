@@ -1,132 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tasty Notebook</title>
-  <link rel="stylesheet" href="general.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="header">
-    <h1 class="title">Welcome to the Tasty Notebook</h1>
-    <p class="sub-title">You can create your own recipes from scratch</p>
-    <button class="create-recipe default-btn">Create Recipe</button>
-  </header>
-  <main class="main">
-    <div class="recipe">
-      <header class="recipe-header">
-        
-          <img src="imgs/recipes/recipe1.jpg" alt="lasagna" class="recipe-img">
-       
-        <h2 class="recipe-name">Lasagna</h2>
-        <hr class="divider"></hr>
-        <div class="ratings">
-          <img src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f" alt="star rating" class="star-rating">
-          <img src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f" alt="star rating" class="star-rating">
-          <img src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f" alt="star rating" class="star-rating">
-          <img src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f" alt="star rating" class="star-rating">
-          <img src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f" alt="star rating" class="star-rating">
-        </div>
-        <p class="number-reviews"><span class="emphasis">5</span> from <span class="emphasis">76</span> reviews</p>
-        <aside class="recipe-details">
-          <div class="recipe-detail">
-            <ion-icon name="person" class="recipe-icon"></ion-icon>
-            <p class="recipe-more-dets">Author: Nagi</p>
-          </div>
-          <div class="recipe-detail">
-            <ion-icon name="time" class="recipe-icon"></ion-icon>
-            <p class="recipe-more-dets">Prep: 20 mins</p>
-          </div>
-          <div class="recipe-detail">
-            <ion-icon name="time" class="recipe-icon"></ion-icon>
-            <p class="recipe-more-dets">Cook: 2 hrs 15 mins</p>
-          </div>
-          <div class="recipe-detail">
-            <ion-icon name="restaurant" class="recipe-icon"></ion-icon>
-            <p class="recipe-more-dets">Author: Nagi</p>
-          </div>
-          <div class="recipe-detail">
-            <ion-icon name="earth" class="recipe-icon"></ion-icon>
-            <p class="recipe-more-dets">Italian</p>
-          </div>
-        </aside>
-        
-      </header>
-      <div class="ingredients">
-        <h3 class="ingredients-label">Ingredients</h3>
-        <p class="servings">Servings: <span class="emphasis">4</span> people</p>
-        <div class="ingredient-sets">
-          <div class="ingredient-set">
-            <p class="set-label">Beef and Brocolli Ingredients:</p>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips 1lb flank steak, very thinly sliced into bite-sized strips 1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            
-          </div>
-          <div class="ingredient-set">
-            <p class="set-label">Beef and Brocolli Ingredients:</p>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-            <label class="ingredient">
-              <input type="checkbox" class="ingredient-checkbox checkbox-reset" >
-              <p class="ingredient-p">1lb flank steak, very thinly sliced into bite-sized strips</p>
-            </label>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="instructions">
-        <h3 class="instructions-label">Instructions</h3>
-        <ol class="instruction-list" role="list">
-          <li class="instruction-desc">Start cooking white rice first so it's ready when the stir fry is done. Start cooking white rice first so it's ready when the stir fry is done. Start cooking white rice first so it's ready when the stir fry is done.</li>
-          <li class="instruction-desc">Start cooking white rice first so it's ready when the stir fry is done.</li>
-          <li class="instruction-desc">Start cooking white rice first so it's ready when the stir fry is done.</li>
-          <li class="instruction-desc">Start cooking white rice first so it's ready when the stir fry is done.</li>
-          <li class="instruction-desc">Start cooking white rice first so it's ready when the stir fry is done.</li>
-        </ol>
-        
-      </div>
-      <div class="nutrition">
-        <div class="nutrition-header">
-          <h3 class="nutrition-label">Nutrition</h3>
-          <aside class="nutrition-other">Per Serving</aside>
-        </div>
-        <div class="nutrition-info">
-          <p class="calories"><span class="nutrition-bold">385kcal</span> calories</p>
-          <p class="carbs"><span class="nutrition-bold">22g</span> carbs</p>
-          <p class="protein"><span class="nutrition-bold">29g</span> protein</p>
-          <p class="calories"><span class="nutrition-bold">385kcal</span> calories</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasty Notebook</title>
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">Welcome to the Tasty Notebook</h1>
+      <p class="sub-title">You can create your own recipes from scratch</p>
+      <button class="create-recipe default-btn">Create Recipe</button>
+    </header>
+    <main class="main">
+      <div class="recipe">
+        <div class="recipe-container">
+          <header class="recipe-header">
+            <img
+              src="imgs/recipes/recipe1.jpg"
+              alt="lasagna"
+              class="recipe-img"
+            />
 
+            <h2 class="recipe-name">Lasagna</h2>
+            <hr class="divider divider--margin-bot" />
+            <div class="ratings">
+              <img
+                src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f"
+                alt="star rating"
+                class="star-rating"
+              />
+              <img
+                src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f"
+                alt="star rating"
+                class="star-rating"
+              />
+              <img
+                src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f"
+                alt="star rating"
+                class="star-rating"
+              />
+              <img
+                src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f"
+                alt="star rating"
+                class="star-rating"
+              />
+              <img
+                src="https://img.icons8.com/?size=100&id=85389&format=png&color=d9534f"
+                alt="star rating"
+                class="star-rating"
+              />
+            </div>
+            <p class="number-reviews">
+              <span class="emphasis">5</span> from
+              <span class="emphasis">76</span> reviews
+            </p>
+            <aside class="recipe-details">
+              <div class="recipe-detail">
+                <ion-icon name="person" class="recipe-icon"></ion-icon>
+                <p class="recipe-more-dets">Author: Nagi</p>
+              </div>
+              <div class="recipe-detail">
+                <ion-icon name="time" class="recipe-icon"></ion-icon>
+                <p class="recipe-more-dets">Prep: 20 mins</p>
+              </div>
+              <div class="recipe-detail">
+                <ion-icon name="time" class="recipe-icon"></ion-icon>
+                <p class="recipe-more-dets">Cook: 2 hrs 15 mins</p>
+              </div>
+              <div class="recipe-detail">
+                <ion-icon name="restaurant" class="recipe-icon"></ion-icon>
+                <p class="recipe-more-dets">Author: Nagi</p>
+              </div>
+              <div class="recipe-detail">
+                <ion-icon name="earth" class="recipe-icon"></ion-icon>
+                <p class="recipe-more-dets">Italian</p>
+              </div>
+            </aside>
+          </header>
+          <div class="ingredients">
+            <h3 class="ingredients-label">Ingredients</h3>
+            <p class="servings">
+              Servings: <span class="emphasis">4</span> people
+            </p>
+            <div class="ingredient-sets">
+              <div class="ingredient-set">
+                <p class="set-label">Beef and Brocolli Ingredients:</p>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+              </div>
+              <div class="ingredient-set">
+                <p class="set-label">Beef and Brocolli Ingredients:</p>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+                <label class="ingredient">
+                  <input
+                    type="checkbox"
+                    class="ingredient-checkbox checkbox-reset"
+                  />
+                  <p class="ingredient-p">
+                    1lb flank steak, very thinly sliced into bite-sized strips
+                  </p>
+                </label>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--size" />
+          <div class="instructions">
+            <h3 class="instructions-label">Instructions</h3>
+            <ol class="instruction-list" role="list">
+              <li class="instruction-desc">
+                Start cooking white rice first so it's ready when the stir fry
+                is done. Start cooking white rice first so it's ready when the
+                stir fry is done. Start cooking white rice first so it's ready
+                when the stir fry is done.
+              </li>
+              <li class="instruction-desc">
+                Start cooking white rice first so it's ready when the stir fry
+                is done.
+              </li>
+              <li class="instruction-desc">
+                Start cooking white rice first so it's ready when the stir fry
+                is done.
+              </li>
+              <li class="instruction-desc">
+                Start cooking white rice first so it's ready when the stir fry
+                is done.
+              </li>
+              <li class="instruction-desc">
+                Start cooking white rice first so it's ready when the stir fry
+                is done.
+              </li>
+            </ol>
+          </div>
+          <hr class="divider divider--size" />
+          <div class="nutrition">
+            <header class="nutrition-header">
+              <h3 class="nutrition-label">Nutrition</h3>
+              <aside class="nutrition-other">Per Serving</aside>
+            </header>
+            <div class="nutrition-info">
+              <p class="calories">
+                <span class="nutrition-bold">385kcal</span> calories
+              </p>
+              <p class="carbs"><span class="nutrition-bold">22g</span> carbs</p>
+              <p class="protein">
+                <span class="nutrition-bold">29g</span> protein
+              </p>
+              <p class="calories">
+                <span class="nutrition-bold">385kcal</span> calories
+              </p>
+            </div>
+          </div>
         </div>
-        
       </div>
-    </div>
-  </main>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+    </main>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
