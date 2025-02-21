@@ -54,10 +54,12 @@
 .recipe {
   max-width: 100rem;
   margin: 0 auto;
+  padding: 0 var(--ws-small);
 }
 .recipe-header,
 .ingredients,
-.instructions {
+.instructions,
+.nutrition {
   padding: var(--ws-large);
 }
 .recipe-header {
@@ -163,6 +165,11 @@
   flex-direction: column;
   gap: var(--ws-small-x1);
 }
+.ingredient-set {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .set-label {
   color: var(--main-yellow-shade4);
   font-size: var(--size-small-x1);
@@ -176,7 +183,6 @@
   display: grid;
   grid-template-columns: 1.7rem auto;
   column-gap: var(--ws-small-x2);
-  align-items: center;
 }
 .ingredient:not(:last-child) {
   margin-bottom: var(--ws-small-x2);
@@ -190,6 +196,7 @@
   border: var(--border-size) solid currentColor;
   display: grid;
   place-content: center;
+  transform: translateY(0.2rem);
 }
 .ingredient-checkbox::before {
   content: "";
@@ -205,7 +212,57 @@
 .ingredient-checkbox:checked::before {
   transform: scale(1);
 }
-/* .ingredient-checkbox:focus {
-  outline: var(--border-size) solid currentColor;
-  outline-offset: var(--border-size);
-} */
+.ingredient-p {
+  line-height: 1.7;
+}
+.instructions {
+  color: var(--main-yellow-shade4);
+  font-size: var(--size-small-x1);
+  font-weight: var(--regular);
+  background-color: var(--main-yellow-tint2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x1);
+}
+.instructions-label {
+  font-size: var(--size-small);
+  font-weight: var(--bold);
+  margin-bottom: var(--ws-small-x1);
+}
+.instruction-list {
+  counter-reset: ingredients;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--ws-small);
+}
+.instruction-desc {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--ws-small);
+  align-items: start;
+  line-height: 1.7;
+}
+.instruction-desc::before {
+  counter-increment: ingredients;
+  content: counter(ingredients);
+
+  font-size: var(--size-small-x1);
+  font-weight: 700;
+  line-height: 1.3;
+  width: 2.5rem;
+  aspect-ratio: 1;
+
+  margin-top: 0.1rem;
+
+  color: #fff;
+  background-color: var(--main-yellow-shade1);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nutrition {
+}
