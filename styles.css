@@ -1,6 +1,6 @@
 .header {
   background: url(imgs/carousel/header-background2.jpg) center/cover no-repeat;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   align-content: center;
   justify-items: center;
@@ -290,11 +290,37 @@
 .nutrition-bold {
   font-weight: var(--bold);
 }
+.important-icons {
+  display: flex;
+  gap: var(--ws-medium);
+  justify-content: flex-end;
+  margin-right: var(--ws-xl-x1);
+  margin-top: var(--ws-small);
+}
+
+.important-btn {
+  background-color: transparent;
+  transition: all 0.3s;
+}
+.delete-icon:hover,
+.delete-icon:active {
+  transform: scale(1.2);
+  color: var(--accent-red);
+}
+.edit-icon:hover,
+.edit-icon:active {
+  transform: scale(1.2);
+  color: rgb(31, 81, 232);
+}
+.important-icon {
+  font-size: 32px;
+}
 .floating-create-recipe {
   background-color: transparent;
   position: fixed;
   right: 3%;
   bottom: 3%;
+  z-index: 2;
 }
 .floating-create-recipe::after,
 .floating-create-recipe::before {
