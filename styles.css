@@ -290,3 +290,47 @@
 .nutrition-bold {
   font-weight: var(--bold);
 }
+.floating-create-recipe {
+  background-color: transparent;
+  position: fixed;
+  right: 3%;
+  bottom: 3%;
+}
+.floating-create-recipe::after,
+.floating-create-recipe::before {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.floating-create-recipe::before {
+  content: "";
+  border: 10px solid #000;
+  border-color: var(--main-yellow) transparent transparent transparent;
+  position: absolute;
+  bottom: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  margin-bottom: -4px;
+}
+.floating-create-recipe::after {
+  content: attr(data-text);
+  position: absolute;
+  background-color: var(--main-yellow);
+  bottom: 100%;
+  right: 0;
+  width: 10rem;
+  text-align: right;
+  padding: var(--ws-small-x1);
+  margin-bottom: 15px;
+}
+.floating-create-recipe:hover::after,
+.floating-create-recipe:hover::before {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.plus-icon {
+  font-size: 64px;
+  color: var(--accent-red);
+}
