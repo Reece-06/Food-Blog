@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="general.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <!-- classes: show-create-recipe-container show-form-overlay hide-scroll -->
+  <body class="show-create-recipe-container show-form-overlay hide-scroll">
     <header class="header">
       <h1 class="title">Welcome to the Tasty Notebook</h1>
       <p class="sub-title">You can create your own recipes from scratch</p>
@@ -89,6 +90,7 @@
                 <p class="set-label">Beef and Brocolli Ingredients:</p>
                 <label class="ingredient">
                   <input
+                    class="create-input reset-focus"
                     type="checkbox"
                     class="ingredient-checkbox checkbox-reset"
                   />
@@ -239,51 +241,56 @@
       <ion-icon name="add-circle" class="plus-icon"></ion-icon>
     </button>
     <div class="create-recipe-container">
-      <h1>Create A Recipe</h1>
-      <div>
-        <h2>Basic Info</h2>
-        <form action="">
-          <label for="" class="create-form-label">Name of Recipe</label>
-          <input type="text" />
-          <label for="" class="create-form-label">Author</label>
-          <input type="text" />
-          <div>
-            <div>
-              <label for="" class="create-form-label">Prep Time</label>
-              <input type="time" />
-            </div>
-            <div>
-              <label for="" class="create-form-label">Prep Time</label>
-              <input type="time" />
-            </div>
-          </div>
-          <div>
-            <div>
-              <label for="" class="create-form-label"></label>
-              <select name="" id="">
-                <option value="">Mains</option>
-                <option value="">Mains</option>
-                <option value="">Mains</option>
-                <option value="">Mains</option>
-              </select>
-            </div>
-            <div>
-              <label for="" class="create-form-label"></label>
-              <select name="" id="">
-                <option value="">Mains</option>
-                <option value="">Mains</option>
-                <option value="">Mains</option>
-                <option value="">Mains</option>
-              </select>
-            </div>
-          </div>
-          <div>
-            <button>Next &#8594;</button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <h1 class="create-recipe-label">Create A Recipe</h1>
 
+      <h2 class="form-label">Basic Info</h2>
+      <form action="" class="create-form">
+        <div class="label-input-grouping">
+          <label for="" class="create-input-label">Name of Recipe</label>
+          <input type="text" class="create-input reset-focus" />
+        </div>
+        <div class="label-input-grouping">
+          <label for="" class="create-input-label">Author</label>
+          <input type="text" class="create-input reset-focus" />
+        </div>
+        <div class="time-inputs-container">
+          <div class="label-input-grouping">
+            <label for="" class="create-input-label">Prep Time</label>
+            <input type="time" class="create-input reset-focus" />
+          </div>
+          <div class="label-input-grouping">
+            <label for="" class="create-input-label">Prep Time</label>
+            <input type="time" class="create-input reset-focus" />
+          </div>
+        </div>
+        <div class="dropdown-inputs-container">
+          <div class="label-input-grouping">
+            <label for="" class="create-input-label">Food Category</label>
+            <select name="" id="" class="create-input reset-focus">
+              <option value="">Mains</option>
+              <option value="">Mains</option>
+              <option value="">Mains</option>
+              <option value="">Mains</option>
+            </select>
+          </div>
+          <div class="label-input-grouping">
+            <label for="" class="create-input-label">Food Category</label>
+            <select name="" id="" class="create-input reset-focus">
+              <option value="">Mains</option>
+              <option value="">Mains</option>
+              <option value="">Mains</option>
+              <option value="">Mains</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="next-btn default-btn reset-focus">
+          Next
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+      </form>
+    </div>
+    <div class="form-overlay"></div>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

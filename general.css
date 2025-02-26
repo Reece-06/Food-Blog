@@ -39,6 +39,7 @@ Medium:
 :root {
   /* COLORS */
   /* MAIN */
+  --main-yellow-tint4: #fffaee;
   --main-yellow-tint3: #ffefcd;
   --main-yellow-tint2: #ffe4ab;
   --main-yellow-tint1: #ffd379;
@@ -126,4 +127,7 @@ body {
 }
 .divider--size {
   width: 90%;
+}
+.reset-focus {
+  outline: none;
 }

@@ -12,7 +12,7 @@
   top: 0;
   height: 100%;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 .title,
 .sub-title,
@@ -359,4 +359,114 @@
 .plus-icon {
   font-size: 64px;
   color: var(--accent-red);
+}
+.create-recipe-container {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  background-color: var(--main-yellow-tint4);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--ws-large);
+  transition: all 0.3s;
+  z-index: 4;
+}
+
+.show-create-recipe-container .create-recipe-container {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 2;
+}
+.show-form-overlay .form-overlay {
+  display: block;
+}
+.hide-scroll {
+  overflow: hidden;
+}
+
+.create-recipe-label {
+  font-size: var(--size-medium);
+  font-weight: var(--bold);
+  color: var(--main-yellow-shade1);
+  margin-bottom: var(--ws-small);
+}
+.form-label {
+  font-size: var(--size-small);
+  font-weight: var(--semi-bold);
+  margin-bottom: var(--ws-small-x1);
+}
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x1);
+}
+.label-input-grouping {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x2);
+}
+.create-input-label,
+.create-input {
+  font-size: var(--ws-small-x1);
+  font-weight: var(--regular);
+}
+.create-input {
+  padding: 0.8rem;
+  font-family: "Inter", sans-serif;
+  border: 1.3px solid var(--main-yellow-shade3);
+  border-radius: 0.5rem;
+}
+
+.create-input:focus-visible {
+  outline: 2px solid var(--main-yellow-shade3);
+  outline-offset: 2px;
+}
+.time-inputs-container,
+.dropdown-inputs-container {
+  display: flex;
+  gap: var(--ws-small);
+}
+.time-inputs-container .label-input-grouping,
+.dropdown-inputs-container .label-input-grouping {
+  flex: 1;
+}
+.next-btn {
+  font-size: var(--size-small-x1);
+  font-weight: var(--semi-bold);
+  color: var(--main-yellow-tint4);
+  font-family: "Inter", sans-serif;
+
+  width: max-content;
+  margin-left: auto;
+  margin-top: var(--ws-small-x1);
+  padding: var(--ws-small-x2) var(--ws-small);
+  background-color: var(--main-yellow-shade2);
+  border-radius: 1rem;
+
+  display: flex;
+
+  align-items: center;
+  gap: var(--ws-small-x2);
+  transition: all 0.3s;
+}
+.next-btn:focus-visible {
+  outline: 2px solid var(--main-yellow-shade3);
+  outline-offset: 2px;
+}
+.next-btn:hover,
+.next-btn:active {
+  background-color: var(--main-yellow-shade1);
 }
