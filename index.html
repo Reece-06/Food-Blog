@@ -90,7 +90,6 @@
                 <p class="set-label">Beef and Brocolli Ingredients:</p>
                 <label class="ingredient">
                   <input
-                    class="create-input reset-focus"
                     type="checkbox"
                     class="ingredient-checkbox checkbox-reset"
                   />
@@ -255,12 +254,70 @@
         </div>
         <div class="time-inputs-container">
           <div class="label-input-grouping">
-            <label for="" class="create-input-label">Prep Time</label>
-            <input type="time" class="create-input reset-focus" />
+            <label for="prep-time-hours" class="create-input-label"
+              >Prep Time</label
+            >
+            <div class="timer-container">
+              <label for="prep-time-hours" class="timer-label">
+                <p class="timer-time-label">hours</p>
+                <input
+                  type="number"
+                  class="create-input create-input-timer"
+                  id="prep-time-hours"
+                />
+              </label>
+              <p class="colon">:</p>
+              <label for="prep-time-minutes" class="timer-label">
+                <p class="timer-time-label">minutes</p>
+                <input
+                  type="number"
+                  class="create-input create-input-timer"
+                  id="prep-time-minutes"
+                />
+              </label>
+              <p class="colon">:</p>
+              <label for="prep-time-seconds" class="timer-label">
+                <p class="timer-time-label">seconds</p>
+                <input
+                  type="number"
+                  class="create-input create-input-timer"
+                  id="prep-time-seconds"
+                />
+              </label>
+            </div>
           </div>
           <div class="label-input-grouping">
-            <label for="" class="create-input-label">Prep Time</label>
-            <input type="time" class="create-input reset-focus" />
+            <label for="cook-time-hours" class="create-input-label"
+              >Cook Time</label
+            >
+            <div class="timer-container">
+              <label for="cook-time-hours" class="timer-label">
+                <p class="timer-time-label">hours</p>
+                <input
+                  type="number"
+                  class="create-input create-input-timer"
+                  id="cook-time-hours"
+                />
+              </label>
+              <p class="colon">:</p>
+              <label for="cook-time-minutes" class="timer-label">
+                <p class="timer-time-label">minutes</p>
+                <input
+                  type="number"
+                  class="create-input create-input-timer"
+                  id="cook-time-minutes"
+                />
+              </label>
+              <p class="colon">:</p>
+              <label for="cook-time-seconds" class="timer-label">
+                <p class="timer-time-label">seconds</p>
+                <input
+                  type="number"
+                  class="create-input create-input-timer"
+                  id="cook-time-seconds"
+                />
+              </label>
+            </div>
           </div>
         </div>
         <div class="dropdown-inputs-container">

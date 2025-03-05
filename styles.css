@@ -430,19 +430,60 @@
   border-radius: 0.5rem;
 }
 
-.create-input:focus-visible {
+.create-input:focus {
   outline: 2px solid var(--main-yellow-shade3);
   outline-offset: 2px;
 }
 .time-inputs-container,
 .dropdown-inputs-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--ws-small);
 }
-.time-inputs-container .label-input-grouping,
-.dropdown-inputs-container .label-input-grouping {
-  flex: 1;
+.timer-container {
+  display: flex;
+  border: 1px solid var(--main-yellow-shade3);
+  gap: var(--ws-small-x3);
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }
+.timer-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ws-small-x3);
+
+  position: relative;
+}
+.timer-time-label {
+  position: absolute;
+  top: var(--ws-small-x2);
+}
+
+.create-input-timer {
+  width: 60px;
+  padding-top: var(--ws-medium);
+  padding-bottom: var(--ws-small-x2);
+  border: none;
+  text-align: center;
+  appearance: none;
+  -moz-appearance: textfield;
+}
+.create-input-timer:focus {
+  outline-offset: 0;
+}
+/* To remove number increaser */
+.create-input-timer::-webkit-outer-spin-button,
+.create-input-timer::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.colon {
+  font-size: var(--size-small);
+  margin-top: var(--ws-small-x2);
+}
+
 .next-btn {
   font-size: var(--size-small-x1);
   font-weight: var(--semi-bold);
