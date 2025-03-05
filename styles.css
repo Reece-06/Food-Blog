@@ -442,7 +442,7 @@
 }
 .timer-container {
   display: flex;
-  border: 1px solid var(--main-yellow-shade3);
+  border: 1.3px solid var(--main-yellow-shade3);
   gap: var(--ws-small-x3);
   align-items: center;
   background-color: #fff;
@@ -483,6 +483,71 @@
   font-size: var(--size-small);
   margin-top: var(--ws-small-x2);
 }
+/* https://blog.logrocket.com/making-dropdown-menus-css/ */
+.dropdown {
+  position: relative;
+  /* overflow-y: hidden; */
+}
+.dropdown-btn {
+  background-color: #fff;
+  font-size: var(--ws-small-x1);
+  font-weight: var(--regular);
+
+  width: 100%;
+  border: 1.3px solid var(--main-yellow-shade3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ws-small-x2) var(--ws-small-x1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #000;
+  transition: all ease-in-out 0.3s;
+}
+.dropdown-content {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  margin-top: var(--ws-small-x2);
+  width: 100%;
+  /* opacity: 0; */
+  visibility: hidden;
+  /* pointer-events: none; */
+  /* transition: all 0.3s; */
+}
+
+.dropdown-btn:focus + .dropdown-content {
+  /* opacity: 1; */
+  /* pointer-events: auto; */
+  visibility: visible;
+}
+
+.dropdown-btn:focus > .arrow {
+  transform: rotate(180deg);
+}
+.dropdown-list {
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+.dropdown-list:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
+.dropdown-list:hover,
+.dropdown-list:active {
+  background-color: var(--main-yellow-tint3);
+}
+.dropdown-a {
+  display: block;
+  padding: var(--ws-small-x2) var(--ws-small-x1);
+  text-decoration: none;
+  color: #000;
+  font-size: var(--ws-small-x1);
+}
 
 .next-btn {
   font-size: var(--size-small-x1);
@@ -493,7 +558,7 @@
   width: max-content;
   margin-left: auto;
   margin-top: var(--ws-small-x1);
-  padding: var(--ws-small-x2) var(--ws-small);
+  padding: var(--ws-small-x2) var(--ws-medium);
   background-color: var(--main-yellow-shade2);
   border-radius: 1rem;
 
@@ -503,6 +568,7 @@
   gap: var(--ws-small-x2);
   transition: all 0.3s;
 }
+
 .next-btn:focus-visible {
   outline: 2px solid var(--main-yellow-shade3);
   outline-offset: 2px;
