@@ -322,17 +322,30 @@
         </div>
         <div class="dropdown-inputs-container">
           <div class="label-input-grouping">
-            <label for="" class="create-input-label">Food Category</label>
-            <select name="" id="" class="create-input reset-focus">
-              <option value="">Mains</option>
-              <option value="">Mains</option>
-              <option value="">Mains</option>
-              <option value="">Mains</option>
-            </select>
+            <label
+              for="Food Category"
+              class="create-input-label"
+              id="meal-course-input"
+              >Meal Course</label
+            >
+            <div class="custom-select">
+              <select
+                class="create-input create-input-dropdown reset-focus"
+                id="meal-course-input"
+              >
+                <option>Appetizer</option>
+                <option>Main</option>
+                <option>Dessert</option>
+                <option>Soup</option>
+                <option>Salad</option>
+              </select>
+            </div>
           </div>
           <div class="label-input-grouping">
-            <label for="" class="create-input-label">Food Category</label>
-            <div class="dropdown">
+            <label for="cuisine-input" class="create-input-label"
+              >Cuisine</label
+            >
+            <!-- <div class="dropdown">
               <button class="dropdown-btn">
                 <span>Framework</span>
                 <span class="arrow"></span>
@@ -354,6 +367,18 @@
                   <a class="dropdown-a" href="#">Dessert</a>
                 </li>
               </ul>
+            </div> -->
+            <div class="custom-select">
+              <select
+                class="create-input create-input-dropdown reset-focus"
+                id="cuisine-input"
+              >
+                <option>Filipino</option>
+                <option>Italian</option>
+                <option>French</option>
+                <option>German</option>
+                <option>American</option>
+              </select>
             </div>
           </div>
         </div>

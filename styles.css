@@ -426,6 +426,7 @@
 .create-input {
   padding: 0.8rem;
   font-family: "Inter", sans-serif;
+  color: var(--main-yellow-shade4);
   border: 1.3px solid var(--main-yellow-shade3);
   border-radius: 0.5rem;
 }
@@ -484,9 +485,9 @@
   margin-top: var(--ws-small-x2);
 }
 /* https://blog.logrocket.com/making-dropdown-menus-css/ */
-.dropdown {
+/* Experiment */
+/* .dropdown {
   position: relative;
-  /* overflow-y: hidden; */
 }
 .dropdown-btn {
   background-color: #fff;
@@ -509,30 +510,42 @@
   transition: all ease-in-out 0.3s;
 }
 .dropdown-content {
+  --height: 10rem;
   list-style: none;
   position: absolute;
   top: 100%;
   margin-top: var(--ws-small-x2);
   width: 100%;
-  /* opacity: 0; */
+
   visibility: hidden;
-  /* pointer-events: none; */
-  /* transition: all 0.3s; */
+
+  pointer-events: none;
+  overflow: hidden;
+
+  transition: all 0.3s;
+  border: 1px solid #000;
 }
 
-.dropdown-btn:focus + .dropdown-content {
-  /* opacity: 1; */
-  /* pointer-events: auto; */
+.dropdown:focus-within .dropdown-content {
+  
+  pointer-events: all;
   visibility: visible;
 }
 
-.dropdown-btn:focus > .arrow {
+.dropdown:focus-within .dropdown-btn > .arrow {
   transform: rotate(180deg);
 }
 .dropdown-list {
   background-color: #fff;
   border-radius: 0.5rem;
+  transform: translateY(-20rem);
+
+  transition: all 0.3s;
 }
+.dropdown:focus-within .dropdown-content .dropdown-list {
+  transform: translateY(0);
+}
+
 .dropdown-list:not(:last-child) {
   margin-bottom: 0.2rem;
 }
@@ -547,6 +560,40 @@
   text-decoration: none;
   color: #000;
   font-size: var(--ws-small-x1);
+} */
+.custom-select {
+  position: relative;
+}
+
+.create-input-dropdown {
+  appearance: none;
+  cursor: pointer;
+  padding: var(--ws-small-x2);
+  width: 100%;
+  background-color: #fff;
+}
+.create-input-dropdown:focus-within {
+  outline-offset: 0;
+}
+.custom-select::before,
+.custom-select::after {
+  --size: 0.4rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid var(--main-yellow-shade4);
+  top: 38%;
+}
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid var(--main-yellow-shade4);
+  top: 55%;
 }
 
 .next-btn {
