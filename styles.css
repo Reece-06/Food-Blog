@@ -572,7 +572,7 @@
   width: 100%;
   background-color: #fff;
 }
-.create-input-dropdown:focus-within {
+.create-input-dropdown:focus-visible {
   outline-offset: 0;
 }
 .custom-select::before,
@@ -623,4 +623,32 @@
 .next-btn:hover,
 .next-btn:active {
   background-color: var(--main-yellow-shade1);
+}
+
+/* Ingredients inputs */
+.ingredient-sets-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x1);
+}
+.ingredient-set {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x2);
+}
+.upper-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.set-name {
+  border: none;
+  background-color: transparent;
+  /* border-bottom: 1px solid black; */
+}
+.delete-set {
+  padding: var(--ws-small-x2) var(--ws-small-x1);
+  border-radius: 0.7rem;
+  /* color: var(); */
 }
