@@ -631,10 +631,14 @@
   flex-direction: column;
   gap: var(--ws-small-x1);
 }
+
 .ingredient-set {
   display: flex;
   flex-direction: column;
   gap: var(--ws-small-x2);
+}
+.ingredient-set:last-of-type {
+  margin-bottom: var(--ws-small-x1);
 }
 .upper-container {
   width: 100%;
@@ -712,4 +716,21 @@
 }
 .add-ingredient-icon {
   --ionicon-stroke-width: 50px;
+}
+.add-set-btn {
+  font-size: 2.2rem;
+  font-weight: var(--bold);
+  color: var(--main-yellow-tint4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--ws-small-x1);
+  width: 100%;
+
+  padding: var(--ws-small-x1) var(--ws-small);
+  border-radius: 0.7rem;
+  background-color: var(--main-yellow-shade2);
+}
+.add-set-icon {
+  --ionicon-stroke-width: 60px;
 }
