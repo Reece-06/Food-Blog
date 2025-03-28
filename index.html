@@ -372,108 +372,157 @@
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button> -->
         <div class="ingredient-sets-input">
-          
-
           <div class="ingredient-set">
             <header class="upper-container">
               <div class="set-name-container">
-                <label for="set-name-0" class="hidden-label">
-                  Set Name</label>
-                  <input type="text" id="set-name-0" class="set-name reset-focus" />
+                <label for="set-name-0" class="hidden-label"> Set Name</label>
+                <input
+                  type="text"
+                  id="set-name-0"
+                  class="set-name-input reset-focus"
+                  placeholder="Set Name"
+                />
               </div>
-              <button class="delete-set default-btn">Delete Set</button>
+              <button class="delete-set-btn default-btn">Delete Set</button>
             </header>
             <section class="ingredient-inputs-container">
-
-            
-              <div class="ingredient-inputs grid">
-
-                <label for="ingredient-qty-0">Quantity</label>
-                <label for="measurement-0">Measurement</label>
-                <label for="ingredient-name-0">Ingredient Name</label>
-                <label for="ingredient-details-0">Ingredient Details</label>
-                
-                <input type="number" class="ingredient-qty-input" />
-                <select
-                name="measurement-0"
-                id="measurement-0"
-                class="measurement-input"
+              <div class="ingredient-inputs">
+                <label for="ingredient-qty-0 " class="create-input-label"
+                  >Quantity</label
                 >
-                  <option value="cup">cup</option>
-                </select>
-                <input
-                type="text"
-                class="ingredient-name-input"
-                id="ingredient-name-0"
-                name="ingredient-name-0"
-                />
+                <label for="measurement-0 " class="create-input-label"
+                  >Measurement</label
+                >
+                <label for="ingredient-name-0 " class="create-input-label"
+                  >Ingredient Name</label
+                >
+                <label
+                  for="ingredient-details-0 "
+                  class="ingredient-dets-label create-input-label"
+                  >Ingredient Details</label
+                >
+
                 <input
                   type="number"
-                  class="ingredient-det-input"
+                  class="create-input ingredient-qty-input"
+                />
+                <select
+                  name="measurement-0"
+                  id="measurement-0"
+                  class="create-input create-input-dropdown measurement-input"
+                >
+                  <option value="cup">cup</option>
+                  <option value="cup">Charizard</option>
+                  <option value="cup">Mega Lucario</option>
+                  <option value="cup">Mega Sprigatitto</option>
+                </select>
+                <input
+                  type="text"
+                  class="create-input"
+                  id="ingredient-name-0"
+                  name="ingredient-name-0"
+                />
+                <input
+                  type="text"
+                  class="create-input"
                   id="ingredient-details-0"
                   name="ingredient-details-0"
                 />
+                <button
+                  name="delete-ingredient-0 "
+                  class="delete-ingredient-btn default-btn"
+                >
+                  <ion-icon
+                    name="close-outline"
+                    class="delete-ingredient-icon"
+                  ></ion-icon>
+                </button>
               </div>
-              <button name="delete-ingredient-0 default-btn" class="delete -ingredient"><span>&#10005</span></button>
             </section>
-            <button class="add-ingredient default-btn">
-              <ion-icon name="add"></ion-icon>
+            <button class="add-ingredient-btn default-btn">
+              <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
               <p>Add Ingredient</p>
             </button>
           </div>
+          <hr class="divider divider-create-recipe" />
           <div class="ingredient-set">
             <header class="upper-container">
               <div class="set-name-container">
-                <label for="set-name-0">
-                  Set Name</label>
-                  <input type="text" id="set-name-0" class="reset-focus" />
+                <label for="set-name-0" class="hidden-label"> Set Name</label>
+                <input
+                  type="text"
+                  id="set-name-0"
+                  class="set-name-input reset-focus"
+                  placeholder="Set Name"
+                />
               </div>
-              <button class="delete-set default-btn">Delete Set</button>
+              <button class="delete-set-btn default-btn">Delete Set</button>
             </header>
             <section class="ingredient-inputs-container">
-
-            
-              <div class="ingredient-inputs grid">
-
-                <label for="ingredient-qty-0">Quantity</label>
-                <label for="measurement-0">Measurement</label>
-                <label for="ingredient-name-0">Ingredient Name</label>
-                <label for="ingredient-details-0">Ingredient Details</label>
-                
-                <input type="number" class="ingredient-qty-input" />
-                <select
-                name="measurement-0"
-                id="measurement-0"
-                class="measurement-input"
+              <div class="ingredient-inputs">
+                <label for="ingredient-qty-0 " class="create-input-label"
+                  >Quantity</label
                 >
-                  <option value="cup">cup</option>
-                </select>
-                <input
-                type="text"
-                class="ingredient-name-input"
-                id="ingredient-name-0"
-                name="ingredient-name-0"
-                />
+                <label for="measurement-0 " class="create-input-label"
+                  >Measurement</label
+                >
+                <label for="ingredient-name-0 " class="create-input-label"
+                  >Ingredient Name</label
+                >
+                <label
+                  for="ingredient-details-0 "
+                  class="ingredient-dets-label create-input-label"
+                  >Ingredient Details</label
+                >
+
                 <input
                   type="number"
-                  class="ingredient-det-input"
+                  class="create-input ingredient-qty-input"
+                />
+                <select
+                  name="measurement-0"
+                  id="measurement-0"
+                  class="create-input create-input-dropdown measurement-input"
+                >
+                  <option value="cup">cup</option>
+                  <option value="cup">Charizard</option>
+                  <option value="cup">Mega Lucario</option>
+                  <option value="cup">Mega Sprigatitto</option>
+                </select>
+                <input
+                  type="text"
+                  class="create-input"
+                  id="ingredient-name-0"
+                  name="ingredient-name-0"
+                />
+                <input
+                  type="text"
+                  class="create-input"
                   id="ingredient-details-0"
                   name="ingredient-details-0"
                 />
+                <button
+                  name="delete-ingredient-0 "
+                  class="delete-ingredient-btn default-btn"
+                >
+                  <ion-icon
+                    name="close-outline"
+                    class="delete-ingredient-icon"
+                  ></ion-icon>
+                </button>
               </div>
-              <button name="delete-ingredient-0 default-btn" class="delete -ingredient"><span>&#10005</span></button>
             </section>
-            <button class="add-ingredient default-btn">
-              <ion-icon name="add"></ion-icon>
+            <button class="add-ingredient-btn default-btn">
+              <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
               <p>Add Ingredient</p>
             </button>
           </div>
+
           <button class="add-set default-btn">
             <ion-icon name="add"></ion-icon>
             <p>Add Set</p>
           </button>
         </div>
-        
       </form>
     </div>
     <div class="form-overlay"></div>

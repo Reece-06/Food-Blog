@@ -54,6 +54,9 @@ Medium:
   --grey-shade2: #434343;
   /* ACCENT */
   --accent-red: #d9534f;
+  --accent-red-tint1: #dd6461;
+
+  --accent-green: rgb(0, 136, 0);
 
   /* FONT-SIZES */
   --size-xl: 5.2rem;
