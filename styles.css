@@ -245,8 +245,8 @@
   line-height: 1.7;
 }
 .instruction-desc::before {
-  counter-increment: ingredients;
-  content: counter(ingredients);
+  counter-increment: instructions;
+  content: counter(instructions);
 
   font-size: var(--size-small-x1);
   font-weight: 700;
@@ -373,6 +373,8 @@
   padding: var(--ws-large);
   transition: all 0.3s;
   z-index: 4;
+  max-height: 60rem;
+  overflow-y: scroll;
 }
 
 .show-create-recipe-container .create-recipe-container {
@@ -691,6 +693,7 @@
   padding: var(--ws-small-x3);
   border-radius: 0.5rem;
   transition: all 0.3s;
+  color: var(--main-yellow-tint4);
 }
 .delete-ingredient-btn:hover,
 .delete-ingredient-btn:active {
@@ -752,4 +755,56 @@
 }
 .add-set-icon {
   --ionicon-stroke-width: 60px;
+}
+/* Instructions Form */
+.instructions-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small);
+  counter-reset: instructions;
+  margin-block: var(--ws-small);
+}
+.instruction-input-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: var(--ws-small-x1);
+  padding: var(--ws-small-x1);
+  border-radius: 0.7rem;
+  background-color: var(--main-yellow-tint2);
+  position: relative;
+}
+.instruction-input-container:before {
+  color: var(--main-yellow-tint4);
+  font-size: var(--ws-small);
+  font-weight: var(--regular);
+  counter-increment: instructions;
+  content: counter(instructions);
+  width: 3.7rem;
+  aspect-ratio: 1;
+  background-color: var(--main-yellow-shade1);
+  border-radius: 0.5rem;
+  display: grid;
+  place-content: center;
+}
+.instruction-input {
+  height: 10rem;
+  width: 40rem;
+}
+.delete-instruction-btn {
+  background-color: var(--accent-red-tint1);
+  color: var(--main-yellow-tint4);
+  display: grid;
+
+  place-content: center;
+  padding: var(--ws-small-x3);
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+.delete-instruction-btn:hover,
+.delete-instruction-btn:active {
+  background-color: var(--accent-red-tint2);
+}
+.delete-instruction-icon {
+  font-size: var(--size-small);
 }
