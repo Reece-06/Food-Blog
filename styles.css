@@ -667,6 +667,11 @@
   font-weight: var(--semi-bold);
   background-color: var(--accent-red-tint1);
   color: var(--main-yellow-tint4);
+  transition: all 0.3s;
+}
+.delete-set-btn:hover,
+.delete-set-btn:active {
+  background-color: var(--accent-red-tint2);
 }
 .ingredient-inputs-container {
   margin-bottom: var(--ws-small-x1);
@@ -685,6 +690,11 @@
   justify-content: center;
   padding: var(--ws-small-x3);
   border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+.delete-ingredient-btn:hover,
+.delete-ingredient-btn:active {
+  background-color: var(--accent-red-tint2);
 }
 .delete-ingredient-icon {
   font-size: var(--ws-small);
@@ -714,6 +724,10 @@
   font-weight: var(--semi-bold);
   color: var(--main-yellow-tint4);
 }
+.add-ingredient-btn:hover,
+.add-ingredient-btn:active {
+  background-color: var(--accent-green-tint1);
+}
 .add-ingredient-icon {
   --ionicon-stroke-width: 50px;
 }
@@ -730,6 +744,11 @@
   padding: var(--ws-small-x1) var(--ws-small);
   border-radius: 0.7rem;
   background-color: var(--main-yellow-shade2);
+  transition: all 0.3s;
+}
+.add-set-btn:hover,
+.add-set-btn:active {
+  background-color: var(--main-yellow-shade1);
 }
 .add-set-icon {
   --ionicon-stroke-width: 60px;
