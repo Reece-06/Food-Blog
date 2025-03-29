@@ -787,6 +787,9 @@
   display: grid;
   place-content: center;
 }
+.instruction-input-container:last-of-type {
+  margin-bottom: var(--ws-small-x1);
+}
 .instruction-input {
   height: 10rem;
   width: 40rem;
@@ -807,4 +810,27 @@
 }
 .delete-instruction-icon {
   font-size: var(--size-small);
+}
+
+.add-instruction-btn {
+  font-size: 2.2rem;
+  font-weight: var(--bold);
+  color: var(--main-yellow-tint4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--ws-small-x1);
+  width: 100%;
+
+  padding: var(--ws-small-x1) var(--ws-small);
+  border-radius: 0.7rem;
+  background-color: var(--main-yellow-shade2);
+  transition: all 0.3s;
+}
+.add-instruction-btn:hover,
+.add-instruction-btn:active {
+  background-color: var(--main-yellow-shade1);
+}
+.add-instruction-icon {
+  --ionicon-stroke-width: 60px;
 }
