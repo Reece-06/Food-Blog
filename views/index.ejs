@@ -15,6 +15,7 @@
       <button class="create-recipe default-btn">Create Recipe</button>
     </header>
     <main class="main">
+      <% if (hasRecipes) { %>
       <div class="recipe">
         <div class="recipe-container">
           <header class="recipe-header">
@@ -232,6 +233,9 @@
           </button>
         </div>
       </div>
+      <% } else { %>
+      <h1 class="no-recipe-h1">No recipes yet</h1>
+      <% } %>
     </main>
     <button
       class="floating-create-recipe default-btn"

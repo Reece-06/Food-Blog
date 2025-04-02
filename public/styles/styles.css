@@ -1,5 +1,5 @@
 .header {
-  background: url(imgs/carousel/header-background2.jpg) center/cover no-repeat;
+  background: url(/imgs/carousel/header-background2.jpg) center/cover no-repeat;
   height: 100vh;
   position: relative;
   align-content: center;
@@ -859,4 +859,11 @@
   font-size: var(--size-small-x1);
   font-weight: var(--regular);
   flex: 1;
+}
+/* No recipe styles */
+.no-recipe-h1 {
+  text-align: center;
+  font-size: var(--size-medium);
+  font-weight: var(--semi-bold);
+  color: var(--grey-tint-1);
 }
