@@ -12,7 +12,9 @@
     <header class="header">
       <h1 class="title">Welcome to the Tasty Notebook</h1>
       <p class="sub-title">You can create your own recipes from scratch</p>
-      <button class="create-recipe default-btn">Create Recipe</button>
+      <button class="create-recipe default-btn create-recipe-btn">
+        Create Recipe
+      </button>
     </header>
     <main class="main">
       <% if (hasRecipes) { %>
@@ -238,454 +240,452 @@
       <% } %>
     </main>
     <button
-      class="floating-create-recipe default-btn"
+      class="floating-create-recipe default-btn create-recipe-btn"
       data-text="Create your own recipe"
     >
       <ion-icon name="add-circle" class="plus-icon"></ion-icon>
     </button>
     <div class="create-recipe-container">
       <h1 class="create-recipe-label">Create A Recipe</h1>
-
-      <h2 class="form-label">Basic Info</h2>
-      <form action="" class="create-form">
-        <!-- <div class="label-input-grouping">
-          <label for="" class="create-input-label">Name of Recipe</label>
-          <input type="text" class="create-input reset-focus" />
-        </div>
-        <div class="label-input-grouping">
-          <label for="" class="create-input-label">Author</label>
-          <input type="text" class="create-input reset-focus" />
-        </div>
-        <div class="time-inputs-container">
-          <div class="label-input-grouping">
-            <label for="prep-time-hours" class="create-input-label"
-              >Prep Time</label
-            >
-            <div class="timer-container">
-              <label for="prep-time-hours" class="timer-label">
-                <p class="timer-time-label">hours</p>
-                <input
-                  type="number"
-                  class="create-input create-input-timer"
-                  id="prep-time-hours"
-                />
-              </label>
-              <p class="colon">:</p>
-              <label for="prep-time-minutes" class="timer-label">
-                <p class="timer-time-label">minutes</p>
-                <input
-                  type="number"
-                  class="create-input create-input-timer"
-                  id="prep-time-minutes"
-                />
-              </label>
-              <p class="colon">:</p>
-              <label for="prep-time-seconds" class="timer-label">
-                <p class="timer-time-label">seconds</p>
-                <input
-                  type="number"
-                  class="create-input create-input-timer"
-                  id="prep-time-seconds"
-                />
-              </label>
+      <div class="create-recipe-form">
+        <h2 class="form-label">Basic Info</h2>
+        <!-- show-form-1 show-form-2 show-form-3 show-form-4 -->
+        <form action="" class="create-form">
+          <div class="basic-input-recipe create-form-1">
+            <div class="label-input-grouping">
+              <label for="" class="create-input-label">Name of Recipe</label>
+              <input type="text" class="create-input reset-focus" />
             </div>
-          </div>
-          <div class="label-input-grouping">
-            <label for="cook-time-hours" class="create-input-label"
-              >Cook Time</label
-            >
-            <div class="timer-container">
-              <label for="cook-time-hours" class="timer-label">
-                <p class="timer-time-label">hours</p>
-                <input
-                  type="number"
-                  class="create-input create-input-timer"
-                  id="cook-time-hours"
-                  min="1"
-                  max="59"
-                />
-              </label>
-              <p class="colon">:</p>
-              <label for="cook-time-minutes" class="timer-label">
-                <p class="timer-time-label">minutes</p>
-                <input
-                  type="number"
-                  class="create-input create-input-timer"
-                  id="cook-time-minutes"
-                  min="1"
-                  max="59"
-                />
-              </label>
-              <p class="colon">:</p>
-              <label for="cook-time-seconds" class="timer-label">
-                <p class="timer-time-label">seconds</p>
-                <input
-                  type="number"
-                  class="create-input create-input-timer"
-                  id="cook-time-seconds"
-                  min="1"
-                  max="59"
-                />
-              </label>
+            <div class="label-input-grouping">
+              <label for="" class="create-input-label">Author</label>
+              <input type="text" class="create-input reset-focus" />
             </div>
-          </div>
-        </div>
-        <div class="dropdown-inputs-container">
-          <div class="label-input-grouping">
-            <label
-              for="Food Category"
-              class="create-input-label"
-              id="meal-course-input"
-              >Meal Course</label
-            >
-            <div class="custom-select">
-              <select
-                class="create-input create-input-dropdown reset-focus"
-                id="meal-course-input"
-              >
-                <option>Appetizer</option>
-                <option>Main</option>
-                <option>Dessert</option>
-                <option>Soup</option>
-                <option>Salad</option>
-              </select>
-            </div>
-          </div>
-          <div class="label-input-grouping">
-            <label for="cuisine-input" class="create-input-label"
-              >Cuisine</label
-            >
-
-            <div class="custom-select">
-              <select
-                class="create-input create-input-dropdown reset-focus"
-                id="cuisine-input"
-              >
-                <option>Filipino</option>
-                <option>Italian</option>
-                <option>French</option>
-                <option>German</option>
-                <option>American</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <button class="next-btn default-btn reset-focus">
-          Next
-          <ion-icon name="arrow-forward-outline"></ion-icon>
-        </button> -->
-
-        <!-- <div class="ingredient-sets-input">
-          <div class="ingredient-set">
-            <header class="upper-container">
-              <div class="set-name-container">
-                <label for="set-name-0" class="hidden-label"> Set Name</label>
-                <input
-                  type="text"
-                  id="set-name-0"
-                  class="set-name-input reset-focus"
-                  placeholder="Set Name"
-                />
+            <div class="time-inputs-container">
+              <div class="label-input-grouping">
+                <label for="prep-time-hours" class="create-input-label"
+                  >Prep Time</label
+                >
+                <div class="timer-container">
+                  <label for="prep-time-hours" class="timer-label">
+                    <p class="timer-time-label">hours</p>
+                    <input
+                      type="number"
+                      class="create-input create-input-timer"
+                      id="prep-time-hours"
+                    />
+                  </label>
+                  <p class="colon">:</p>
+                  <label for="prep-time-minutes" class="timer-label">
+                    <p class="timer-time-label">minutes</p>
+                    <input
+                      type="number"
+                      class="create-input create-input-timer"
+                      id="prep-time-minutes"
+                    />
+                  </label>
+                  <p class="colon">:</p>
+                  <label for="prep-time-seconds" class="timer-label">
+                    <p class="timer-time-label">seconds</p>
+                    <input
+                      type="number"
+                      class="create-input create-input-timer"
+                      id="prep-time-seconds"
+                    />
+                  </label>
+                </div>
               </div>
-              <button class="delete-set-btn default-btn">Delete Set</button>
-            </header>
-            <section class="ingredient-inputs-container">
-              <div class="ingredient-inputs">
-                <label for="ingredient-qty-0 " class="create-input-label"
-                  >Quantity</label
+              <div class="label-input-grouping">
+                <label for="cook-time-hours" class="create-input-label"
+                  >Cook Time</label
                 >
-                <label for="measurement-0 " class="create-input-label"
-                  >Measurement</label
-                >
-                <label for="ingredient-name-0 " class="create-input-label"
-                  >Ingredient Name</label
-                >
+                <div class="timer-container">
+                  <label for="cook-time-hours" class="timer-label">
+                    <p class="timer-time-label">hours</p>
+                    <input
+                      type="number"
+                      class="create-input create-input-timer"
+                      id="cook-time-hours"
+                      min="1"
+                      max="59"
+                    />
+                  </label>
+                  <p class="colon">:</p>
+                  <label for="cook-time-minutes" class="timer-label">
+                    <p class="timer-time-label">minutes</p>
+                    <input
+                      type="number"
+                      class="create-input create-input-timer"
+                      id="cook-time-minutes"
+                      min="1"
+                      max="59"
+                    />
+                  </label>
+                  <p class="colon">:</p>
+                  <label for="cook-time-seconds" class="timer-label">
+                    <p class="timer-time-label">seconds</p>
+                    <input
+                      type="number"
+                      class="create-input create-input-timer"
+                      id="cook-time-seconds"
+                      min="1"
+                      max="59"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-inputs-container">
+              <div class="label-input-grouping">
                 <label
-                  for="ingredient-details-0 "
-                  class="ingredient-dets-label create-input-label"
-                  >Ingredient Details</label
+                  for="Food Category"
+                  class="create-input-label"
+                  id="meal-course-input"
+                  >Meal Course</label
                 >
-
-                <input
-                  type="number"
-                  class="create-input ingredient-qty-input"
-                />
                 <div class="custom-select">
                   <select
-                    name="measurement-0"
-                    id="measurement-0"
-                    class="create-input create-input-dropdown measurement-input"
+                    class="create-input create-input-dropdown reset-focus"
+                    id="meal-course-input"
                   >
-                    <option value="cup">cup</option>
-                    <option value="cup">Charizard</option>
-                    <option value="cup">Mega Lucario</option>
-                    <option value="cup">Mega Sprigatitto</option>
+                    <option>Appetizer</option>
+                    <option>Main</option>
+                    <option>Dessert</option>
+                    <option>Soup</option>
+                    <option>Salad</option>
                   </select>
                 </div>
-
-                <input
-                  type="text"
-                  class="create-input"
-                  id="ingredient-name-0"
-                  name="ingredient-name-0"
-                />
-                <input
-                  type="text"
-                  class="create-input"
-                  id="ingredient-details-0"
-                  name="ingredient-details-0"
-                />
-                <button
-                  name="delete-ingredient-0 "
-                  class="delete-ingredient-btn default-btn"
-                >
-                  <ion-icon
-                    name="close-outline"
-                    class="delete-ingredient-icon"
-                  ></ion-icon>
-                </button>
               </div>
-            </section>
-            <button class="add-ingredient-btn default-btn">
-              <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
-              <p>Add Ingredient</p>
-            </button>
-          </div>
-          <hr class="divider divider-create-recipe" />
-          <div class="ingredient-set">
-            <header class="upper-container">
-              <div class="set-name-container">
-                <label for="set-name-0" class="hidden-label"> Set Name</label>
-                <input
-                  type="text"
-                  id="set-name-0"
-                  class="set-name-input reset-focus"
-                  placeholder="Set Name"
-                />
-              </div>
-              <button class="delete-set-btn default-btn">Delete Set</button>
-            </header>
-            <section class="ingredient-inputs-container">
-              <div class="ingredient-inputs">
-                <label for="ingredient-qty-0 " class="create-input-label"
-                  >Quantity</label
-                >
-                <label for="measurement-0 " class="create-input-label"
-                  >Measurement</label
-                >
-                <label for="ingredient-name-0 " class="create-input-label"
-                  >Ingredient Name</label
-                >
-                <label
-                  for="ingredient-details-0 "
-                  class="ingredient-dets-label create-input-label"
-                  >Ingredient Details</label
+              <div class="label-input-grouping">
+                <label for="cuisine-input" class="create-input-label"
+                  >Cuisine</label
                 >
 
-                <input
-                  type="number"
-                  class="create-input ingredient-qty-input"
-                />
                 <div class="custom-select">
                   <select
-                    name="measurement-0"
-                    id="measurement-0"
-                    class="create-input create-input-dropdown measurement-input"
+                    class="create-input create-input-dropdown reset-focus"
+                    id="cuisine-input"
                   >
-                    <option value="cup">cup</option>
-                    <option value="cup">Charizard</option>
-                    <option value="cup">Mega Lucario</option>
-                    <option value="cup">Mega Sprigatitto</option>
+                    <option>Filipino</option>
+                    <option>Italian</option>
+                    <option>French</option>
+                    <option>German</option>
+                    <option>American</option>
                   </select>
                 </div>
-                <input
-                  type="text"
-                  class="create-input"
-                  id="ingredient-name-0"
-                  name="ingredient-name-0"
-                />
-                <input
-                  type="text"
-                  class="create-input"
-                  id="ingredient-details-0"
-                  name="ingredient-details-0"
-                />
-                <button
-                  name="delete-ingredient-0 "
-                  class="delete-ingredient-btn default-btn"
-                >
-                  <ion-icon
-                    name="close-outline"
-                    class="delete-ingredient-icon"
-                  ></ion-icon>
-                </button>
               </div>
-            </section>
-            <button class="add-ingredient-btn default-btn">
-              <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
-              <p>Add Ingredient</p>
+            </div>
+          </div>
+
+          <div class="ingredient-sets-input create-form-2">
+            <div class="ingredient-set">
+              <header class="upper-container">
+                <div class="set-name-container">
+                  <label for="set-name-0" class="hidden-label"> Set Name</label>
+                  <input
+                    type="text"
+                    id="set-name-0"
+                    class="set-name-input reset-focus"
+                    placeholder="Set Name"
+                  />
+                </div>
+                <button class="delete-set-btn default-btn">Delete Set</button>
+              </header>
+              <section class="ingredient-inputs-container">
+                <div class="ingredient-inputs">
+                  <label for="ingredient-qty-0 " class="create-input-label"
+                    >Quantity</label
+                  >
+                  <label for="measurement-0 " class="create-input-label"
+                    >Measurement</label
+                  >
+                  <label for="ingredient-name-0 " class="create-input-label"
+                    >Ingredient Name</label
+                  >
+                  <label
+                    for="ingredient-details-0 "
+                    class="ingredient-dets-label create-input-label"
+                    >Ingredient Details</label
+                  >
+
+                  <input
+                    type="number"
+                    class="create-input ingredient-qty-input"
+                  />
+                  <div class="custom-select">
+                    <select
+                      name="measurement-0"
+                      id="measurement-0"
+                      class="create-input create-input-dropdown measurement-input"
+                    >
+                      <option value="cup">cup</option>
+                      <option value="cup">Charizard</option>
+                      <option value="cup">Mega Lucario</option>
+                      <option value="cup">Mega Sprigatitto</option>
+                    </select>
+                  </div>
+
+                  <input
+                    type="text"
+                    class="create-input"
+                    id="ingredient-name-0"
+                    name="ingredient-name-0"
+                  />
+                  <input
+                    type="text"
+                    class="create-input"
+                    id="ingredient-details-0"
+                    name="ingredient-details-0"
+                  />
+                  <button
+                    name="delete-ingredient-0 "
+                    class="delete-ingredient-btn default-btn"
+                  >
+                    <ion-icon
+                      name="close-outline"
+                      class="delete-ingredient-icon"
+                    ></ion-icon>
+                  </button>
+                </div>
+              </section>
+              <button class="add-ingredient-btn default-btn">
+                <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
+                <p>Add Ingredient</p>
+              </button>
+            </div>
+            <hr class="divider divider-create-recipe" />
+            <div class="ingredient-set">
+              <header class="upper-container">
+                <div class="set-name-container">
+                  <label for="set-name-0" class="hidden-label"> Set Name</label>
+                  <input
+                    type="text"
+                    id="set-name-0"
+                    class="set-name-input reset-focus"
+                    placeholder="Set Name"
+                  />
+                </div>
+                <button class="delete-set-btn default-btn">Delete Set</button>
+              </header>
+              <section class="ingredient-inputs-container">
+                <div class="ingredient-inputs">
+                  <label for="ingredient-qty-0 " class="create-input-label"
+                    >Quantity</label
+                  >
+                  <label for="measurement-0 " class="create-input-label"
+                    >Measurement</label
+                  >
+                  <label for="ingredient-name-0 " class="create-input-label"
+                    >Ingredient Name</label
+                  >
+                  <label
+                    for="ingredient-details-0 "
+                    class="ingredient-dets-label create-input-label"
+                    >Ingredient Details</label
+                  >
+
+                  <input
+                    type="number"
+                    class="create-input ingredient-qty-input"
+                  />
+                  <div class="custom-select">
+                    <select
+                      name="measurement-0"
+                      id="measurement-0"
+                      class="create-input create-input-dropdown measurement-input"
+                    >
+                      <option value="cup">cup</option>
+                      <option value="cup">Charizard</option>
+                      <option value="cup">Mega Lucario</option>
+                      <option value="cup">Mega Sprigatitto</option>
+                    </select>
+                  </div>
+                  <input
+                    type="text"
+                    class="create-input"
+                    id="ingredient-name-0"
+                    name="ingredient-name-0"
+                  />
+                  <input
+                    type="text"
+                    class="create-input"
+                    id="ingredient-details-0"
+                    name="ingredient-details-0"
+                  />
+                  <button
+                    name="delete-ingredient-0 "
+                    class="delete-ingredient-btn default-btn"
+                  >
+                    <ion-icon
+                      name="close-outline"
+                      class="delete-ingredient-icon"
+                    ></ion-icon>
+                  </button>
+                </div>
+              </section>
+              <button class="add-ingredient-btn default-btn">
+                <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
+                <p>Add Ingredient</p>
+              </button>
+            </div>
+
+            <button class="add-set-btn default-btn">
+              <ion-icon name="add" class="add-set-icon"></ion-icon>
+              <p>Add Set</p>
             </button>
           </div>
 
-          <button class="add-set-btn default-btn">
-            <ion-icon name="add" class="add-set-icon"></ion-icon>
-            <p>Add Set</p>
-          </button>
-        </div>
-        <button class="next-btn default-btn reset-focus">
-          Next
-          <ion-icon name="arrow-forward-outline"></ion-icon>
-        </button> -->
+          <div class="instructions-input-container create-form-3">
+            <div class="instruction-input-container">
+              <textarea
+                name="instruction-0"
+                id="instruction-0"
+                class="instruction-input create-input reset-focus reset-textarea"
+              ></textarea>
+              <button class="delete-instruction-btn default-btn">
+                <ion-icon
+                  name="trash-outline"
+                  class="delete-instruction-icon"
+                ></ion-icon>
+              </button>
+            </div>
+            <div class="instruction-input-container">
+              <textarea
+                name="instruction-0"
+                id="instruction-0"
+                class="instruction-input create-input reset-focus reset-textarea"
+              ></textarea>
+              <button class="delete-instruction-btn default-btn">
+                <ion-icon
+                  name="trash-outline"
+                  class="delete-instruction-icon"
+                ></ion-icon>
+              </button>
+            </div>
+            <div class="instruction-input-container">
+              <textarea
+                name="instruction-0"
+                id="instruction-0"
+                class="instruction-input create-input reset-focus reset-textarea"
+              ></textarea>
+              <button class="delete-instruction-btn default-btn">
+                <ion-icon
+                  name="trash-outline"
+                  class="delete-instruction-icon"
+                ></ion-icon>
+              </button>
+            </div>
+            <div class="instruction-input-container">
+              <textarea
+                name="instruction-0"
+                id="instruction-0"
+                class="instruction-input create-input reset-focus reset-textarea"
+              ></textarea>
+              <button class="delete-instruction-btn default-btn">
+                <ion-icon
+                  name="trash-outline"
+                  class="delete-instruction-icon"
+                ></ion-icon>
+              </button>
+            </div>
+            <div class="instruction-input-container">
+              <textarea
+                name="instruction-0"
+                id="instruction-0"
+                class="instruction-input create-input reset-focus reset-textarea"
+              ></textarea>
+              <button class="delete-instruction-btn default-btn">
+                <ion-icon
+                  name="trash-outline"
+                  class="delete-instruction-icon"
+                ></ion-icon>
+              </button>
+            </div>
+            <button class="add-instruction-btn default-btn">
+              <ion-icon name="add" class="add-instruction-icon"></ion-icon>
+              <p>Add Instruction</p>
+            </button>
+          </div>
 
-        <!-- <div class="instructions-input-container">
-          <div class="instruction-input-container">
-            <textarea
-              name="instruction-0"
-              id="instruction-0"
-              class="instruction-input create-input reset-focus reset-textarea"
-            ></textarea>
-            <button class="delete-instruction-btn default-btn">
-              <ion-icon
-                name="trash-outline"
-                class="delete-instruction-icon"
-              ></ion-icon>
-            </button>
+          <div class="nutrition-inputs-container create-form-4">
+            <div class="nutrition-input-container">
+              <label
+                for="nutrition-calories"
+                class="nutrition-input-label create-input-label"
+                >Calories</label
+              >
+              <div class="nutrition-input">
+                <input
+                  type="number"
+                  class="nutrition-qty-input create-input"
+                  id="nutrition-calories"
+                />
+                <p class="nutrition-measurement">kcal</p>
+              </div>
+            </div>
+            <div class="nutrition-input-container">
+              <label
+                for="nutrition-carbs"
+                class="nutrition-input-label create-input-label"
+                >Carbohydrates</label
+              >
+              <div class="nutrition-input">
+                <input
+                  type="number"
+                  class="nutrition-qty-input create-input"
+                  id="nutrition-carbs"
+                />
+                <p class="nutrition-measurement">g</p>
+              </div>
+            </div>
+            <div class="nutrition-input-container">
+              <label
+                for="nutrition-protein"
+                class="nutrition-input-label create-input-label"
+                >Protein</label
+              >
+              <div class="nutrition-input">
+                <input
+                  type="number"
+                  class="nutrition-qty-input create-input"
+                  id="nutrition-protein"
+                />
+                <p class="nutrition-measurement">g</p>
+              </div>
+            </div>
+            <div class="nutrition-input-container">
+              <label
+                for="nutrition-fat"
+                class="nutrition-input-label create-input-label"
+                >Fat</label
+              >
+              <div class="nutrition-input">
+                <input
+                  type="number"
+                  class="nutrition-qty-input create-input"
+                  id="nutrition-fat"
+                />
+                <p class="nutrition-measurement">g</p>
+              </div>
+            </div>
           </div>
-          <div class="instruction-input-container">
-            <textarea
-              name="instruction-0"
-              id="instruction-0"
-              class="instruction-input create-input reset-focus reset-textarea"
-            ></textarea>
-            <button class="delete-instruction-btn default-btn">
-              <ion-icon
-                name="trash-outline"
-                class="delete-instruction-icon"
-              ></ion-icon>
-            </button>
-          </div>
-          <div class="instruction-input-container">
-            <textarea
-              name="instruction-0"
-              id="instruction-0"
-              class="instruction-input create-input reset-focus reset-textarea"
-            ></textarea>
-            <button class="delete-instruction-btn default-btn">
-              <ion-icon
-                name="trash-outline"
-                class="delete-instruction-icon"
-              ></ion-icon>
-            </button>
-          </div>
-          <div class="instruction-input-container">
-            <textarea
-              name="instruction-0"
-              id="instruction-0"
-              class="instruction-input create-input reset-focus reset-textarea"
-            ></textarea>
-            <button class="delete-instruction-btn default-btn">
-              <ion-icon
-                name="trash-outline"
-                class="delete-instruction-icon"
-              ></ion-icon>
-            </button>
-          </div>
-          <div class="instruction-input-container">
-            <textarea
-              name="instruction-0"
-              id="instruction-0"
-              class="instruction-input create-input reset-focus reset-textarea"
-            ></textarea>
-            <button class="delete-instruction-btn default-btn">
-              <ion-icon
-                name="trash-outline"
-                class="delete-instruction-icon"
-              ></ion-icon>
-            </button>
-          </div>
-          <button class="add-instruction-btn default-btn">
-            <ion-icon name="add" class="add-instruction-icon"></ion-icon>
-            <p>Add Instruction</p>
+
+          <button class="next-btn default-btn reset-focus">
+            Submit
+            <!-- Next
+            <ion-icon name="arrow-forward-outline"></ion-icon> -->
           </button>
-        </div>
-        <button class="next-btn default-btn reset-focus">
-          Next
-          <ion-icon name="arrow-forward-outline"></ion-icon>
-        </button> -->
-        <div class="nutrition-inputs-container">
-          <div class="nutrition-input-container">
-            <label
-              for="nutrition-calories"
-              class="nutrition-input-label create-input-label"
-              >Calories</label
-            >
-            <div class="nutrition-input">
-              <input
-                type="number"
-                class="nutrition-qty-input create-input"
-                id="nutrition-calories"
-              />
-              <p class="nutrition-measurement">kcal</p>
-            </div>
-          </div>
-          <div class="nutrition-input-container">
-            <label
-              for="nutrition-carbs"
-              class="nutrition-input-label create-input-label"
-              >Carbohydrates</label
-            >
-            <div class="nutrition-input">
-              <input
-                type="number"
-                class="nutrition-qty-input create-input"
-                id="nutrition-carbs"
-              />
-              <p class="nutrition-measurement">g</p>
-            </div>
-          </div>
-          <div class="nutrition-input-container">
-            <label
-              for="nutrition-protein"
-              class="nutrition-input-label create-input-label"
-              >Protein</label
-            >
-            <div class="nutrition-input">
-              <input
-                type="number"
-                class="nutrition-qty-input create-input"
-                id="nutrition-protein"
-              />
-              <p class="nutrition-measurement">g</p>
-            </div>
-          </div>
-          <div class="nutrition-input-container">
-            <label
-              for="nutrition-fat"
-              class="nutrition-input-label create-input-label"
-              >Fat</label
-            >
-            <div class="nutrition-input">
-              <input
-                type="number"
-                class="nutrition-qty-input create-input"
-                id="nutrition-fat"
-              />
-              <p class="nutrition-measurement">g</p>
-            </div>
-          </div>
-        </div>
-        <button class="next-btn default-btn reset-focus">Submit</button>
-      </form>
+        </form>
+      </div>
     </div>
     <div class="form-overlay"></div>
     <script
       type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.esm.js"
     ></script>
     <script
       nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"
     ></script>
+    <script src="scripts/create-recipe.js"></script>
   </body>
 </html>

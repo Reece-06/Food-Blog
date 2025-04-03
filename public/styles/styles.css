@@ -373,8 +373,6 @@
   padding: var(--ws-large);
   transition: all 0.3s;
   z-index: 4;
-  max-height: 60rem;
-  overflow-y: scroll;
 }
 
 .show-create-recipe-container .create-recipe-container {
@@ -405,6 +403,10 @@
   color: var(--main-yellow-shade1);
   margin-bottom: var(--ws-small);
 }
+.create-recipe-form {
+  max-height: 50rem;
+  overflow-y: scroll;
+}
 .form-label {
   font-size: var(--size-small);
   font-weight: var(--semi-bold);
@@ -414,6 +416,19 @@
   display: flex;
   flex-direction: column;
   gap: var(--ws-small-x1);
+}
+.basic-input-recipe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-small-x2);
+  margin-right: var(--ws-small-x2);
+  margin-left: var(--ws-small-x3);
+}
+
+.create-form-2,
+.create-form-3,
+.create-form-4 {
+  display: none;
 }
 .label-input-grouping {
   display: flex;
@@ -607,6 +622,7 @@
   width: max-content;
   margin-left: auto;
   margin-top: var(--ws-small-x1);
+  margin-right: var(--ws-small-x2);
   padding: var(--ws-small-x2) var(--ws-medium);
   background-color: var(--main-yellow-shade2);
   border-radius: 1rem;
@@ -629,11 +645,15 @@
 
 /* Ingredients inputs */
 .ingredient-sets-input {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   gap: var(--ws-small-x1);
+  margin-right: var(--ws-small-x2);
+  margin-left: var(--ws-small-x3);
 }
-
+.show-form-2 .create-form-2 {
+  display: flex;
+}
 .ingredient-set {
   display: flex;
   flex-direction: column;
@@ -758,11 +778,16 @@
 }
 /* Instructions Form */
 .instructions-input-container {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   gap: var(--ws-small);
   counter-reset: instructions;
   margin-block: var(--ws-small);
+  margin-right: var(--ws-small-x2);
+  margin-left: var(--ws-small-x3);
+}
+.show-form-3 .create-form-3 {
+  display: flex;
 }
 .instruction-input-container {
   display: grid;
@@ -836,11 +861,16 @@
 }
 /* Nutrition Inputs */
 .nutrition-inputs-container {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: repeat(2, 1fr);
   flex-direction: column;
   gap: var(--ws-small-x1);
   margin-block: var(--ws-small-x2);
+  margin-right: var(--ws-small-x2);
+  margin-left: var(--ws-small-x3);
+}
+.show-form-4 .create-form-4 {
+  display: grid;
 }
 .nutrition-input-container {
   display: flex;
