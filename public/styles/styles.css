@@ -418,17 +418,20 @@
   gap: var(--ws-small-x1);
 }
 .basic-input-recipe {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   gap: var(--ws-small-x2);
   margin-right: var(--ws-small-x2);
   margin-left: var(--ws-small-x3);
 }
-
+.create-form-1,
 .create-form-2,
 .create-form-3,
 .create-form-4 {
   display: none;
+}
+.show-form-1 .create-form-1 {
+  display: flex;
 }
 .label-input-grouping {
   display: flex;

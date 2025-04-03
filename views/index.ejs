@@ -250,7 +250,7 @@
       <div class="create-recipe-form">
         <h2 class="form-label">Basic Info</h2>
         <!-- show-form-1 show-form-2 show-form-3 show-form-4 -->
-        <form action="" class="create-form">
+        <form action="" class="create-form show-form-1">
           <div class="basic-input-recipe create-form-1">
             <div class="label-input-grouping">
               <label for="" class="create-input-label">Name of Recipe</label>
@@ -669,7 +669,11 @@
             </div>
           </div>
 
-          <button class="next-btn default-btn reset-focus">
+          <button
+            class="next-btn default-btn reset-focus"
+            id="create-recipe-btn-1"
+            type="button"
+          >
             Submit
             <!-- Next
             <ion-icon name="arrow-forward-outline"></ion-icon> -->
@@ -687,5 +691,6 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"
     ></script>
     <script src="scripts/create-recipe.js"></script>
+    <script src="scripts/form-behavior.js"></script>
   </body>
 </html>
