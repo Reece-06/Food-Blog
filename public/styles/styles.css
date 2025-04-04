@@ -405,7 +405,7 @@
 }
 .create-recipe-form {
   max-height: 50rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .form-label {
   font-size: var(--size-small);
@@ -644,6 +644,13 @@
 .next-btn:hover,
 .next-btn:active {
   background-color: var(--main-yellow-shade1);
+}
+.hide-arrow-icon .arrow-icon-container {
+  display: none;
+}
+.arrow-icon-container {
+  display: grid;
+  place-content: center;
 }
 
 /* Ingredients inputs */
