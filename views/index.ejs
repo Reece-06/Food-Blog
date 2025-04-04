@@ -253,12 +253,24 @@
         <form action="" class="create-form show-form-1">
           <div class="basic-input-recipe create-form-1">
             <div class="label-input-grouping">
-              <label for="" class="create-input-label">Name of Recipe</label>
-              <input type="text" class="create-input reset-focus" />
+              <label for="recipe-name" class="create-input-label"
+                >Name of Recipe</label
+              >
+              <input
+                id="recipe-name"
+                name="recipe-name"
+                type="text"
+                class="create-input reset-focus"
+              />
             </div>
             <div class="label-input-grouping">
-              <label for="" class="create-input-label">Author</label>
-              <input type="text" class="create-input reset-focus" />
+              <label for="author" class="create-input-label">Author</label>
+              <input
+                id="author"
+                name="author"
+                type="text"
+                class="create-input reset-focus"
+              />
             </div>
             <div class="time-inputs-container">
               <div class="label-input-grouping">
@@ -272,6 +284,7 @@
                       type="number"
                       class="create-input create-input-timer"
                       id="prep-time-hours"
+                      name="prep-time-hours"
                     />
                   </label>
                   <p class="colon">:</p>
@@ -281,6 +294,7 @@
                       type="number"
                       class="create-input create-input-timer"
                       id="prep-time-minutes"
+                      name="prep-time-minutes"
                     />
                   </label>
                   <p class="colon">:</p>
@@ -290,6 +304,7 @@
                       type="number"
                       class="create-input create-input-timer"
                       id="prep-time-seconds"
+                      name="prep-time-seconds"
                     />
                   </label>
                 </div>
@@ -305,6 +320,7 @@
                       type="number"
                       class="create-input create-input-timer"
                       id="cook-time-hours"
+                      name="cook-time-hours"
                       min="1"
                       max="59"
                     />
@@ -316,6 +332,7 @@
                       type="number"
                       class="create-input create-input-timer"
                       id="cook-time-minutes"
+                      name="cook-time-minutes"
                       min="1"
                       max="59"
                     />
@@ -327,6 +344,7 @@
                       type="number"
                       class="create-input create-input-timer"
                       id="cook-time-seconds"
+                      name="cook-time-seconds"
                       min="1"
                       max="59"
                     />
@@ -339,19 +357,20 @@
                 <label
                   for="Food Category"
                   class="create-input-label"
-                  id="meal-course-input"
+                  id="meal-course"
                   >Meal Course</label
                 >
                 <div class="custom-select">
                   <select
                     class="create-input create-input-dropdown reset-focus"
-                    id="meal-course-input"
+                    id="meal-course"
+                    name="meal-course"
                   >
-                    <option>Appetizer</option>
-                    <option>Main</option>
-                    <option>Dessert</option>
-                    <option>Soup</option>
-                    <option>Salad</option>
+                    <option value="appetizer">Appetizer</option>
+                    <option value="main">Main</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="soup">Soup</option>
+                    <option value="salad">Salad</option>
                   </select>
                 </div>
               </div>
@@ -363,13 +382,14 @@
                 <div class="custom-select">
                   <select
                     class="create-input create-input-dropdown reset-focus"
-                    id="cuisine-input"
+                    id="cuisine"
+                    name="cuisine"
                   >
-                    <option>Filipino</option>
-                    <option>Italian</option>
-                    <option>French</option>
-                    <option>German</option>
-                    <option>American</option>
+                    <option value="filipino">Filipino</option>
+                    <option value="italian">Italian</option>
+                    <option value="french">French</option>
+                    <option value="german">German</option>
+                    <option value="american">American</option>
                   </select>
                 </div>
               </div>
@@ -692,6 +712,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"
     ></script>
     <script src="scripts/create-recipe.js"></script>
-    <script src="scripts/form-behavior.js"></script>
+    <script type="module" src="scripts/form-behavior.js"></script>
+    <script type="module" src="scripts/store-create-recipe.js"></script>
   </body>
 </html>

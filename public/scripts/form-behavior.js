@@ -1,3 +1,4 @@
+import { storeData } from "./store-create-recipe.js";
 document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".next-btn");
   const createRecipeform = document.querySelector(".create-form");
@@ -90,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createRecipeform.classList.add(newShowFormClass);
 
     changeButtonLabel(btnIdObj.lastNum);
+    storeData(btnIdObj.lastNum);
   };
 
   nextBtn.addEventListener("click", showNextForm);
