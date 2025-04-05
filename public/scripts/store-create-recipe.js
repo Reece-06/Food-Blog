@@ -1,12 +1,8 @@
 const recipeData = [
+  // recipeData1
   // {
-  //   recipeName: "",
-  //   author: "",
-  //   prepTime: "",
-  //   cookTime: "",
-  //   mainCourse: "",
-  //   cuisine: "",
-  // },
+  // ingredientSet: [],
+  // }
 ];
 const reformatTime = (timeInputs) => {
   let newTimeArr = [];
@@ -15,6 +11,8 @@ const reformatTime = (timeInputs) => {
   });
   return newTimeArr.join(":");
 };
+
+// Stores data from create recipe
 const storeData = (currentPageNum) => {
   let recipe = {};
   if (currentPageNum === 1) {
@@ -35,6 +33,13 @@ const storeData = (currentPageNum) => {
     recipe.cookTime = reformatTime(cookTimeInputs);
     recipe.mealCourse = mealCourseInput.value;
     recipe.cuisine = cuisineInput.value;
+  } else if (currentPageNum === 2) {
+    // get number of set ingredients
+    recipe.ingredientSets = [];
+    const ingredientSets = document.querySelectorAll(".ingredient-set");
+    ingredientSets.forEach((ingredientSet, index) => {
+      // const ingredientQtyInput = ingre
+    });
   }
   recipeData.push(recipe);
   console.log(recipeData);
