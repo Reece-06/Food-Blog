@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     return btnIdObj;
   };
+  // changes button label
   const changeButtonLabel = (currentPageNum) => {
     const buttonLabel = ["Next", "Submit"];
 
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   };
+  // changes form label text
   const changeFormLabel = (
     currentPageNum,
     firstLabel,
@@ -55,14 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
     fourthLabel
   ) => {
     if (currentPageNum === 2) {
-      return secondLabel;
+      formLabel.textContent = secondLabel;
     } else if (currentPageNum === 3) {
-      return thirdLabel;
+      formLabel.textContent = thirdLabel;
     } else if (currentPageNum === 4) {
-      return fourthLabel;
+      formLabel.textContent = fourthLabel;
     } else {
-      return firstLabel; // Default case
+      formLabel.textContent = firstLabel; // Default case
     }
+  };
+  // Changes the input forms
+  const changeForm = (currentPageNum, prevPageNum) => {
+    const showFormArr = ["show", "form"];
+    const newShowFormArr = [...showFormArr, currentPageNum];
+    const newShowFormClass = newShowFormArr.join("-");
+    const oldShowFormArr = [...showFormArr, prevPageNum];
+    const oldShowFormClass = oldShowFormArr.join("-");
+
+    createRecipeform.classList.remove(oldShowFormClass);
+    createRecipeform.classList.add(newShowFormClass);
   };
   // Shows the next form and hides the previous
   const showNextForm = (event) => {
@@ -75,23 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const btnId = nextBtn.id;
     const btnIdObj = increaseBtnId(btnId); // button id info
-
-    const newFormLabel = changeFormLabel(btnIdObj.lastNum, ...formLabelArr);
-    formLabel.textContent = newFormLabel; // changes form label text
-
     nextBtn.id = btnIdObj.newBtnId;
 
-    const showFormArr = ["show", "form"];
-    const newShowFormArr = [...showFormArr, btnIdObj.lastNum];
-    const newShowFormClass = newShowFormArr.join("-");
-    const oldShowFormArr = [...showFormArr, btnIdObj.prevNum];
-    const oldShowFormClass = oldShowFormArr.join("-");
+    changeFormLabel(btnIdObj.lastNum, ...formLabelArr);
 
-    createRecipeform.classList.remove(oldShowFormClass);
-    createRecipeform.classList.add(newShowFormClass);
+    changeForm(btnIdObj.lastNum, btnIdObj.prevNum);
 
     changeButtonLabel(btnIdObj.lastNum);
-    storeData(btnIdObj.lastNum);
+
+    storeData(btnIdObj.prevNum);
   };
 
   nextBtn.addEventListener("click", showNextForm);
