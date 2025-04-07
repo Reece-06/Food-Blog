@@ -1,22 +1,23 @@
+const showCreateRecipeModal = () => {
+  const body = document.querySelector("body");
+  body.classList.add(
+    "show-create-recipe-container",
+    "show-form-overlay",
+    "hide-scroll"
+  );
+};
+const hideCreateRecipeModal = () => {
+  const body = document.querySelector("body");
+  body.classList.remove(
+    "show-create-recipe-container",
+    "show-form-overlay",
+    "hide-scroll"
+  );
+};
 document.addEventListener("DOMContentLoaded", () => {
   const createRecipeBtns = document.querySelectorAll(".create-recipe-btn");
-  const body = document.querySelector("body");
   const formOverlay = document.querySelector(".form-overlay");
 
-  const showCreateRecipeModal = () => {
-    body.classList.add(
-      "show-create-recipe-container",
-      "show-form-overlay",
-      "hide-scroll"
-    );
-  };
-  const hideCreateRecipeModal = () => {
-    body.classList.remove(
-      "show-create-recipe-container",
-      "show-form-overlay",
-      "hide-scroll"
-    );
-  };
   if (formOverlay) {
     formOverlay.addEventListener("click", hideCreateRecipeModal);
   }
@@ -24,3 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
     recipeBtn.addEventListener("click", showCreateRecipeModal);
   });
 });
+export { hideCreateRecipeModal };

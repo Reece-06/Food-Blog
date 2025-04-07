@@ -4,6 +4,7 @@ const recipeData = [
   // ingredientSet: [],
   // }
 ];
+let recipe = {};
 const reformatTime = (timeInputs) => {
   let newTimeArr = [];
   timeInputs.forEach((time) => {
@@ -11,38 +12,91 @@ const reformatTime = (timeInputs) => {
   });
   return newTimeArr.join(":");
 };
+// returns Input value
+const getInputValue = (elementId) => {
+  const el = document.querySelector(elementId);
+  return el.value;
+};
+// store first form data (basic info form)
+const getBasicInfoData = () => {
+  const recipe = {};
+  const prepTimeInputs = document.querySelectorAll(
+    "#prep-time-hours, #prep-time-minutes, #prep-time-seconds"
+  );
+  const cookTimeInputs = document.querySelectorAll(
+    "#cook-time-hours, #cook-time-minutes, #cook-time-seconds"
+  );
 
+  recipe.recipeName = getInputValue("#recipe-name");
+  recipe.author = getInputValue("#author");
+  recipe.prepTime = reformatTime(prepTimeInputs);
+  recipe.cookTime = reformatTime(cookTimeInputs);
+  recipe.mealCourse = getInputValue("#meal-course");
+  recipe.cuisine = getInputValue("#cuisine");
+  return recipe;
+};
+// Store second form data (ingredients form)
+const getIngredientsData = () => {
+  const recipe = {};
+  recipe.ingredientSets = [];
+  const ingredientSetsEl = document.querySelectorAll(".ingredient-set");
+  const numIngredientSets = ingredientSetsEl.length;
+
+  let i = 1;
+  while (i <= numIngredientSets) {
+    const ingredientSet = {};
+
+    ingredientSet.setName = getInputValue("#set-name-" + i);
+    ingredientSet.quantity = getInputValue("#ingredient-qty-" + i);
+    ingredientSet.measurement = getInputValue("#ingredient-measurement-" + i);
+    ingredientSet.ingredientName = getInputValue("#ingredient-name-" + i);
+    ingredientSet.details = getInputValue("#ingredient-details-" + i);
+
+    recipe.ingredientSets.push(ingredientSet);
+
+    i++;
+  }
+  return recipe;
+};
+// Store third form data (instructions form)
+const getInstructionsData = () => {
+  const recipe = {};
+  recipe.instructions = [];
+  const instructionsEl = document.querySelectorAll(
+    ".instruction-input-container"
+  );
+  const numInstructions = instructionsEl.length;
+  let i = 1;
+  while (i <= numInstructions) {
+    recipe.instructions.push(getInputValue("#instruction-" + i));
+    i++;
+  }
+  return recipe;
+};
+// Store fourth form data (nutrition form)
+const getNutritionData = () => {
+  const recipe = {};
+  recipe.calories = getInputValue("#nutrition-calories");
+  recipe.carbohydrates = getInputValue("#nutrition-carbs");
+  recipe.protein = getInputValue("#nutrition-protein");
+  recipe.fat = getInputValue("#nutrition-fat");
+  return recipe;
+};
 // Stores data from create recipe
 const storeData = (currentPageNum) => {
-  let recipe = {};
   if (currentPageNum === 1) {
-    const recipeNameInput = document.querySelector("#recipe-name");
-    const authorInput = document.querySelector("#author");
-    const prepTimeInputs = document.querySelectorAll(
-      "#prep-time-hours, #prep-time-minutes, #prep-time-seconds"
-    );
-    const cookTimeInputs = document.querySelectorAll(
-      "#cook-time-hours, #cook-time-minutes, #cook-time-seconds"
-    );
-    const mealCourseInput = document.querySelector("#meal-course");
-    const cuisineInput = document.querySelector("#cuisine");
-
-    recipe.recipeName = recipeNameInput.value;
-    recipe.author = authorInput.value;
-    recipe.prepTime = reformatTime(prepTimeInputs);
-    recipe.cookTime = reformatTime(cookTimeInputs);
-    recipe.mealCourse = mealCourseInput.value;
-    recipe.cuisine = cuisineInput.value;
+    recipe = { ...getBasicInfoData() };
   } else if (currentPageNum === 2) {
-    // get number of set ingredients
-    recipe.ingredientSets = [];
-    const ingredientSets = document.querySelectorAll(".ingredient-set");
-    ingredientSets.forEach((ingredientSet, index) => {
-      // const ingredientQtyInput = ingre
-    });
+    recipe = { ...recipe, ...getIngredientsData() };
+  } else if (currentPageNum === 3) {
+    recipe = { ...recipe, ...getInstructionsData() };
+  } else {
+    recipe = { ...recipe, ...getNutritionData() };
+    recipeData.push(recipe);
+    recipe = {};
   }
-  recipeData.push(recipe);
   console.log(recipeData);
+  // recipeData.push(recipe);
 };
 
 export { storeData };

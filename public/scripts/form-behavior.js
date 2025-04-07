@@ -1,4 +1,5 @@
 import { storeData } from "./store-create-recipe.js";
+import { hideCreateRecipeModal } from "./create-recipe.js";
 document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".next-btn");
   const createRecipeform = document.querySelector(".create-form");
@@ -88,15 +89,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const btnId = nextBtn.id;
     const btnIdObj = increaseBtnId(btnId); // button id info
-    nextBtn.id = btnIdObj.newBtnId;
 
-    changeFormLabel(btnIdObj.lastNum, ...formLabelArr);
+    if (btnIdObj.prevNum === 4) {
+      storeData(btnIdObj.prevNum);
 
-    changeForm(btnIdObj.lastNum, btnIdObj.prevNum);
+      hideCreateRecipeModal();
+    } else {
+      nextBtn.id = btnIdObj.newBtnId;
 
-    changeButtonLabel(btnIdObj.lastNum);
+      changeFormLabel(btnIdObj.lastNum, ...formLabelArr);
 
-    storeData(btnIdObj.prevNum);
+      changeForm(btnIdObj.lastNum, btnIdObj.prevNum);
+
+      changeButtonLabel(btnIdObj.lastNum);
+
+      storeData(btnIdObj.prevNum);
+    }
   };
 
   nextBtn.addEventListener("click", showNextForm);

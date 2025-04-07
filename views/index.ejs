@@ -569,8 +569,8 @@
           <div class="instructions-input-container create-form-3">
             <div class="instruction-input-container">
               <textarea
-                name="instruction-0"
-                id="instruction-0"
+                name="instruction-1"
+                id="instruction-1"
                 class="instruction-input create-input reset-focus reset-textarea"
               ></textarea>
               <button class="delete-instruction-btn default-btn">
@@ -582,8 +582,8 @@
             </div>
             <div class="instruction-input-container">
               <textarea
-                name="instruction-0"
-                id="instruction-0"
+                name="instruction-2"
+                id="instruction-2"
                 class="instruction-input create-input reset-focus reset-textarea"
               ></textarea>
               <button class="delete-instruction-btn default-btn">
@@ -593,45 +593,7 @@
                 ></ion-icon>
               </button>
             </div>
-            <div class="instruction-input-container">
-              <textarea
-                name="instruction-0"
-                id="instruction-0"
-                class="instruction-input create-input reset-focus reset-textarea"
-              ></textarea>
-              <button class="delete-instruction-btn default-btn">
-                <ion-icon
-                  name="trash-outline"
-                  class="delete-instruction-icon"
-                ></ion-icon>
-              </button>
-            </div>
-            <div class="instruction-input-container">
-              <textarea
-                name="instruction-0"
-                id="instruction-0"
-                class="instruction-input create-input reset-focus reset-textarea"
-              ></textarea>
-              <button class="delete-instruction-btn default-btn">
-                <ion-icon
-                  name="trash-outline"
-                  class="delete-instruction-icon"
-                ></ion-icon>
-              </button>
-            </div>
-            <div class="instruction-input-container">
-              <textarea
-                name="instruction-0"
-                id="instruction-0"
-                class="instruction-input create-input reset-focus reset-textarea"
-              ></textarea>
-              <button class="delete-instruction-btn default-btn">
-                <ion-icon
-                  name="trash-outline"
-                  class="delete-instruction-icon"
-                ></ion-icon>
-              </button>
-            </div>
+
             <button class="add-instruction-btn default-btn">
               <ion-icon name="add" class="add-instruction-icon"></ion-icon>
               <p>Add Instruction</p>
@@ -650,6 +612,7 @@
                   type="number"
                   class="nutrition-qty-input create-input"
                   id="nutrition-calories"
+                  name="nutrition-calories"
                 />
                 <p class="nutrition-measurement">kcal</p>
               </div>
@@ -665,6 +628,7 @@
                   type="number"
                   class="nutrition-qty-input create-input"
                   id="nutrition-carbs"
+                  name="nutrition-carbs"
                 />
                 <p class="nutrition-measurement">g</p>
               </div>
@@ -680,6 +644,7 @@
                   type="number"
                   class="nutrition-qty-input create-input"
                   id="nutrition-protein"
+                  name="nutrition-protein"
                 />
                 <p class="nutrition-measurement">g</p>
               </div>
@@ -695,6 +660,7 @@
                   type="number"
                   class="nutrition-qty-input create-input"
                   id="nutrition-fat"
+                  name="nutrition-fat"
                 />
                 <p class="nutrition-measurement">g</p>
               </div>
@@ -723,7 +689,7 @@
       nomodule
       src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"
     ></script>
-    <script src="scripts/create-recipe.js"></script>
+    <script type="module" src="scripts/create-recipe.js"></script>
     <script type="module" src="scripts/form-behavior.js"></script>
     <script type="module" src="scripts/store-create-recipe.js"></script>
   </body>
