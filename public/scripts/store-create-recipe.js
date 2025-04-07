@@ -1,10 +1,6 @@
-const recipeData = [
-  // recipeData1
-  // {
-  // ingredientSet: [],
-  // }
-];
+const recipeData = [];
 let recipe = {};
+
 const reformatTime = (timeInputs) => {
   let newTimeArr = [];
   timeInputs.forEach((time) => {
@@ -96,7 +92,6 @@ const storeData = (currentPageNum) => {
     recipe = {};
   }
   console.log(recipeData);
-  // recipeData.push(recipe);
 };
 
 export { storeData };
