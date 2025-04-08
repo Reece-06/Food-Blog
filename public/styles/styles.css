@@ -740,7 +740,7 @@
   width: 5rem;
 }
 .measurement-input {
-  width: max-content;
+  width: 100%;
 }
 .divider-create-recipe {
   margin: 0;

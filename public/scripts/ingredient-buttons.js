@@ -1,5 +1,6 @@
 let ingDeleteBtns = document.querySelectorAll(".delete-set-btn");
 let ingAddSetBtn = document.querySelector(".add-set-btn");
+const ingAddBtns = document.querySelectorAll(".add-ingredient-btn");
 
 // Increase element Id or Name
 const increaseElementAttribute = (element, toChange) => {
@@ -119,6 +120,7 @@ const addIngredientsSet = () => {
 };
 // Deletes Ingredient set
 const deleteIngredientSet = (event) => {
+  console.log(event.target);
   const btnParent = event.target.parentElement;
   const btnIngSetParent = btnParent.parentElement;
 
@@ -132,7 +134,62 @@ const deleteIngredientSet = (event) => {
   }
   btnIngSetParent.remove();
 };
+// get last element
+const getLastElement = (parent, elSelector) => {
+  const elements = parent.querySelectorAll(elSelector);
+  return elements[elements.length - 1];
+};
+// Add Ingredient inputs and labels
+const addIngredientInputs = (event) => {
+  const parentInputs = event.currentTarget.previousElementSibling;
+  const innerGridInputs = parentInputs.firstElementChild;
+
+  const qtyLabel = getLastElement(innerGridInputs, ".ing-quantity-label");
+
+  const measureLabel = getLastElement(innerGridInputs, ".ing-measure-label");
+  const ingNameLabel = getLastElement(innerGridInputs, ".ing-name-label");
+  const ingDetsLabel = getLastElement(
+    innerGridInputs,
+    ".ingredient-dets-label"
+  );
+
+  const qtyInput = getLastElement(innerGridInputs, ".ingredient-qty-input");
+  const measureInput = getLastElement(
+    innerGridInputs,
+    ".ing-measure-input-container"
+  );
+  const ingNameInput = getLastElement(innerGridInputs, ".ing-name-input");
+  const ingDetsInput = getLastElement(innerGridInputs, ".ing-details-input");
+  const delIngBtn = getLastElement(innerGridInputs, ".delete-ingredient-btn");
+
+  let newQtyLabel = qtyLabel.cloneNode(true);
+  let newMeasureLabel = measureLabel.cloneNode(true);
+  let newIngNameLabel = ingNameLabel.cloneNode(true);
+  let newIngDetsLabel = ingDetsLabel.cloneNode(true);
+  let newQtyInput = qtyInput.cloneNode();
+  let newMeasureInput = measureInput.cloneNode(true);
+  let newIngNameInput = ingNameInput.cloneNode();
+  let newIngDetsInput = ingDetsInput.cloneNode();
+  let newIngDelBtn = delIngBtn.cloneNode(true);
+  innerGridInputs.insertAdjacentElement("beforeend", newQtyLabel);
+  innerGridInputs.insertAdjacentElement("beforeend", newMeasureLabel);
+  innerGridInputs.insertAdjacentElement("beforeend", newIngNameLabel);
+  innerGridInputs.insertAdjacentElement("beforeend", newIngDetsLabel);
+
+  innerGridInputs.insertAdjacentElement("beforeend", newQtyInput);
+  innerGridInputs.insertAdjacentElement("beforeend", newMeasureInput);
+  innerGridInputs.insertAdjacentElement("beforeend", newIngNameInput);
+  innerGridInputs.insertAdjacentElement("beforeend", newIngDetsInput);
+  innerGridInputs.insertAdjacentElement("beforeend", newIngDelBtn);
+
+  console.log(parentInputs);
+  console.log(innerGridInputs);
+  console.log(newQtyLabel);
+};
 ingDeleteBtns.forEach((ingDelBtn) => {
   ingDelBtn.addEventListener("click", deleteIngredientSet);
 });
 ingAddSetBtn.addEventListener("click", addIngredientsSet);
+ingAddBtns.forEach((ingAddBtn) => {
+  ingAddBtn.addEventListener("click", addIngredientInputs);
+});
