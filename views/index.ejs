@@ -354,7 +354,7 @@
             </div>
             <div class="dropdown-inputs-container">
               <div class="label-input-grouping">
-                <label for="Food Category" class="create-input-label"
+                <label for="meal-course" class="create-input-label"
                   >Meal Course</label
                 >
                 <div class="custom-select">
@@ -395,10 +395,16 @@
             <div class="ingredient-set">
               <header class="upper-container">
                 <div class="set-name-container">
-                  <label for="set-name-1" class="hidden-label"> Set Name</label>
+                  <label
+                    for="set-name-1"
+                    class="ing-set-name-label hidden-label"
+                  >
+                    Set Name</label
+                  >
                   <input
                     type="text"
                     id="set-name-1"
+                    name="set-name-1"
                     class="set-name-input reset-focus"
                     placeholder="Set Name"
                   />
@@ -407,21 +413,26 @@
                   type="button"
                   class="delete-set-btn default-btn"
                   id="delete-set-1"
+                  name="delete-set-1"
                 >
                   Delete Set
                 </button>
               </header>
               <section class="ingredient-inputs-container">
                 <div class="ingredient-inputs">
-                  <label for="ingredient-qty-1" class="create-input-label"
+                  <label
+                    for="ingredient-qty-1"
+                    class="create-input-label ing-quantity-label"
                     >Quantity</label
                   >
                   <label
                     for="ingredient-measurement-1"
-                    class="create-input-label"
+                    class="create-input-label ing-measure-label"
                     >Measurement</label
                   >
-                  <label for="ingredient-name-1" class="create-input-label"
+                  <label
+                    for="ingredient-name-1"
+                    class="ing-name-label create-input-label"
                     >Ingredient Name</label
                   >
                   <label
@@ -448,13 +459,13 @@
 
                   <input
                     type="text"
-                    class="create-input"
+                    class="create-input ing-name-input"
                     id="ingredient-name-1"
                     name="ingredient-name-1"
                   />
                   <input
                     type="text"
-                    class="create-input"
+                    class="create-input ing-details-input"
                     id="ingredient-details-1"
                     name="ingredient-details-1"
                   />
@@ -483,29 +494,44 @@
             <div class="ingredient-set">
               <header class="upper-container">
                 <div class="set-name-container">
-                  <label for="set-name-2" class="hidden-label"> Set Name</label>
+                  <label
+                    for="set-name-2"
+                    class="ing-set-name-label hidden-label"
+                  >
+                    Set Name</label
+                  >
                   <input
                     type="text"
                     id="set-name-2"
+                    name="set-name-2"
                     class="set-name-input reset-focus"
                     placeholder="Set Name"
                   />
                 </div>
-                <button class="delete-set-btn default-btn" id="delete-set-2">
+                <button
+                  type="button"
+                  class="delete-set-btn default-btn"
+                  id="delete-set-2"
+                  name="delete-set-2"
+                >
                   Delete Set
                 </button>
               </header>
               <section class="ingredient-inputs-container">
                 <div class="ingredient-inputs">
-                  <label for="ingredient-qty-2" class="create-input-label"
+                  <label
+                    for="ingredient-qty-2"
+                    class="create-input-label ing-quantity-label"
                     >Quantity</label
                   >
                   <label
                     for="ingredient-measurement-2"
-                    class="create-input-label"
+                    class="create-input-label ing-measure-label"
                     >Measurement</label
                   >
-                  <label for="ingredient-name-2" class="create-input-label"
+                  <label
+                    for="ingredient-name-2"
+                    class="ing-name-label create-input-label"
                     >Ingredient Name</label
                   >
                   <label
@@ -532,13 +558,13 @@
 
                   <input
                     type="text"
-                    class="create-input"
+                    class="create-input ing-name-input"
                     id="ingredient-name-2"
                     name="ingredient-name-2"
                   />
                   <input
                     type="text"
-                    class="create-input"
+                    class="create-input ing-details-input"
                     id="ingredient-details-2"
                     name="ingredient-details-2"
                   />
