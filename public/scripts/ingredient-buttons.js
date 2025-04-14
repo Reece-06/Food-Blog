@@ -240,7 +240,6 @@ const addIngredientInputs = (event) => {
   const lastInputEl = innerGridInputs.querySelector(
     ".ing-details-input:last-of-type"
   );
-
   const newLabelsArr = insertNewLabels(innerGridInputs);
 
   const newInputsArr = insertInputs(innerGridInputs);
@@ -249,6 +248,21 @@ const addIngredientInputs = (event) => {
   const newElementsArr = organizeIngInputsAndLabels(newLabelsArr, newInputsArr);
 
   changeDuplicateAttriOfAddedIng(newElementsArr, lastInputEl);
+  disableDelIngInput();
+};
+// Disable delete ingredient input (if there is only 1 row)
+const disableDelIngInput = () => {
+  const ingInputsEls = document.querySelectorAll(".ingredient-inputs");
+  ingInputsEls.forEach((inputEl) => {
+    const delBtns = inputEl.querySelectorAll(".delete-ingredient-btn");
+    const numDelBtn = delBtns.length;
+
+    if (numDelBtn === 1) {
+      delBtns[0].setAttribute("disabled", "");
+    } else {
+      delBtns[0].removeAttribute("disabled");
+    }
+  });
 };
 ingDeleteBtns.forEach((ingDelBtn) => {
   ingDelBtn.addEventListener("click", deleteIngredientSet);
@@ -257,3 +271,4 @@ ingAddSetBtn.addEventListener("click", addIngredientsSet);
 ingAddBtns.forEach((ingAddBtn) => {
   ingAddBtn.addEventListener("click", addIngredientInputs);
 });
+disableDelIngInput();
