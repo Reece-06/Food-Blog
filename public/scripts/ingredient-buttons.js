@@ -1,7 +1,7 @@
 let ingDeleteBtns = document.querySelectorAll(".delete-set-btn");
 let ingAddSetBtn = document.querySelector(".add-set-btn");
 const ingAddBtns = document.querySelectorAll(".add-ingredient-btn");
-
+const ingDelInputsBtn = document.querySelectorAll(".delete-ingredient-btn");
 // Increase element Id or Name
 const increaseElementAttribute = (element, toChange) => {
   let elementArr;
@@ -192,13 +192,20 @@ const insertInputs = (parent) => {
 
   return [newQtyInput, newMeasureInput, newIngNameInput, newIngDetsInput];
 };
+// Add delete ingredient btn listener for new del btns
+const addDelIngBtnListener = (delBtn) => {
+  delBtn.addEventListener("click", deleteIngredientInputs);
+};
 // Insert ingredient inputs delete button
 const insertIngDelButton = (parent) => {
   const delIngBtn = getLastElement(parent, ".delete-ingredient-btn");
 
   let newIngDelBtn = delIngBtn.cloneNode(true);
-
+  if (newIngDelBtn.getAttribute("disabled") !== null) {
+    newIngDelBtn.removeAttribute("disabled");
+  }
   parent.insertAdjacentElement("beforeend", newIngDelBtn);
+  addDelIngBtnListener(newIngDelBtn);
 };
 // Change ids and names of newly added ingrdient inputs
 const changeDuplicateAttriOfAddedIng = (elements, lastInputEl) => {
@@ -264,6 +271,35 @@ const disableDelIngInput = () => {
     }
   });
 };
+// Show labels Input Labels
+const showInputLabels = (delBtn) => {
+  let label = delBtn.nextElementSibling;
+
+  while (label.nodeName === "LABEL") {
+    label.classList.remove("hidden-label");
+    label = label.nextElementSibling;
+  }
+};
+
+// Delete Ingredient Inputs
+const deleteIngredientInputs = (event) => {
+  const delBtn = event.currentTarget;
+  let btnSibling = delBtn.previousElementSibling;
+
+  // Go through btn sibling
+  while (btnSibling !== null && btnSibling.nodeName !== "BUTTON") {
+    const nextSib = btnSibling.previousElementSibling;
+    if (btnSibling === btnSibling.parentElement.firstElementChild) {
+      console.log("This is the first child!", btnSibling);
+      showInputLabels(delBtn);
+      // Do something specific for first child if needed
+    }
+    btnSibling.remove();
+    btnSibling = nextSib;
+  }
+  delBtn.remove();
+};
+// Initial event listener
 ingDeleteBtns.forEach((ingDelBtn) => {
   ingDelBtn.addEventListener("click", deleteIngredientSet);
 });
@@ -271,4 +307,8 @@ ingAddSetBtn.addEventListener("click", addIngredientsSet);
 ingAddBtns.forEach((ingAddBtn) => {
   ingAddBtn.addEventListener("click", addIngredientInputs);
 });
+ingDelInputsBtn.forEach((delBtn) => {
+  delBtn.addEventListener("click", deleteIngredientInputs);
+});
+
 disableDelIngInput();
