@@ -729,6 +729,9 @@
 .delete-ingredient-btn:active {
   background-color: var(--accent-red-tint2);
 }
+.delete-ingredient-btn:disabled {
+  background-color: var(--accent-red-disabled);
+}
 .delete-ingredient-icon {
   font-size: var(--ws-small);
   --ionicon-stroke-width: 40px;

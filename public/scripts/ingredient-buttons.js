@@ -19,24 +19,6 @@ const increaseElementAttribute = (element, toChange) => {
   const newElementId = elementArr.join("-");
   return newElementId;
 };
-// Changes buttons ids and names
-// const changeButtonsDuplicateAttributes = (element) => {
-//   const delSetBtn = element.querySelector(".delete-set-btn");
-//   const delIngBtn = element.querySelector(".delete-ingredient-btn");
-//   const addIngBtn = element.querySelector(".add-ingredient-btn");
-//   const newDelSetBtnId = increaseElementAttribute(delSetBtn, "id");
-//   const newDelSetBtnName = increaseElementAttribute(delSetBtn, "name");
-//   const newDelIngBtnId = increaseElementAttribute(delIngBtn, "id");
-//   const newDelIngBtnName = increaseElementAttribute(delIngBtn, "name");
-//   const newAddIngBtnId = increaseElementAttribute(addIngBtn, "id");
-//   const newAddIngBtnName = increaseElementAttribute(addIngBtn, "name");
-//   delSetBtn.id = newDelSetBtnId;
-//   delSetBtn.name = newDelSetBtnName;
-//   delIngBtn.id = newDelIngBtnId;
-//   delIngBtn.name = newDelIngBtnName;
-//   addIngBtn.id = newAddIngBtnId;
-//   addIngBtn.name = newAddIngBtnName;
-// };
 // Changes for attribute
 const changeLablelsDuplicateAttributes = (element) => {
   const setNameLabel = element.querySelector(".ing-set-name-label ");
@@ -88,8 +70,6 @@ const changeInputsDuplicateAttributes = (element) => {
 };
 // Changes ids and names of duplicate ids
 const changeElementsDuplicateAttributes = (element) => {
-  // Buttons
-  // changeButtonsDuplicateAttributes(element);
   // Labels
   changeLablelsDuplicateAttributes(element);
   // Inputs
@@ -112,6 +92,11 @@ const removeLastIngredientInputs = (ingSet) => {
   }
 
   return ingSet;
+};
+// Adds Event Listener to buttons of new Ingredient Set
+const addIngredientAndDeleteListener = (delSetBtn, addIngBtn) => {
+  delSetBtn.addEventListener("click", deleteIngredientSet);
+  addIngBtn.addEventListener("click", addIngredientInputs);
 };
 // Adds Ingredient set and a divider
 const addIngredientsSet = () => {
@@ -138,6 +123,10 @@ const addIngredientsSet = () => {
   );
 
   changeElementsDuplicateAttributes(newIngredientSetEl);
+
+  const newDelSetBtn = newIngredientSetEl.querySelector(".delete-set-btn ");
+  const newIngBtn = newIngredientSetEl.querySelector(".add-ingredient-btn");
+  addIngredientAndDeleteListener(newDelSetBtn, newIngBtn);
 };
 // Deletes Ingredient set
 const deleteIngredientSet = (event) => {
@@ -150,7 +139,6 @@ const deleteIngredientSet = (event) => {
   ) {
     btnIngSetParent.nextElementSibling.remove();
   } else {
-    console.log("run");
     btnIngSetParent.previousElementSibling.remove();
   }
   btnIngSetParent.remove();
@@ -191,14 +179,17 @@ const insertInputs = (parent) => {
   const ingDetsInput = getLastElement(parent, ".ing-details-input");
 
   let newQtyInput = qtyInput.cloneNode();
-  let newMeasureInput = measureInput.cloneNode(true);
+  let newMeasureDiv = measureInput.cloneNode(true);
   let newIngNameInput = ingNameInput.cloneNode();
   let newIngDetsInput = ingDetsInput.cloneNode();
 
   parent.insertAdjacentElement("beforeend", newQtyInput);
-  parent.insertAdjacentElement("beforeend", newMeasureInput);
+  parent.insertAdjacentElement("beforeend", newMeasureDiv);
   parent.insertAdjacentElement("beforeend", newIngNameInput);
   parent.insertAdjacentElement("beforeend", newIngDetsInput);
+  // Gets the Select input field
+  const newMeasureInput = newMeasureDiv.querySelector(".measurement-input");
+
   return [newQtyInput, newMeasureInput, newIngNameInput, newIngDetsInput];
 };
 // Insert ingredient inputs delete button
@@ -215,20 +206,32 @@ const changeDuplicateAttriOfAddedIng = (elements, lastInputEl) => {
   const lastNum = Number(splitIdArr[splitIdArr.length - 1]);
   elements.forEach((element, index) => {
     const newNum = lastNum + index + 1;
+    const labelEl = element.label;
+    const inputEl = element.input;
 
-    if (element.nodeName === "LABEL") {
-      const currentForArr = element.getAttribute("for").split("-");
-      currentForArr[currentForArr.length - 1] = newNum;
-      const newId = currentForArr.join("-");
-      element.setAttribute("for", newId);
-    } else {
-      const currentIdArr = element.id.split("-");
-      currentIdArr[currentIdArr.length - 1] = newNum;
-      const newId = currentIdArr.join("-");
-      element.id = newId;
-      element.name = newId;
-    }
+    const labelArr = labelEl.getAttribute("for").split("-");
+    labelArr[labelArr.length - 1] = newNum;
+    const newLabelId = labelArr.join("-");
+    labelEl.setAttribute("for", newLabelId);
+
+    const inputArr = inputEl.id.split("-");
+    inputArr[inputArr.length - 1] = newNum;
+    const newInputId = inputArr.join("-");
+    inputEl.id = newInputId;
+    inputEl.name = newInputId;
   });
+};
+// Organize Ingredients inputs and labels
+const organizeIngInputsAndLabels = (labelsArr, inputsArr) => {
+  let newArr = [];
+  labelsArr.forEach((label, i) => {
+    const newObj = {
+      label: label,
+      input: inputsArr[i],
+    };
+    newArr.push(newObj);
+  });
+  return newArr;
 };
 // Add Ingredient inputs and labels
 const addIngredientInputs = (event) => {
@@ -237,14 +240,14 @@ const addIngredientInputs = (event) => {
   const lastInputEl = innerGridInputs.querySelector(
     ".ing-details-input:last-of-type"
   );
-  console.log(lastInputEl);
 
   const newLabelsArr = insertNewLabels(innerGridInputs);
 
   const newInputsArr = insertInputs(innerGridInputs);
   insertIngDelButton(innerGridInputs);
-  const newElementsArr = newLabelsArr.concat(newInputsArr);
-  console.log(newElementsArr);
+
+  const newElementsArr = organizeIngInputsAndLabels(newLabelsArr, newInputsArr);
+
   changeDuplicateAttriOfAddedIng(newElementsArr, lastInputEl);
 };
 ingDeleteBtns.forEach((ingDelBtn) => {
