@@ -280,24 +280,88 @@ const showInputLabels = (delBtn) => {
     label = label.nextElementSibling;
   }
 };
+// Changes id, name, and for attribute of inputs and labels
+const setLabelAndInputAttributes = (nextChild, firstSibIdNum) => {
+  const labelsElArr = [];
+  const inputsElArr = [];
+  let nextChildEl = nextChild;
+  const labelInputArr = [];
+  while (nextChildEl !== null) {
+    if (nextChildEl.nodeName === "LABEL") {
+      labelsElArr.push(nextChildEl);
+    } else {
+      if (nextChildEl.nodeName === "DIV") {
+        const inputEl = nextChildEl.querySelector(".measurement-input");
+        inputsElArr.push(inputEl);
+      } else {
+        inputsElArr.push(nextChildEl);
+      }
+    }
+    if (nextChildEl.nextElementSibling.nodeName === "BUTTON") {
+      nextChildEl = nextChildEl.nextElementSibling.nextElementSibling;
+    } else {
+      nextChildEl = nextChildEl.nextElementSibling;
+    }
+  }
 
+  if (labelsElArr.length === inputsElArr.length) {
+    labelsElArr.forEach((labelEl, index) => {
+      const obj = {
+        input: inputsElArr[index],
+        label: labelEl,
+      };
+      labelInputArr.push(obj);
+    });
+
+    console.log(labelInputArr);
+    labelInputArr.forEach((el, index) => {
+      const inputEl = el.input;
+      const labelEl = el.label;
+
+      const currInputId = inputEl.id;
+      const splitInput = currInputId.split("-");
+      splitInput[splitInput.length - 1] = firstSibIdNum + index;
+      const newInputId = splitInput.join("-");
+
+      inputEl.id = newInputId;
+      inputEl.name = newInputId;
+
+      const currLabelFor = labelEl.getAttribute("for");
+      const splitLabel = currLabelFor.split("-");
+      splitLabel[splitLabel.length - 1] = firstSibIdNum + index;
+      const newLabelFor = splitLabel.join("-");
+
+      labelEl.setAttribute("for", newLabelFor);
+    });
+  }
+};
 // Delete Ingredient Inputs
 const deleteIngredientInputs = (event) => {
   const delBtn = event.currentTarget;
   let btnSibling = delBtn.previousElementSibling;
 
+  let firstLabelNum;
   // Go through btn sibling
   while (btnSibling !== null && btnSibling.nodeName !== "BUTTON") {
     const nextSib = btnSibling.previousElementSibling;
     if (btnSibling === btnSibling.parentElement.firstElementChild) {
-      console.log("This is the first child!", btnSibling);
       showInputLabels(delBtn);
-      // Do something specific for first child if needed
+      const firstLabelFor = btnSibling.getAttribute("for").split("-");
+      firstLabelNum = Number(firstLabelFor[firstLabelFor.length - 1]);
+    } else {
+      if (nextSib.nodeName === "BUTTON") {
+        const firstLabelFor = btnSibling.getAttribute("for").split("-");
+        firstLabelNum = Number(firstLabelFor[firstLabelFor.length - 1]);
+      }
     }
     btnSibling.remove();
     btnSibling = nextSib;
   }
+  const nextChild = delBtn.nextElementSibling;
+
   delBtn.remove();
+
+  setLabelAndInputAttributes(nextChild, firstLabelNum);
 };
 // Initial event listener
 ingDeleteBtns.forEach((ingDelBtn) => {
