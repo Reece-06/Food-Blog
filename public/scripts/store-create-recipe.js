@@ -91,7 +91,6 @@ const storeData = (currentPageNum) => {
     recipeData.push(recipe);
     recipe = {};
   }
-  console.log(recipeData);
 };
 
 export { storeData };

@@ -39,12 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBtn.classList.add("hide-arrow-icon");
     } else {
       if (nextBtnText.textContent !== buttonLabel[0]) {
-        console.log("not next text");
         nextBtnText.textContent = buttonLabel[0];
       }
 
       if (nextButton.classList.contains("hide-arrow-icon")) {
-        console.log("hidden arrow");
         nextBtn.classList.remove("hide-arrow-icon");
       }
     }

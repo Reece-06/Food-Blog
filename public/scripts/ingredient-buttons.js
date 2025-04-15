@@ -103,24 +103,17 @@ const addIngredientsSet = () => {
   const lastIngredientSetEl = document.querySelector(
     ".ingredient-set:last-of-type"
   );
-  const lastHrEl = document.querySelector(
-    ".divider-create-recipe:last-of-type"
-  );
+
+  const hrEl = document.createElement("hr");
+  hrEl.classList.add("divider", "divider-create-recipe");
 
   let newIngredientSetEl = lastIngredientSetEl.cloneNode(true);
 
   newIngredientSetEl = removeLastIngredientInputs(newIngredientSetEl);
-  let newLastHrEl = lastHrEl.cloneNode();
 
-  newLastHrEl = lastIngredientSetEl.insertAdjacentElement(
-    "afterend",
-    newLastHrEl
-  );
+  lastIngredientSetEl.insertAdjacentElement("afterend", hrEl);
 
-  newIngredientSetEl = newLastHrEl.insertAdjacentElement(
-    "afterend",
-    newIngredientSetEl
-  );
+  hrEl.insertAdjacentElement("afterend", newIngredientSetEl);
 
   changeElementsDuplicateAttributes(newIngredientSetEl);
 
@@ -323,7 +316,6 @@ const setLabelAndInputAttributes = (nextChild, firstSibIdNum) => {
       labelInputArr.push(obj);
     });
 
-    console.log(labelInputArr);
     labelInputArr.forEach((el, index) => {
       const inputEl = el.input;
       const labelEl = el.label;
