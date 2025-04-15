@@ -255,21 +255,31 @@ const addIngredientInputs = (event) => {
   const newElementsArr = organizeIngInputsAndLabels(newLabelsArr, newInputsArr);
 
   changeDuplicateAttriOfAddedIng(newElementsArr, lastInputEl);
-  disableDelIngInput();
+  disableDelIngInput(innerGridInputs);
 };
 // Disable delete ingredient input (if there is only 1 row)
-const disableDelIngInput = () => {
-  const ingInputsEls = document.querySelectorAll(".ingredient-inputs");
-  ingInputsEls.forEach((inputEl) => {
-    const delBtns = inputEl.querySelectorAll(".delete-ingredient-btn");
-    const numDelBtn = delBtns.length;
+const disableDelIngInput = (ingInputsEl = null) => {
+  if (ingInputsEl === null) {
+    const ingInputsEls = document.querySelectorAll(".ingredient-inputs");
+    ingInputsEls.forEach((inputEl) => {
+      const delBtns = inputEl.querySelectorAll(".delete-ingredient-btn");
+      const numDelBtn = delBtns.length;
 
-    if (numDelBtn === 1) {
-      delBtns[0].setAttribute("disabled", "");
+      if (numDelBtn === 1) {
+        delBtns[0].setAttribute("disabled", "");
+      } else {
+        delBtns[0].removeAttribute("disabled");
+      }
+    });
+  } else {
+    const allDelBtns = ingInputsEl.querySelectorAll(".delete-ingredient-btn");
+    const diableBtn = allDelBtns.length === 1;
+    if (diableBtn) {
+      allDelBtns[0].setAttribute("disabled", "");
     } else {
-      delBtns[0].removeAttribute("disabled");
+      allDelBtns[0].removeAttribute("disabled");
     }
-  });
+  }
 };
 // Show labels Input Labels
 const showInputLabels = (delBtn) => {
@@ -338,6 +348,7 @@ const setLabelAndInputAttributes = (nextChild, firstSibIdNum) => {
 // Delete Ingredient Inputs
 const deleteIngredientInputs = (event) => {
   const delBtn = event.currentTarget;
+  const parentInputs = delBtn.parentElement;
   let btnSibling = delBtn.previousElementSibling;
 
   let firstLabelNum;
@@ -362,6 +373,7 @@ const deleteIngredientInputs = (event) => {
   delBtn.remove();
 
   setLabelAndInputAttributes(nextChild, firstLabelNum);
+  disableDelIngInput(parentInputs);
 };
 // Initial event listener
 ingDeleteBtns.forEach((ingDelBtn) => {
