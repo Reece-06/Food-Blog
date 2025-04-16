@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       changeButtonLabel(btnIdObj.lastNum);
 
-      storeData(btnIdObj.prevNum);
+      // storeData(btnIdObj.prevNum);
     }
   };
 

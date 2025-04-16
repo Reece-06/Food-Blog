@@ -108,6 +108,12 @@ const addIngredientsSet = () => {
   hrEl.classList.add("divider", "divider-create-recipe");
 
   let newIngredientSetEl = lastIngredientSetEl.cloneNode(true);
+  const ingSetDelBtn = newIngredientSetEl.querySelector(".delete-set-btn");
+  const isDisabled = ingSetDelBtn.getAttribute("disabled") !== null;
+
+  if (isDisabled) {
+    ingSetDelBtn.removeAttribute("disabled");
+  }
 
   newIngredientSetEl = removeLastIngredientInputs(newIngredientSetEl);
 
@@ -120,6 +126,19 @@ const addIngredientsSet = () => {
   const newDelSetBtn = newIngredientSetEl.querySelector(".delete-set-btn ");
   const newIngBtn = newIngredientSetEl.querySelector(".add-ingredient-btn");
   addIngredientAndDeleteListener(newDelSetBtn, newIngBtn);
+  disableDelSetBtn();
+};
+// Disables Delete Btn Set (If 1 set remains)
+const disableDelSetBtn = () => {
+  const ingSets = document.querySelectorAll(".ingredient-set");
+  const disableDelBtn = ingSets.length === 1;
+
+  const firstDelSetBtn = document.querySelectorAll(".delete-set-btn")[0];
+  if (disableDelBtn) {
+    firstDelSetBtn.setAttribute("disabled", "");
+  } else {
+    firstDelSetBtn.removeAttribute("disabled");
+  }
 };
 // Deletes Ingredient set
 const deleteIngredientSet = (event) => {
@@ -135,6 +154,7 @@ const deleteIngredientSet = (event) => {
     btnIngSetParent.previousElementSibling.remove();
   }
   btnIngSetParent.remove();
+  disableDelSetBtn();
 };
 // get last element
 const getLastElement = (parent, elSelector) => {
@@ -380,3 +400,4 @@ ingDelInputsBtn.forEach((delBtn) => {
 });
 
 disableDelIngInput();
+disableDelSetBtn();

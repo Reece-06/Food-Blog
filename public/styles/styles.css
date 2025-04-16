@@ -705,6 +705,9 @@
 .delete-set-btn:active {
   background-color: var(--accent-red-tint2);
 }
+.delete-set-btn:disabled {
+  background-color: var(--accent-red-disabled);
+}
 .ingredient-inputs-container {
   margin-bottom: var(--ws-small-x1);
 }

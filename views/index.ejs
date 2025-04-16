@@ -481,95 +481,7 @@
                 <p>Add Ingredient</p>
               </button>
             </div>
-            <hr class="divider divider-create-recipe" />
-            <div class="ingredient-set">
-              <header class="upper-container">
-                <div class="set-name-container">
-                  <label
-                    for="set-name-2-1"
-                    class="ing-set-name-label hidden-label"
-                  >
-                    Set Name</label
-                  >
-                  <input
-                    type="text"
-                    id="set-name-2-1"
-                    name="set-name-2-1"
-                    class="set-name-input reset-focus"
-                    placeholder="Set Name"
-                  />
-                </div>
-                <button type="button" class="delete-set-btn default-btn">
-                  Delete Set
-                </button>
-              </header>
-              <section class="ingredient-inputs-container">
-                <div class="ingredient-inputs">
-                  <label
-                    for="ingredient-qty-2-2"
-                    class="create-input-label ing-quantity-label"
-                    >Quantity</label
-                  >
-                  <label
-                    for="ingredient-measurement-2-3"
-                    class="create-input-label ing-measure-label"
-                    >Measurement</label
-                  >
-                  <label
-                    for="ingredient-name-2-4"
-                    class="ing-name-label create-input-label"
-                    >Ingredient Name</label
-                  >
-                  <label
-                    for="ingredient-details-2-5"
-                    class="ingredient-dets-label create-input-label"
-                    >Ingredient Details</label
-                  >
 
-                  <input
-                    type="number"
-                    class="create-input ingredient-qty-input"
-                    id="ingredient-qty-2-2"
-                    name="ingredient-qty-2-2"
-                  />
-                  <div class="custom-select ing-measure-input-container">
-                    <select
-                      name="ingredient-measurement-2-3"
-                      id="ingredient-measurement-2-3"
-                      class="create-input create-input-dropdown measurement-input"
-                    >
-                      <option value="cup">cup</option>
-                    </select>
-                  </div>
-
-                  <input
-                    type="text"
-                    class="create-input ing-name-input"
-                    id="ingredient-name-2-4"
-                    name="ingredient-name-2-4"
-                  />
-                  <input
-                    type="text"
-                    class="create-input ing-details-input"
-                    id="ingredient-details-2-5"
-                    name="ingredient-details-2-5"
-                  />
-                  <button
-                    class="delete-ingredient-btn default-btn"
-                    type="button"
-                  >
-                    <ion-icon
-                      name="close-outline"
-                      class="delete-ingredient-icon"
-                    ></ion-icon>
-                  </button>
-                </div>
-              </section>
-              <button class="add-ingredient-btn default-btn" type="button">
-                <ion-icon name="add" class="add-ingredient-icon"></ion-icon>
-                <p>Add Ingredient</p>
-              </button>
-            </div>
             <button type="button" class="add-set-btn default-btn">
               <ion-icon name="add" class="add-set-icon"></ion-icon>
               <p>Add Set</p>
@@ -578,25 +490,17 @@
 
           <div class="instructions-input-container create-form-3">
             <div class="instruction-input-container">
+              <label
+                for="instruction-1"
+                class="ins-label create-input-label hidden-label"
+                >Instruction</label
+              >
               <textarea
                 name="instruction-1"
                 id="instruction-1"
                 class="instruction-input create-input reset-focus reset-textarea"
               ></textarea>
-              <button class="delete-instruction-btn default-btn">
-                <ion-icon
-                  name="trash-outline"
-                  class="delete-instruction-icon"
-                ></ion-icon>
-              </button>
-            </div>
-            <div class="instruction-input-container">
-              <textarea
-                name="instruction-2"
-                id="instruction-2"
-                class="instruction-input create-input reset-focus reset-textarea"
-              ></textarea>
-              <button class="delete-instruction-btn default-btn">
+              <button class="delete-instruction-btn default-btn" type="button">
                 <ion-icon
                   name="trash-outline"
                   class="delete-instruction-icon"
@@ -604,7 +508,7 @@
               </button>
             </div>
 
-            <button class="add-instruction-btn default-btn">
+            <button class="add-instruction-btn default-btn" type="button">
               <ion-icon name="add" class="add-instruction-icon"></ion-icon>
               <p>Add Instruction</p>
             </button>
@@ -703,5 +607,6 @@
     <script type="module" src="scripts/form-behavior.js"></script>
     <script type="module" src="scripts/store-create-recipe.js"></script>
     <script type="module" src="scripts/ingredient-buttons.js"></script>
+    <script type="module" src="scripts/instruction-buttons.js"></script>
   </body>
 </html>
