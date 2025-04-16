@@ -1,4 +1,5 @@
 const addInsBtn = document.querySelector(".add-instruction-btn");
+const delInsBtns = document.querySelectorAll(".delete-instruction-btn");
 // generate new label / input attributes
 const generateNewAttribute = (attrValue) => {
   const splitValueArr = attrValue.split("-");
@@ -19,6 +20,17 @@ const renameAttributes = (parentEl) => {
   inputEl.name = newAttrVal;
   labelEl.setAttribute("for", newAttrVal);
 };
+// Reenable all disabled del btns if any
+const reenableDelBtns = () => {
+  const allDelBtns = document.querySelectorAll(".delete-instruction-btn");
+  allDelBtns.forEach((delBtn) => {
+    const isDisabled = delBtn.getAttribute("disabled") !== null;
+
+    if (isDisabled) {
+      delBtn.removeAttribute("disabled");
+    }
+  });
+};
 // Adds instruction inputs
 const addInstruction = () => {
   const lastInsContainer = document.querySelector(
@@ -29,11 +41,33 @@ const addInstruction = () => {
 
   renameAttributes(clonedContainer);
 
-  const newContainer = lastInsContainer.insertAdjacentElement(
-    "afterend",
-    clonedContainer
-  );
-  console.log("inserted element:", newContainer);
+  lastInsContainer.insertAdjacentElement("afterend", clonedContainer);
+  reenableDelBtns();
 };
+// Disable del btn when only 1 instruction input remain
+const disableFirstDelBtn = () => {
+  const firstDelBtns = document.querySelectorAll(".delete-instruction-btn");
 
+  const insContainers = document.querySelectorAll(
+    ".instruction-input-container"
+  );
+  const onlyOneContainer = insContainers.length === 1;
+
+  if (onlyOneContainer) {
+    firstDelBtns[0].setAttribute("disabled", "");
+  }
+};
+// Deletes Instructiion
+const deleteInstruction = (event) => {
+  const delBtn = event.currentTarget;
+  const insContainer = delBtn.parentElement;
+  console.log(insContainer);
+  insContainer.remove();
+
+  disableFirstDelBtn();
+};
 addInsBtn.addEventListener("click", addInstruction);
+delInsBtns.forEach((delInsBtn) => {
+  delInsBtn.addEventListener("click", deleteInstruction);
+});
+disableFirstDelBtn();

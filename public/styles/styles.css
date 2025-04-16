@@ -849,6 +849,9 @@
 .delete-instruction-btn:active {
   background-color: var(--accent-red-tint2);
 }
+.delete-instruction-btn:disabled {
+  background-color: var(--accent-red-disabled);
+}
 .delete-instruction-icon {
   font-size: var(--size-small);
 }
