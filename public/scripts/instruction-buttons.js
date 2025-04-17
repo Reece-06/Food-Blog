@@ -31,6 +31,10 @@ const reenableDelBtns = () => {
     }
   });
 };
+// Add a delete btn listenter to newly added instruction
+const addDelBtnListener = (delBtn) => {
+  delBtn.addEventListener("click", deleteInstruction);
+};
 // Adds instruction inputs
 const addInstruction = () => {
   const lastInsContainer = document.querySelector(
@@ -43,6 +47,8 @@ const addInstruction = () => {
 
   lastInsContainer.insertAdjacentElement("afterend", clonedContainer);
   reenableDelBtns();
+  const delBtn = clonedContainer.querySelector(".delete-instruction-btn");
+  addDelBtnListener(delBtn);
 };
 // Disable del btn when only 1 instruction input remain
 const disableFirstDelBtn = () => {
@@ -57,14 +63,39 @@ const disableFirstDelBtn = () => {
     firstDelBtns[0].setAttribute("disabled", "");
   }
 };
+// Set new attribute value for id name and for
+const setNewAttr = (currAttr) => {
+  const attrValSplit = currAttr.split("-");
+  const lastNum = attrValSplit[attrValSplit.length - 1];
+  attrValSplit[attrValSplit.length - 1] = lastNum - 1;
+
+  return attrValSplit.join("-");
+};
+// Rename attributes after deleting
+const renameAttributesAfterDel = (nextSib) => {
+  let sibContainer = nextSib;
+
+  while (sibContainer.nodeName !== "BUTTON") {
+    const inputEl = sibContainer.querySelector(".instruction-input");
+    const labelEl = sibContainer.querySelector(".ins-label");
+    const currAttr = inputEl.id;
+
+    inputEl.id = setNewAttr(currAttr);
+    inputEl.name = setNewAttr(currAttr);
+    labelEl.setAttribute("for", setNewAttr(currAttr));
+    sibContainer = sibContainer.nextElementSibling;
+  }
+};
+
 // Deletes Instructiion
 const deleteInstruction = (event) => {
   const delBtn = event.currentTarget;
   const insContainer = delBtn.parentElement;
-  console.log(insContainer);
+  const nextSib = insContainer.nextElementSibling;
   insContainer.remove();
 
   disableFirstDelBtn();
+  renameAttributesAfterDel(nextSib);
 };
 addInsBtn.addEventListener("click", addInstruction);
 delInsBtns.forEach((delInsBtn) => {
