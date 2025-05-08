@@ -88,11 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnId = nextBtn.id;
     const btnIdObj = increaseBtnId(btnId); // button id info
 
-    if (btnIdObj.prevNum === 4) {
-      storeData(btnIdObj.prevNum);
-
-      hideCreateRecipeModal();
-    } else {
+    if (btnIdObj.prevNum !== 4) {
       nextBtn.id = btnIdObj.newBtnId;
 
       changeFormLabel(btnIdObj.lastNum, ...formLabelArr);
@@ -100,9 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
       changeForm(btnIdObj.lastNum, btnIdObj.prevNum);
 
       changeButtonLabel(btnIdObj.lastNum);
-
-      // storeData(btnIdObj.prevNum);
+    } else {
+      hideCreateRecipeModal();
     }
+    storeData(btnIdObj.prevNum);
   };
 
   nextBtn.addEventListener("click", showNextForm);
