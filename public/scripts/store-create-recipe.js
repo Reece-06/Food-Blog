@@ -46,21 +46,13 @@ const getSelectElement = (inputsEls) => {
 // organize inputs by row
 const organizeByRow = (inputs) => {
   let rowInputs = [];
-  let newInputs = [];
-  inputs.forEach((input, index) => {
-    const nextIndex = index + 1;
-    console.log("curr index: " + index + " div by 4? " + (index % 4));
-
-    if (index % 4 !== 0 || nextIndex % 4 === 0) {
-      newInputs.push(input);
-      if (nextIndex % 4 === 0) {
-        newInputs.push(inputs[nextIndex]);
-        // console.log(newInputs);
-        rowInputs.push(newInputs);
-        newInputs = [];
-      }
+  for (let i = 0; i < inputs.length; i++) {
+    if ((i + 1) % 4 === 0) {
+      const row = inputs.slice(i - 3, i + 1);
+      rowInputs.push(row);
     }
-  });
+  }
+
   return rowInputs;
 };
 // Store second form data (ingredients form)
@@ -69,18 +61,15 @@ const getIngredientsData = () => {
   recipe.ingredientSets = [];
   const ingSets = document.querySelectorAll(".ingredient-set");
   ingSets.forEach((ingSetEl) => {
-    const numRows = ingSetEl.querySelectorAll(".delete-ingredient-btn").length;
     const ingredientSet = [];
 
     const ingInputs = ingSetEl.querySelector(".ingredient-inputs");
 
     let inputs = ingInputs.querySelectorAll("input, div");
     inputs = getSelectElement(inputs);
-    console.log(inputs);
-    const newRows = organizeByRow(inputs);
-    console.log(newRows);
 
-    let currentRow = 1;
+    const newRows = organizeByRow(inputs);
+
     let ingredientIds = {
       qty: "quantity",
       measurement: "measurement",
@@ -88,37 +77,27 @@ const getIngredientsData = () => {
       details: "ingDetails",
     };
 
-    // console.log(numRows);
     const ingKeys = Object.keys(ingredientIds);
+    newRows.forEach((row) => {
+      const ingredient = {};
+      row.forEach((input) => {
+        const inputId = input.id;
+        const idName = inputId.split("-")[1];
 
-    // while (currentRow <= numRows) {
-    //   let ingredient = {};
-    //   inputs.forEach((input) => {
-    //     const inputId = input.id;
-    //     console.log(inputId);
-    //     const inputRow = Number(inputId.split("-")[2]);
-    //     console.log(inputRow);
-    //     if (inputRow === currentRow) {
-    //       const inputName = input.id.split("-")[1];
-    //       console.log(inputName);
-    //       ingKeys.forEach((key) => {
-    //         console.log(key);
-    //         console.log(inputName);
-    //         if (key === inputName) {
-    //           const ingObjName = ingredientIds[key];
-    //           console.log(ingObjName);
-    //           ingredient[ingObjName] = getInputValue(inputId);
-    //         }
-    //       });
-    //     }
-    //   });
-    //   currentRow++;
-    //   ingredientSet.push(ingredient);
-    //   ingredient = {};
-    // }
-    // recipe.ingredientSets.push(ingredientSet);
+        ingKeys.forEach((key) => {
+          if (key === idName) {
+            const keyName = ingredientIds[key];
+            ingredient[keyName] = getInputValue("#" + inputId);
+          }
+        });
+      });
+
+      ingredientSet.push(ingredient);
+    });
+
+    recipe.ingredientSets.push(ingredientSet);
   });
-  console.log(recipe.ingredientSets);
+
   return recipe;
 };
 // Store third form data (instructions form)
@@ -158,7 +137,7 @@ const storeData = (currentPageNum) => {
     recipeData.push(recipe);
     recipe = {};
   }
-  // console.log(recipe);
+  console.log(recipe);
 };
 
 export { storeData };
