@@ -108,11 +108,11 @@ const getInstructionsData = () => {
     ".instruction-input-container"
   );
   const numInstructions = instructionsEl.length;
-  let i = 1;
-  while (i <= numInstructions) {
-    recipe.instructions.push(getInputValue("#instruction-" + i));
-    i++;
+
+  for (let i = 0; i < numInstructions; i++) {
+    recipe.instructions.push(getInputValue("#instruction-" + (i + 1)));
   }
+
   return recipe;
 };
 // Store fourth form data (nutrition form)
@@ -137,7 +137,6 @@ const storeData = (currentPageNum) => {
     recipeData.push(recipe);
     recipe = {};
   }
-  console.log(recipe);
 };
 
 export { storeData };
