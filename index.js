@@ -14,7 +14,7 @@ foodBlog.set("views", path.join(dirname, "views"));
 foodBlog.use(express.static(path.join(dirname, "public")));
 
 let recipes = {};
-let hasRecipes = false;
+let hasRecipes = true;
 
 // Middleware that checks if there are already recipes created
 const checkRecipes = (req, res, next) => {
@@ -22,7 +22,7 @@ const checkRecipes = (req, res, next) => {
   next();
 };
 
-foodBlog.use(checkRecipes);
+// foodBlog.use(checkRecipes);
 
 foodBlog.get("/", (req, res) => {
   res.render("index.ejs", { hasRecipes: hasRecipes });

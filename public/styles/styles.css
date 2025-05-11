@@ -456,7 +456,8 @@
   outline-offset: 2px;
 }
 .time-inputs-container,
-.dropdown-inputs-container {
+.dropdown-inputs-container,
+.other-inputs-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--ws-small);
@@ -615,7 +616,45 @@
   border-top: var(--size) solid var(--main-yellow-shade4);
   top: 55%;
 }
+.upload-photo-custom {
+  background: #000;
+  position: relative;
+  height: 4rem;
+  border: 1.3px solid var(--main-yellow-shade3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.recipe-photo-input {
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+}
+.file-custom {
+  font-size: var(--ws-small-x1);
 
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+
+.file-custom::before {
+  content: "Choose file...";
+}
+.file-custom::after {
+  color: #fff;
+  padding: 1rem;
+  content: "Browse";
+  background-color: var(--grey-tint-1);
+  /* display: block; */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* var(--main-yellow-tint3) */
 .next-btn {
   font-size: var(--size-small-x1);
   font-weight: var(--semi-bold);
