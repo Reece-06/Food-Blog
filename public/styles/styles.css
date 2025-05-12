@@ -495,93 +495,12 @@
 .create-input-timer:focus {
   outline-offset: 0;
 }
-/* To remove number increaser */
-.create-input-timer::-webkit-outer-spin-button,
-.create-input-timer::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 .colon {
   font-size: var(--size-small);
   margin-top: var(--ws-small-x2);
 }
-/* https://blog.logrocket.com/making-dropdown-menus-css/ */
-/* Experiment */
-/* .dropdown {
-  position: relative;
-}
-.dropdown-btn {
-  background-color: #fff;
-  font-size: var(--ws-small-x1);
-  font-weight: var(--regular);
 
-  width: 100%;
-  border: 1.3px solid var(--main-yellow-shade3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--ws-small-x2) var(--ws-small-x1);
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-.arrow {
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid #000;
-  transition: all ease-in-out 0.3s;
-}
-.dropdown-content {
-  --height: 10rem;
-  list-style: none;
-  position: absolute;
-  top: 100%;
-  margin-top: var(--ws-small-x2);
-  width: 100%;
-
-  visibility: hidden;
-
-  pointer-events: none;
-  overflow: hidden;
-
-  transition: all 0.3s;
-  border: 1px solid #000;
-}
-
-.dropdown:focus-within .dropdown-content {
-  
-  pointer-events: all;
-  visibility: visible;
-}
-
-.dropdown:focus-within .dropdown-btn > .arrow {
-  transform: rotate(180deg);
-}
-.dropdown-list {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  transform: translateY(-20rem);
-
-  transition: all 0.3s;
-}
-.dropdown:focus-within .dropdown-content .dropdown-list {
-  transform: translateY(0);
-}
-
-.dropdown-list:not(:last-child) {
-  margin-bottom: 0.2rem;
-}
-
-.dropdown-list:hover,
-.dropdown-list:active {
-  background-color: var(--main-yellow-tint3);
-}
-.dropdown-a {
-  display: block;
-  padding: var(--ws-small-x2) var(--ws-small-x1);
-  text-decoration: none;
-  color: #000;
-  font-size: var(--ws-small-x1);
-} */
 .custom-select {
   position: relative;
 }
@@ -649,12 +568,12 @@
   padding: 1rem;
   content: "Browse";
   background-color: var(--grey-tint-1);
-  /* display: block; */
+
   position: absolute;
   top: 0;
   right: 0;
 }
-/* var(--main-yellow-tint3) */
+
 .next-btn {
   font-size: var(--size-small-x1);
   font-weight: var(--semi-bold);
