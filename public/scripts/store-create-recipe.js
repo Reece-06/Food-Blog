@@ -29,6 +29,12 @@ const getBasicInfoData = () => {
   recipe.cookTime = reformatTime(cookTimeInputs);
   recipe.mealCourse = getInputValue("#meal-course");
   recipe.cuisine = getInputValue("#cuisine");
+  recipe.nunServing = getInputValue("#num-serving");
+  const fileInput = getInputValue("#recipe-photo");
+  console.log(fileInput);
+  // console.log(fileInput.files[0]);
+  // console.log(fileInput.files[0].name);
+
   return recipe;
 };
 

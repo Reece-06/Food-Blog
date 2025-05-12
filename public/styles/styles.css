@@ -543,10 +543,15 @@
   border-radius: 0.5rem;
   overflow: hidden;
 }
+
 .recipe-photo-input {
-  visibility: hidden;
   opacity: 0;
-  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
 }
 .file-custom {
   font-size: var(--ws-small-x1);
@@ -559,7 +564,10 @@
   bottom: 0;
   background-color: #fff;
 }
-
+.file-custom::before,
+.file-custom::after {
+  transition: all 0.3s;
+}
 .file-custom::before {
   content: "Choose file...";
 }
@@ -572,6 +580,10 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.upload-photo-custom:active .file-custom::after {
+  background-color: rgb(177, 177, 177);
 }
 
 .next-btn {
@@ -613,7 +625,6 @@
 
 /* Ingredients inputs */
 .ingredient-sets-input {
-  /* display: flex; */
   flex-direction: column;
   gap: var(--ws-small-x1);
   margin-right: var(--ws-small-x2);
