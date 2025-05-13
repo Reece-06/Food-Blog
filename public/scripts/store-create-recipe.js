@@ -30,10 +30,10 @@ const getBasicInfoData = () => {
   recipe.mealCourse = getInputValue("#meal-course");
   recipe.cuisine = getInputValue("#cuisine");
   recipe.nunServing = getInputValue("#num-serving");
-  const fileInput = getInputValue("#recipe-photo");
-  console.log(fileInput);
-  // console.log(fileInput.files[0]);
-  // console.log(fileInput.files[0].name);
+  const fileInput = document.querySelector("#recipe-photo");
+
+  const file = fileInput.files[0];
+  recipe.photo = file;
 
   return recipe;
 };
@@ -65,13 +65,14 @@ const organizeByRow = (inputs) => {
 const getIngredientsData = () => {
   const recipe = {};
   recipe.ingredientSets = [];
-  const ingSets = document.querySelectorAll(".ingredient-set");
+  const ingSets = document.querySelectorAll(".ingredient-sets-input");
   ingSets.forEach((ingSetEl) => {
     const ingredientSet = [];
 
     const ingInputs = ingSetEl.querySelector(".ingredient-inputs");
 
     let inputs = ingInputs.querySelectorAll("input, div");
+
     inputs = getSelectElement(inputs);
 
     const newRows = organizeByRow(inputs);
@@ -130,6 +131,10 @@ const getNutritionData = () => {
   recipe.fat = getInputValue("#nutrition-fat");
   return recipe;
 };
+// Remove recipe data
+const removeRecipeData = () => {
+  recipe = {};
+};
 // Stores data from create recipe
 const storeData = (currentPageNum) => {
   if (currentPageNum === 1) {
@@ -141,8 +146,9 @@ const storeData = (currentPageNum) => {
   } else {
     recipe = { ...recipe, ...getNutritionData() };
     recipeData.push(recipe);
-    recipe = {};
+    console.log(recipe);
   }
+  return recipe;
 };
 
 export { storeData };
