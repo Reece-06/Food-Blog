@@ -65,9 +65,13 @@ const organizeByRow = (inputs) => {
 const getIngredientsData = () => {
   const recipe = {};
   recipe.ingredientSets = [];
-  const ingSets = document.querySelectorAll(".ingredient-sets-input");
+  const ingSets = document.querySelectorAll(".ingredient-set-inputs");
+
   ingSets.forEach((ingSetEl) => {
-    const ingredientSet = [];
+    const ingredientSet = {};
+    const ingredientInputs = [];
+
+    const ingSetNameVal = ingSetEl.querySelector(".set-name-input").value;
 
     const ingInputs = ingSetEl.querySelector(".ingredient-inputs");
 
@@ -99,9 +103,9 @@ const getIngredientsData = () => {
         });
       });
 
-      ingredientSet.push(ingredient);
+      ingredientInputs.push(ingredient);
     });
-
+    ingredientSet[ingSetNameVal] = ingredientInputs;
     recipe.ingredientSets.push(ingredientSet);
   });
 
@@ -151,4 +155,4 @@ const storeData = (currentPageNum) => {
   return recipe;
 };
 
-export { storeData, removeRecipeData };
+export { storeData, removeRecipeData, recipe };

@@ -1,5 +1,4 @@
-import { recipeData } from "./store-create-recipe";
-const retrieveInstructions = () => {};
+// import { recipe } from "./store-create-recipe";
 // Transfer all recipe data to form data
 const getNewFormData = (recipe) => {
   const formData = new FormData();
@@ -17,6 +16,21 @@ const getNewFormData = (recipe) => {
   formData.append("photo", recipe.photo);
   formData.append("instructions", JSON.stringify(recipe.instructions));
   formData.append("ingredientSets", JSON.stringify(recipe.ingredientSets));
+  return formData;
 };
 // Sends recipe data to the server
-const sendRecipeData = async (recipe) => {};
+const sendRecipeDataToServer = async (recipe) => {
+  const data = getNewFormData(recipe);
+  try {
+    const res = await fetch("/api/recipe", {
+      method: "POST",
+      body: data,
+    });
+    console.log("Response status:", res.status);
+    const resData = await res.json();
+    console.log("Server response:", resData);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+export { sendRecipeDataToServer };

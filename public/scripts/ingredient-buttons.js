@@ -112,7 +112,7 @@ const addIngredientsSet = () => {
   let newIngredientSetEl = lastIngredientSetEl.cloneNode(true);
   const ingSetDelBtn = newIngredientSetEl.querySelector(".delete-set-btn");
   const isDisabled = ingSetDelBtn.getAttribute("disabled") !== null;
-  console.log(isDisabled);
+
   if (isDisabled) {
     ingSetDelBtn.removeAttribute("disabled");
   }

@@ -1,5 +1,6 @@
-import { storeData, removeRecipeData } from "./store-create-recipe.js";
+import { storeData, removeRecipeData, recipe } from "./store-create-recipe.js";
 import { hideCreateRecipeModal } from "./create-recipe.js";
+import { sendRecipeDataToServer } from "./post-recipe.js";
 document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".next-btn");
   const createRecipeform = document.querySelector(".create-form");
@@ -98,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     changeButtonLabel(btnIdObj.lastNum);
     if (btnIdObj.prevNum === 4) {
       hideCreateRecipeModal();
+      sendRecipeDataToServer(recipe);
       removeRecipeData();
     }
   };
