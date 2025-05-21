@@ -29,7 +29,7 @@ const getBasicInfoData = () => {
   recipe.cookTime = reformatTime(cookTimeInputs);
   recipe.mealCourse = getInputValue("#meal-course");
   recipe.cuisine = getInputValue("#cuisine");
-  recipe.nunServing = getInputValue("#num-serving");
+  recipe.numServing = getInputValue("#num-serving");
   const fileInput = document.querySelector("#recipe-photo");
 
   const file = fileInput.files[0];
@@ -151,4 +151,4 @@ const storeData = (currentPageNum) => {
   return recipe;
 };
 
-export { storeData };
+export { storeData, removeRecipeData };

@@ -83,12 +83,14 @@ const removeLastIngredientInputs = (ingSet) => {
   const numOfDelButtons = delButtons.length;
   if (numOfDelButtons > 1) {
     const firstDelButton = delButtons[0];
+
     let delBtnNextSib = firstDelButton.nextElementSibling;
     while (delBtnNextSib !== null) {
       const nextSib = delBtnNextSib.nextElementSibling;
       delBtnNextSib.remove();
       delBtnNextSib = nextSib;
     }
+    firstDelButton.setAttribute("disabled", "");
   }
 
   return ingSet;
@@ -101,7 +103,7 @@ const addIngredientAndDeleteListener = (delSetBtn, addIngBtn) => {
 // Adds Ingredient set and a divider
 const addIngredientsSet = () => {
   const lastIngredientSetEl = document.querySelector(
-    ".ingredient-set:last-of-type"
+    ".ingredient-set-inputs:last-of-type"
   );
 
   const hrEl = document.createElement("hr");
@@ -110,7 +112,7 @@ const addIngredientsSet = () => {
   let newIngredientSetEl = lastIngredientSetEl.cloneNode(true);
   const ingSetDelBtn = newIngredientSetEl.querySelector(".delete-set-btn");
   const isDisabled = ingSetDelBtn.getAttribute("disabled") !== null;
-
+  console.log(isDisabled);
   if (isDisabled) {
     ingSetDelBtn.removeAttribute("disabled");
   }
@@ -130,7 +132,7 @@ const addIngredientsSet = () => {
 };
 // Disables Delete Btn Set (If 1 set remains)
 const disableDelSetBtn = () => {
-  const ingSets = document.querySelectorAll(".ingredient-set");
+  const ingSets = document.querySelectorAll(".ingredient-set-inputs");
   const disableDelBtn = ingSets.length === 1;
 
   const firstDelSetBtn = document.querySelectorAll(".delete-set-btn")[0];
