@@ -150,7 +150,6 @@ const storeData = (currentPageNum) => {
   } else {
     recipe = { ...recipe, ...getNutritionData() };
     recipeData.push(recipe);
-    console.log(recipe);
   }
   return recipe;
 };

@@ -7,36 +7,53 @@ const port = 3000;
 const foodBlog = express();
 const dirname = import.meta.dirname;
 const upload = multer({ storage: multer.memoryStorage() });
+
 // Set up EJS
 foodBlog.set("view engine", "ejs");
 foodBlog.set("views", path.join(dirname, "views"));
 
+foodBlog.use(express.urlencoded({ extended: true }));
 // Serve static files
 foodBlog.use(express.static(path.join(dirname, "public")));
 
-let recipes = {};
-let hasRecipes = true;
+let recipes = [];
 
-// Middleware that checks if there are already recipes created
-const checkRecipes = (req, res, next) => {
-  hasRecipes = Object.keys(recipes).length > 0;
-  next();
+// Store posted recipes
+const storeRecipes = (recipe, photo) => {
+  const newRecipe = {
+    author: recipe.author,
+    calories: Number(recipe.calories),
+    carbohydrates: Number(recipe.carbohydrates),
+    cookTime: recipe.cookTime,
+    cuisine: recipe.cuisine,
+    fat: Number(recipe.fat),
+    mealCourse: recipe.mealCourse,
+    numServing: Number(recipe.numServing),
+    prepTime: recipe.prepTime,
+    protein: Number(recipe.protein),
+    recipeName: recipe.recipeName,
+    instructions: JSON.parse(recipe.instructions),
+    ingredientSets: JSON.parse(recipe.ingredientSets),
+    photo: photo ? photo.buffer.toString("base64") : null,
+    mimeType: photo ? photo.mimeType : null,
+  };
+  recipes.push(newRecipe);
+  console.log("Recipe stored:", newRecipe);
+  console.log("Total recipes:", recipes.length);
 };
 
-// foodBlog.use(checkRecipes);
-
 foodBlog.get("/", (req, res) => {
-  res.render("index.ejs", { hasRecipes: hasRecipes });
+  const hasRecipes = recipes.length > 0;
+  console.log(hasRecipes);
+  res.render("index.ejs", { hasRecipes, recipes });
 });
 foodBlog.post("/api/recipe", upload.single("photo"), (req, res) => {
   const formData = req.body;
   const photo = req.file;
 
-  console.log("Received recipe:");
-  console.log("Body:", formData);
-  console.log("Photo:", photo);
+  storeRecipes(formData, photo);
 
-  res.json({ success: true });
+  res.redirect("/");
 });
 
 foodBlog.listen(port, () => {

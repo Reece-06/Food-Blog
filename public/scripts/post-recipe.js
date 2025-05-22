@@ -26,9 +26,16 @@ const sendRecipeDataToServer = async (recipe) => {
       method: "POST",
       body: data,
     });
-    console.log("Response status:", res.status);
-    const resData = await res.json();
-    console.log("Server response:", resData);
+
+    if (res.redirected) {
+      // If the server redirected, manually follow it
+
+      window.location.href = res.url;
+    } else if (res.ok) {
+      // Or force a redirect after successful post
+
+      window.location.href = "/";
+    }
   } catch (error) {
     console.log(error.message);
   }

@@ -17,17 +17,17 @@
       </button>
     </header>
     <main class="main">
-      <% if (hasRecipes) { %>
+      <% if (hasRecipes) { %> <% recipes.forEach(recipe => { %>
       <div class="recipe">
         <div class="recipe-container">
           <header class="recipe-header">
             <img
-              src="imgs/recipes/recipe1.jpg"
-              alt="lasagna"
+              src="data:<%= recipe.mimeType %>;base64,<%= recipe.photo %>"
+              alt="<%= recipe.recipeName %>"
               class="recipe-img"
             />
 
-            <h2 class="recipe-name">Lasagna</h2>
+            <h2 class="recipe-name"><%= recipe.recipeName %></h2>
             <hr class="divider divider--margin-bot" />
             <div class="ratings">
               <img
@@ -63,140 +63,60 @@
             <aside class="recipe-details">
               <div class="recipe-detail">
                 <ion-icon name="person" class="recipe-icon"></ion-icon>
-                <p class="recipe-more-dets">Author: Nagi</p>
+                <p class="recipe-more-dets">Author: <%= recipe.author %></p>
               </div>
               <div class="recipe-detail">
                 <ion-icon name="time" class="recipe-icon"></ion-icon>
-                <p class="recipe-more-dets">Prep: 20 mins</p>
+                <p class="recipe-more-dets">Prep: <%= recipe.prepTime %></p>
               </div>
               <div class="recipe-detail">
                 <ion-icon name="time" class="recipe-icon"></ion-icon>
-                <p class="recipe-more-dets">Cook: 2 hrs 15 mins</p>
+                <p class="recipe-more-dets">Cook: <%= recipe.cookTime %></p>
               </div>
               <div class="recipe-detail">
                 <ion-icon name="restaurant" class="recipe-icon"></ion-icon>
-                <p class="recipe-more-dets">Mains</p>
+                <p class="recipe-more-dets"><%= recipe.mealCourse %></p>
               </div>
               <div class="recipe-detail">
                 <ion-icon name="earth" class="recipe-icon"></ion-icon>
-                <p class="recipe-more-dets">Italian</p>
+                <p class="recipe-more-dets"><%= recipe.cuisine %></p>
               </div>
             </aside>
           </header>
           <div class="ingredients">
             <h3 class="ingredients-label">Ingredients</h3>
             <p class="servings">
-              Servings: <span class="emphasis">4</span> people
+              Servings:
+              <span class="emphasis"><%= recipe.numServing %></span> people
             </p>
+
             <div class="ingredient-sets">
+              <% recipe.ingredientSets.forEach(ingSet => { %>
               <div class="ingredient-set">
-                <p class="set-label">Beef and Brocolli Ingredients:</p>
+                <p class="set-label"><%= Object.keys(ingSet)[0] %>:</p>
+                <% ingSet[Object.keys(ingSet)[0]].forEach(ings => { %>
                 <label class="ingredient">
                   <input
                     type="checkbox"
                     class="ingredient-checkbox checkbox-reset"
                   />
                   <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                    1lb flank steak, very thinly sliced into bite-sized strips
+                    <%=ings.quantity%><%=ings.measurement%>, <%=ings.ingName%>
+                    <%=ings.ingDetails%>
                   </p>
                 </label>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
+                <% }) %>
               </div>
-              <div class="ingredient-set">
-                <p class="set-label">Beef and Brocolli Ingredients:</p>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
-                <label class="ingredient">
-                  <input
-                    type="checkbox"
-                    class="ingredient-checkbox checkbox-reset"
-                  />
-                  <p class="ingredient-p">
-                    1lb flank steak, very thinly sliced into bite-sized strips
-                  </p>
-                </label>
-              </div>
+              <% }) %>
             </div>
           </div>
           <hr class="divider divider--size" />
           <div class="instructions">
             <h3 class="instructions-label">Instructions</h3>
             <ol class="instruction-list" role="list">
-              <li class="instruction-desc">
-                Start cooking white rice first so it's ready when the stir fry
-                is done. Start cooking white rice first so it's ready when the
-                stir fry is done. Start cooking white rice first so it's ready
-                when the stir fry is done.
-              </li>
-              <li class="instruction-desc">
-                Start cooking white rice first so it's ready when the stir fry
-                is done.
-              </li>
-              <li class="instruction-desc">
-                Start cooking white rice first so it's ready when the stir fry
-                is done.
-              </li>
-              <li class="instruction-desc">
-                Start cooking white rice first so it's ready when the stir fry
-                is done.
-              </li>
-              <li class="instruction-desc">
-                Start cooking white rice first so it's ready when the stir fry
-                is done.
-              </li>
+              <% recipe.instructions.forEach(instruction => { %>
+              <li class="instruction-desc"><%= instruction %></li>
+              <% }) %>
             </ol>
           </div>
           <hr class="divider divider--size" />
@@ -207,14 +127,20 @@
             </header>
             <div class="nutrition-info">
               <p class="calories">
-                <span class="nutrition-bold">385kcal</span> calories
+                <span class="nutrition-bold"><%=recipe.calories%>kcal</span>
+                calories
               </p>
-              <p class="carbs"><span class="nutrition-bold">22g</span> carbs</p>
+              <p class="carbs">
+                <span class="nutrition-bold"><%=recipe.carbohydrates%>g</span>
+                carbs
+              </p>
               <p class="protein">
-                <span class="nutrition-bold">29g</span> protein
+                <span class="nutrition-bold"><%=recipe.protein%>g</span>
+                protein
               </p>
               <p class="calories">
-                <span class="nutrition-bold">385kcal</span> calories
+                <span class="nutrition-bold"><%=recipe.fat%>kcal</span>
+                calories
               </p>
             </div>
           </div>
@@ -235,7 +161,7 @@
           </button>
         </div>
       </div>
-      <% } else { %>
+      <% }) %> <% } else { %>
       <h1 class="no-recipe-h1">No recipes yet</h1>
       <% } %>
     </main>
