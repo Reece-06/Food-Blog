@@ -56,6 +56,9 @@
   margin: 0 auto;
   padding: 0 var(--ws-small);
 }
+.recipe:not(:last-child) {
+  padding-bottom: var(--ws-xl-x5);
+}
 .recipe-container {
   background-color: var(--main-yellow-tint2);
   border-radius: 10rem;
