@@ -146,14 +146,14 @@
           </div>
         </div>
         <div class="important-icons">
-          <button class="important-btn default-btn">
+          <button class="important-btn default-btn edit-icon-btn">
             <ion-icon
               name="create-outline"
               class="important-icon edit-icon"
             ></ion-icon>
           </button>
 
-          <button class="important-btn default-btn">
+          <button class="important-btn default-btn delete-icon-btn">
             <ion-icon
               name="trash-outline"
               class="important-icon delete-icon"
@@ -327,7 +327,7 @@
                     name="recipe-photo"
                     class="recipe-photo-input"
                   />
-                  <span class="file-custom"></span>
+                  <span class="file-custom" data-before="Choose file..."></span>
                 </div>
                 <!-- <input type="file" id="recipe-photo" name="recipe-photo" /> -->
               </div>
@@ -564,5 +564,6 @@
     <script type="module" src="scripts/ingredient-buttons.js"></script>
     <script type="module" src="scripts/instruction-buttons.js"></script>
     <script type="module" src="scripts/post-recipe.js"></script>
+    <script src="scripts/delete-recipe.js"></script>
   </body>
 </html>

@@ -569,7 +569,7 @@
   transition: all 0.3s;
 }
 .file-custom::before {
-  content: "Choose file...";
+  content: attr(data-before);
 }
 .file-custom::after {
   color: #fff;

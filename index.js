@@ -38,13 +38,10 @@ const storeRecipes = (recipe, photo) => {
     mimeType: photo ? photo.mimeType : null,
   };
   recipes.push(newRecipe);
-  console.log("Recipe stored:", newRecipe);
-  console.log("Total recipes:", recipes.length);
 };
 
 foodBlog.get("/", (req, res) => {
   const hasRecipes = recipes.length > 0;
-  console.log(hasRecipes);
   res.render("index.ejs", { hasRecipes, recipes });
 });
 foodBlog.post("/api/recipe", upload.single("photo"), (req, res) => {
@@ -53,6 +50,12 @@ foodBlog.post("/api/recipe", upload.single("photo"), (req, res) => {
 
   storeRecipes(formData, photo);
 
+  res.redirect("/");
+});
+foodBlog.delete("/api/deleteRecipe/:recipeId", (req, res) => {
+  const recipeId = Number(req.params.recipeId);
+  recipes.splice(recipeId, 1);
+  console.log(recipes);
   res.redirect("/");
 });
 

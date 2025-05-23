@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const formLabel = document.querySelector(".form-label");
   const nextButton = document.querySelector(".next-btn");
   const nextBtnText = document.querySelector(".next-button-text");
+  const uploadPhotoEl = document.querySelector(".recipe-photo-input");
   // Changes the btn id
   const increaseBtnId = (btnId) => {
     const splitBtnId = btnId.split("-");
@@ -103,6 +104,15 @@ document.addEventListener("DOMContentLoaded", () => {
       removeRecipeData();
     }
   };
+  // Change upload file text
+  const changeFileInputText = () => {
+    const textEl = document.querySelector(".file-custom");
+    const fileInput = document.querySelector("#recipe-photo");
+
+    const fileName = fileInput.files[0].name;
+    textEl.setAttribute("data-before", fileName);
+  };
 
   nextBtn.addEventListener("click", showNextForm);
+  uploadPhotoEl.addEventListener("change", changeFileInputText);
 });
