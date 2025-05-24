@@ -25,4 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
     recipeBtn.addEventListener("click", showCreateRecipeModal);
   });
 });
-export { hideCreateRecipeModal };
+export { hideCreateRecipeModal, showCreateRecipeModal };

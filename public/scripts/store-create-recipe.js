@@ -5,14 +5,17 @@ const reformatTime = (timeInputs) => {
   let newTimeArr = [];
   timeInputs.forEach((time, i) => {
     let newTime;
-
-    if (i === 0 && time.value) {
-      newTime = time.value + " hrs";
-    } else if (i === 1 && time.value) {
-      newTime = time.value + " mins";
-    } else if (i === 2 && time.value) {
-      newTime = time.value + " seconds";
+    const timeVal = time.value;
+    if (timeVal) {
+      if (i === 0) {
+        newTime = time.value + " hrs";
+      } else if (i === 1) {
+        newTime = time.value + " mins";
+      } else if (i === 2) {
+        newTime = time.value + " seconds";
+      }
     }
+
     newTimeArr.push(newTime);
   });
 

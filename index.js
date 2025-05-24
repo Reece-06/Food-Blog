@@ -2,6 +2,7 @@ import express from "express";
 
 import path from "node:path";
 import multer from "multer";
+import { error } from "node:console";
 
 const port = 3000;
 const foodBlog = express();
@@ -52,10 +53,19 @@ foodBlog.post("/api/recipe", upload.single("photo"), (req, res) => {
 
   res.redirect("/");
 });
+foodBlog.get("/api/getRecipe/:recipeId", (req, res) => {
+  const recipeId = Number(req.params.recipeId);
+  const recipe = recipes[recipeId];
+  console.log(recipe);
+  if (recipe) {
+    res.json(recipe);
+  } else {
+    res.status(404).json({ error: "Recipe not found" });
+  }
+});
 foodBlog.delete("/api/deleteRecipe/:recipeId", (req, res) => {
   const recipeId = Number(req.params.recipeId);
   recipes.splice(recipeId, 1);
-  console.log(recipes);
   res.redirect("/");
 });
 

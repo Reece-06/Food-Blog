@@ -3,7 +3,7 @@ const delRecipeBtns = document.querySelectorAll(".delete-icon-btn");
 // Identifies which recipe to delete
 const handleDelete = (i) => {
   const recipes = document.querySelectorAll(".recipe");
-  for (recipeInx = 0; recipeInx < recipes.length; recipeInx++) {
+  for (const recipeInx = 0; recipeInx < recipes.length; recipeInx++) {
     if (recipeInx === i) {
       deleteRecipeData(i.toString());
     }
