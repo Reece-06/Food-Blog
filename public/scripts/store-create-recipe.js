@@ -3,10 +3,20 @@ let recipe = {};
 
 const reformatTime = (timeInputs) => {
   let newTimeArr = [];
-  timeInputs.forEach((time) => {
-    newTimeArr.push(time.value);
+  timeInputs.forEach((time, i) => {
+    let newTime;
+
+    if (i === 0 && time.value) {
+      newTime = time.value + " hrs";
+    } else if (i === 1 && time.value) {
+      newTime = time.value + " mins";
+    } else if (i === 2 && time.value) {
+      newTime = time.value + " seconds";
+    }
+    newTimeArr.push(newTime);
   });
-  return newTimeArr.join(":");
+
+  return newTimeArr.join(" ");
 };
 // returns Input value
 const getInputValue = (elementId) => {
@@ -26,6 +36,7 @@ const getBasicInfoData = () => {
   recipe.recipeName = getInputValue("#recipe-name");
   recipe.author = getInputValue("#author");
   recipe.prepTime = reformatTime(prepTimeInputs);
+
   recipe.cookTime = reformatTime(cookTimeInputs);
   recipe.mealCourse = getInputValue("#meal-course");
   recipe.cuisine = getInputValue("#cuisine");
