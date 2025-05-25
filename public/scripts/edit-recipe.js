@@ -48,6 +48,11 @@ const addInstructionInputs = (insLen) => {
 const populateInstructions = (instructions) => {
   const instructionLen = instructions.length;
   addInstructionInputs(instructionLen);
+
+  const insInputs = document.querySelectorAll(".instruction-input");
+  insInputs.forEach((inputEl, i) => {
+    inputEl.value = instructions[i];
+  });
 };
 // Populate times cooktime or preptime
 const populateTimeInputs = (timeArr, timeType) => {
