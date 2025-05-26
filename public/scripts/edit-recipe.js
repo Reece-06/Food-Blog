@@ -68,10 +68,7 @@ const populateTimeInputs = (timeArr, timeType) => {
     }
   });
 };
-// Change Ids names and fors of input fields
-const changeIngredientAttrs = (ingInputsEl) => {
-  ingInputsEl;
-};
+
 // Get all last labels and inputs
 const getLastInputsLabels = (lastIngInputsEl) => {
   const qtyLabels = lastIngInputsEl.querySelectorAll(".ing-quantity-label");
@@ -153,18 +150,50 @@ const changeIngInputValues = (setInputVal, lastIngInputsEl) => {
   ingNameInput.value = setInputVal.ingName;
   ingDetInput.value = setInputVal.ingDetails;
 };
+// Change id, name, and for of other inputs
+const changeOtherInputAttrs = (elements) => {
+  const lastElement = elements[elements.lenth - 1];
+  const lastElIdArr = lastElement.id.split("-");
+  let lastNumber = Number(lastElIdArr[lastElIdArr.length - 1]);
+  elements.forEach((el) => {
+    const newNum = lastNumber + 1;
+    const elIdArr = el.id.split("-");
+    elIdArr[elIdArr.length - 1] = newNum;
+    const newId = elIdArr.join("-");
+    if (el.nodeName === "INPUT") {
+      el.id = newId;
+      el.name = newId;
+    } else {
+      el.setAttribute("for", newId);
+    }
+
+    lastNumber = newNum;
+  });
+};
+// Change Ids names and fors of set Name
+const changeSetNameAttrs = (newIngInputsEl) => {
+  const setNameInput = newIngInputsEl.querySelector(".set-name-input");
+  const setNameLabel = newIngInputsEl.querySelector(".ing-set-name-label");
+  const setNameId = setNameInput.id;
+  const setNameIdArr = setNameId.split("-");
+  setNameIdArr[2] = Number(setNameIdArr[2]) + 1;
+  const newId = setNameIdArr.join("-");
+  setNameInput.id = newId;
+  setNameInput.name = newId;
+  setNameLabel.setAttribute("for", newId);
+};
 // Add ingredient inputs based on number of sets and inputs
 const addIngredientInputs = (ingredients) => {
   ingredients.forEach((ingredient, index) => {
-    let lastIngInputsEl;
+    const ingInputsEls = document.querySelectorAll(".ingredient-set-inputs");
+    const lastIngInputsEl = ingInputsEls[ingInputsEls.length - 1];
     if (index !== 0) {
-      const ingInputsEls = document.querySelectorAll(".ingredient-set-inputs");
-      lastIngInputsEl = ingInputsEls[ingInputsEls.length - 1];
       const newIngInputsEl = lastIngInputsEl.cloneNode();
       lastIngInputsEl.parentElement.insertBefore(
         newIngInputsEl,
         lastIngInputsEl.nextElementSibling
       );
+      changeSetNameAttrs(newIngInputsEl);
     }
     const setName = Object.keys(ingredient)[0];
     const setNameInput = lastIngInputsEl.querySelector(".set-name-input");
@@ -173,9 +202,24 @@ const addIngredientInputs = (ingredients) => {
     setInputVals.forEach((setInputVal, index) => {
       // changeIngredientAttrs(newIngInputsEl);
       const inputsLabelsArr = getLastInputsLabels(lastIngInputsEl);
+      const filteredLabels = inputsLabelsArr.filter(
+        (el) => el.nodeName === "LABEL"
+      );
+      const filteredInputs = inputsLabelsArr
+        .map((el) => {
+          if (el.nodeName === "INPUT") return el;
+          if (el.nodeName === "DIV")
+            return el.querySelector(".measurement-input");
+          return null;
+        })
+        .filter(Boolean);
 
+      console.log(filteredLabels);
+      console.log(filteredInputs);
       if (index !== 0) {
         insertInputsLabels(inputsLabelsArr);
+        changeOtherInputAttrs(filteredLabels);
+        changeOtherInputAttrs(filteredInputs);
       }
       changeIngInputValues(setInputVal, lastIngInputsEl);
     });
@@ -204,6 +248,7 @@ const populateFormWithData = (recipe) => {
 
   document.querySelector("#nutrition-fat").value = recipe.fat;
   populateInstructions(recipe.instructions);
+  addIngredientInputs(recipe.ingredientSets);
 };
 // Identifies which recipe to edit
 const handleEdit = async (recipeId) => {
