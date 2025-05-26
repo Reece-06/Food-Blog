@@ -44,6 +44,7 @@ const addInstructionInputs = (insLen) => {
     numOfExistingIns++;
   }
 };
+
 // Populate instructions
 const populateInstructions = (instructions) => {
   const instructionLen = instructions.length;
@@ -65,6 +66,119 @@ const populateTimeInputs = (timeArr, timeType) => {
     } else {
       document.querySelector("#" + timeType + "-seconds").value = timeValue;
     }
+  });
+};
+// Change Ids names and fors of input fields
+const changeIngredientAttrs = (ingInputsEl) => {
+  ingInputsEl;
+};
+// Get all last labels and inputs
+const getLastInputsLabels = (lastIngInputsEl) => {
+  const qtyLabels = lastIngInputsEl.querySelectorAll(".ing-quantity-label");
+  const qtyLabel = qtyLabels[qtyLabels.length - 1];
+
+  const measureLabels = lastIngInputsEl.querySelectorAll(".ing-measure-label");
+  const measureLabel = measureLabels[measureLabels.length - 1];
+
+  const ingNameLabels = lastIngInputsEl.querySelectorAll(".ing-name-label");
+  const ingNameLabel = ingNameLabels[ingNameLabels.length - 1];
+
+  const ingDetsLabels = lastIngInputsEl.querySelectorAll(
+    ".ingredient-dets-label"
+  );
+  const ingDetsLabel = ingDetsLabels[ingDetsLabels.length - 1];
+
+  const ingQtyInputs = lastIngInputsEl.querySelectorAll(
+    ".ingredient-qty-input"
+  );
+  const ingQtyInput = ingQtyInputs[ingQtyInputs.length - 1];
+
+  const ingMeasureContainers = lastIngInputsEl.querySelectorAll(
+    ".ing-measure-input-container"
+  );
+  const ingMeasureContainer =
+    ingMeasureContainers[ingMeasureContainers.length - 1];
+
+  const ingNameInputs = lastIngInputsEl.querySelectorAll(".ing-name-input");
+  const ingNameInput = ingNameInputs[ingNameInputs.length - 1];
+
+  const ingDetInputs = lastIngInputsEl.querySelectorAll(".ing-details-input");
+  const ingDetInput = ingDetInputs[ingDetInputs.length - 1];
+  const delBtns = lastIngInputsEl.querySelectorAll(".delete-ingredient-btn");
+  const delBtn = delBtns[delBtns.length - 1];
+  return [
+    qtyLabel,
+    measureLabel,
+    ingNameLabel,
+    ingDetsLabel,
+    ingQtyInput,
+    ingMeasureContainer,
+    ingNameInput,
+    ingDetInput,
+    delBtn,
+  ];
+};
+// Clone and insert ingredients labels and inputs
+const insertInputsLabels = (inputsLabelsArr) => {
+  const lastEl = inputsLabelsArr[inputsLabelsArr.length - 1];
+  inputsLabelsArr.forEach((el) => {
+    const newEl = el.cloneNode();
+    el.parentElement.insertBefore(newEl, lastEl.nextElementSibling);
+    if (el.nodeName === "LABEL") {
+      newEl.classList.add("hidden-label");
+    }
+  });
+};
+// Change Ingredient Input Values
+const changeIngInputValues = (setInputVal, lastIngInputsEl) => {
+  const ingQtyInputs = lastIngInputsEl.querySelectorAll(
+    ".ingredient-qty-input"
+  );
+  const ingQtyInput = ingQtyInputs[ingQtyInputs.length - 1];
+
+  const ingMeasureContainers = lastIngInputsEl.querySelectorAll(
+    ".ing-measure-input-container"
+  );
+  const ingMeasureContainer =
+    ingMeasureContainers[ingMeasureContainers.length - 1];
+  const ingMeasureInput =
+    ingMeasureContainer.querySelector(".measurement-input");
+  const ingNameInputs = lastIngInputsEl.querySelectorAll(".ing-name-input");
+  const ingNameInput = ingNameInputs[ingNameInputs.length - 1];
+
+  const ingDetInputs = lastIngInputsEl.querySelectorAll(".ing-details-input");
+  const ingDetInput = ingDetInputs[ingDetInputs.length - 1];
+  ingQtyInput.value = setInputVal.quantity;
+  ingMeasureInput.value = setInputVal.measurement;
+  ingNameInput.value = setInputVal.ingName;
+  ingDetInput.value = setInputVal.ingDetails;
+};
+// Add ingredient inputs based on number of sets and inputs
+const addIngredientInputs = (ingredients) => {
+  ingredients.forEach((ingredient, index) => {
+    let lastIngInputsEl;
+    if (index !== 0) {
+      const ingInputsEls = document.querySelectorAll(".ingredient-set-inputs");
+      lastIngInputsEl = ingInputsEls[ingInputsEls.length - 1];
+      const newIngInputsEl = lastIngInputsEl.cloneNode();
+      lastIngInputsEl.parentElement.insertBefore(
+        newIngInputsEl,
+        lastIngInputsEl.nextElementSibling
+      );
+    }
+    const setName = Object.keys(ingredient)[0];
+    const setNameInput = lastIngInputsEl.querySelector(".set-name-input");
+    setNameInput.value = setName;
+    const setInputVals = ingredient[setName];
+    setInputVals.forEach((setInputVal, index) => {
+      // changeIngredientAttrs(newIngInputsEl);
+      const inputsLabelsArr = getLastInputsLabels(lastIngInputsEl);
+
+      if (index !== 0) {
+        insertInputsLabels(inputsLabelsArr);
+      }
+      changeIngInputValues(setInputVal, lastIngInputsEl);
+    });
   });
 };
 // Populates form with data
