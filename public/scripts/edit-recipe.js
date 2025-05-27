@@ -117,13 +117,16 @@ const getLastInputsLabels = (lastIngInputsEl) => {
 };
 // Clone and insert ingredients labels and inputs
 const insertInputsLabels = (inputsLabelsArr) => {
-  const lastEl = inputsLabelsArr[inputsLabelsArr.length - 1];
+  let lastEl = inputsLabelsArr[inputsLabelsArr.length - 1];
+  // console.log(inputsLabelsArr);
   inputsLabelsArr.forEach((el) => {
-    const newEl = el.cloneNode();
-    el.parentElement.insertBefore(newEl, lastEl.nextElementSibling);
+    const newEl = el.cloneNode(true);
     if (el.nodeName === "LABEL") {
       newEl.classList.add("hidden-label");
     }
+
+    el.parentElement.insertBefore(newEl, lastEl.nextElementSibling);
+    lastEl = newEl;
   });
 };
 // Change Ingredient Input Values
@@ -145,6 +148,7 @@ const changeIngInputValues = (setInputVal, lastIngInputsEl) => {
 
   const ingDetInputs = lastIngInputsEl.querySelectorAll(".ing-details-input");
   const ingDetInput = ingDetInputs[ingDetInputs.length - 1];
+
   ingQtyInput.value = setInputVal.quantity;
   ingMeasureInput.value = setInputVal.measurement;
   ingNameInput.value = setInputVal.ingName;
@@ -152,7 +156,7 @@ const changeIngInputValues = (setInputVal, lastIngInputsEl) => {
 };
 // Change id, name, and for of other inputs
 const changeOtherInputAttrs = (elements) => {
-  const lastElement = elements[elements.lenth - 1];
+  const lastElement = elements[elements.length - 1];
   const lastElIdArr = lastElement.id.split("-");
   let lastNumber = Number(lastElIdArr[lastElIdArr.length - 1]);
   elements.forEach((el) => {
@@ -182,25 +186,43 @@ const changeSetNameAttrs = (newIngInputsEl) => {
   setNameInput.name = newId;
   setNameLabel.setAttribute("for", newId);
 };
+// Change set name value
+const changeSetNameValue = (lastIngInputsEl, setNameVal) => {
+  const setNameInput = lastIngInputsEl.querySelector(".set-name-input");
+  setNameInput.value = setNameVal;
+};
+// Removes excess inputs, labels and del btns if any
+const removeExcessInputs = (addedIngInputsEl) => {
+  const ingInput = addedIngInputsEl.querySelector(".ingredient-inputs");
+
+  const btnIndex = 8;
+  Array.from(ingInput.children).forEach((el, i) => {
+    if (!(el.nodeName === "BUTTON" && i === btnIndex) && i > 8) {
+      el.remove();
+    }
+  });
+};
 // Add ingredient inputs based on number of sets and inputs
 const addIngredientInputs = (ingredients) => {
   ingredients.forEach((ingredient, index) => {
     const ingInputsEls = document.querySelectorAll(".ingredient-set-inputs");
-    const lastIngInputsEl = ingInputsEls[ingInputsEls.length - 1];
+    let lastIngInputsEl = ingInputsEls[ingInputsEls.length - 1];
+
     if (index !== 0) {
-      const newIngInputsEl = lastIngInputsEl.cloneNode();
-      lastIngInputsEl.parentElement.insertBefore(
+      const newIngInputsEl = lastIngInputsEl.cloneNode(true);
+      lastIngInputsEl = lastIngInputsEl.parentElement.insertBefore(
         newIngInputsEl,
         lastIngInputsEl.nextElementSibling
       );
-      changeSetNameAttrs(newIngInputsEl);
+      changeSetNameAttrs(lastIngInputsEl);
+      removeExcessInputs(lastIngInputsEl);
     }
     const setName = Object.keys(ingredient)[0];
-    const setNameInput = lastIngInputsEl.querySelector(".set-name-input");
-    setNameInput.value = setName;
+
+    changeSetNameValue(lastIngInputsEl, setName);
     const setInputVals = ingredient[setName];
+    // console.log(setInputVals);
     setInputVals.forEach((setInputVal, index) => {
-      // changeIngredientAttrs(newIngInputsEl);
       const inputsLabelsArr = getLastInputsLabels(lastIngInputsEl);
       const filteredLabels = inputsLabelsArr.filter(
         (el) => el.nodeName === "LABEL"
@@ -214,14 +236,16 @@ const addIngredientInputs = (ingredients) => {
         })
         .filter(Boolean);
 
-      console.log(filteredLabels);
-      console.log(filteredInputs);
+      // console.log(filteredLabels);
+      // console.log(filteredInputs);
       if (index !== 0) {
+        // console.log(index);
+        // console.log(inputsLabelsArr);
         insertInputsLabels(inputsLabelsArr);
-        changeOtherInputAttrs(filteredLabels);
-        changeOtherInputAttrs(filteredInputs);
+        // changeOtherInputAttrs(filteredLabels);
+        // changeOtherInputAttrs(filteredInputs);
       }
-      changeIngInputValues(setInputVal, lastIngInputsEl);
+      // changeIngInputValues(setInputVal, lastIngInputsEl);
     });
   });
 };
