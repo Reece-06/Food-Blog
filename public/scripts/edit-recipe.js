@@ -14,29 +14,26 @@ const retreiveData = async (recipeId) => {
 };
 // Add instruction inputs based on the instruction length
 const addInstructionInputs = (insLen) => {
-  console.log(insLen);
   let numOfExistingIns = 1; // Default 1 existing
   while (numOfExistingIns < insLen) {
     const insContainerEls = document.querySelectorAll(
       ".instruction-input-container"
     );
     const lastInsContainer = insContainerEls[insContainerEls.length - 1];
-    console.log("lastInsContainer:", lastInsContainer);
+
     const newInsContainer = lastInsContainer.cloneNode(true);
-    console.log("newInsContainer:", newInsContainer);
+
     const newInsInput = newInsContainer.querySelector(".instruction-input");
-    console.log("newInsInput:", newInsInput);
+
     const newInsLabel = newInsContainer.querySelector(".ins-label");
-    console.log("newInsLabel:", newInsLabel);
+
     const idArr = newInsInput.id.split("-");
     const lastNum = Number(idArr[idArr.length - 1]);
-    console.log("lastNum:", lastNum);
 
     newInsInput.id = "instruction-" + (lastNum + 1);
     newInsInput.name = "instruction-" + (lastNum + 1);
     newInsLabel.setAttribute("for", "instruction-" + (lastNum + 1));
-    console.log("newInsInput:", newInsInput);
-    console.log("newInsLabel:", newInsLabel);
+
     lastInsContainer.parentNode.insertBefore(
       newInsContainer,
       lastInsContainer.nextSibling
@@ -118,7 +115,8 @@ const getLastInputsLabels = (lastIngInputsEl) => {
 // Clone and insert ingredients labels and inputs
 const insertInputsLabels = (inputsLabelsArr) => {
   let lastEl = inputsLabelsArr[inputsLabelsArr.length - 1];
-  // console.log(inputsLabelsArr);
+
+  let newInputsLabels = [];
   inputsLabelsArr.forEach((el) => {
     const newEl = el.cloneNode(true);
     if (el.nodeName === "LABEL") {
@@ -126,8 +124,12 @@ const insertInputsLabels = (inputsLabelsArr) => {
     }
 
     el.parentElement.insertBefore(newEl, lastEl.nextElementSibling);
+    if (el.nodeName !== "BUTTON") {
+      newInputsLabels.push(newEl);
+    }
     lastEl = newEl;
   });
+  return newInputsLabels;
 };
 // Change Ingredient Input Values
 const changeIngInputValues = (setInputVal, lastIngInputsEl) => {
@@ -157,18 +159,32 @@ const changeIngInputValues = (setInputVal, lastIngInputsEl) => {
 // Change id, name, and for of other inputs
 const changeOtherInputAttrs = (elements) => {
   const lastElement = elements[elements.length - 1];
-  const lastElIdArr = lastElement.id.split("-");
+
+  let lastElIdArr;
+  if (lastElement.nodeName === "LABEL") {
+    lastElIdArr = lastElement.getAttribute("for").split("-");
+  } else {
+    lastElIdArr = lastElement.id.split("-");
+  }
+
   let lastNumber = Number(lastElIdArr[lastElIdArr.length - 1]);
+
   elements.forEach((el) => {
     const newNum = lastNumber + 1;
-    const elIdArr = el.id.split("-");
+
+    let elIdArr;
+    if (el.nodeName === "LABEL") {
+      elIdArr = el.getAttribute("for").split("-");
+    } else {
+      elIdArr = el.id.split("-");
+    }
     elIdArr[elIdArr.length - 1] = newNum;
     const newId = elIdArr.join("-");
-    if (el.nodeName === "INPUT") {
+    if (el.nodeName === "LABEL") {
+      el.setAttribute("for", newId);
+    } else {
       el.id = newId;
       el.name = newId;
-    } else {
-      el.setAttribute("for", newId);
     }
 
     lastNumber = newNum;
@@ -202,6 +218,39 @@ const removeExcessInputs = (addedIngInputsEl) => {
     }
   });
 };
+// Change set number of newly added sets
+const changeSetNum = (lastIngInputsEl) => {
+  const ingInputs = lastIngInputsEl.querySelector(".ingredient-inputs");
+
+  Array.from(ingInputs.children).forEach((el, i) => {
+    let elIdArr;
+
+    if (el.nodeName !== "BUTTON") {
+      if (el.nodeName === "LABEL") {
+        elIdArr = el.getAttribute("for").split("-");
+        const newNum = Number(elIdArr[elIdArr.length - 2]) + 1;
+        elIdArr[elIdArr.length - 2] = newNum;
+        const newId = elIdArr.join("-");
+        el.setAttribute("for", newId);
+      } else if (el.nodeName === "INPUT") {
+        elIdArr = el.id.split("-");
+        const newNum = Number(elIdArr[elIdArr.length - 2]) + 1;
+        elIdArr[elIdArr.length - 2] = newNum;
+        const newId = elIdArr.join("-");
+        el.id = newId;
+        el.name = newId;
+      } else {
+        const input = el.querySelector(".measurement-input");
+        elIdArr = input.id.split("-");
+        const newNum = Number(elIdArr[elIdArr.length - 2]) + 1;
+        elIdArr[elIdArr.length - 2] = newNum;
+        const newId = elIdArr.join("-");
+        input.id = newId;
+        input.name = newId;
+      }
+    }
+  });
+};
 // Add ingredient inputs based on number of sets and inputs
 const addIngredientInputs = (ingredients) => {
   ingredients.forEach((ingredient, index) => {
@@ -215,37 +264,35 @@ const addIngredientInputs = (ingredients) => {
         lastIngInputsEl.nextElementSibling
       );
       changeSetNameAttrs(lastIngInputsEl);
+      changeSetNum(lastIngInputsEl);
       removeExcessInputs(lastIngInputsEl);
     }
     const setName = Object.keys(ingredient)[0];
 
     changeSetNameValue(lastIngInputsEl, setName);
     const setInputVals = ingredient[setName];
-    // console.log(setInputVals);
+
     setInputVals.forEach((setInputVal, index) => {
       const inputsLabelsArr = getLastInputsLabels(lastIngInputsEl);
-      const filteredLabels = inputsLabelsArr.filter(
-        (el) => el.nodeName === "LABEL"
-      );
-      const filteredInputs = inputsLabelsArr
-        .map((el) => {
-          if (el.nodeName === "INPUT") return el;
-          if (el.nodeName === "DIV")
-            return el.querySelector(".measurement-input");
-          return null;
-        })
-        .filter(Boolean);
 
-      // console.log(filteredLabels);
-      // console.log(filteredInputs);
       if (index !== 0) {
-        // console.log(index);
-        // console.log(inputsLabelsArr);
-        insertInputsLabels(inputsLabelsArr);
-        // changeOtherInputAttrs(filteredLabels);
-        // changeOtherInputAttrs(filteredInputs);
+        const newInputsLabels = insertInputsLabels(inputsLabelsArr);
+        const filteredLabels = newInputsLabels.filter(
+          (el) => el.nodeName === "LABEL"
+        );
+        const filteredInputs = newInputsLabels
+          .map((el) => {
+            if (el.nodeName === "INPUT") return el;
+            if (el.nodeName === "DIV")
+              return el.querySelector(".measurement-input");
+            return null;
+          })
+          .filter(Boolean);
+
+        changeOtherInputAttrs(filteredLabels);
+        changeOtherInputAttrs(filteredInputs);
       }
-      // changeIngInputValues(setInputVal, lastIngInputsEl);
+      changeIngInputValues(setInputVal, lastIngInputsEl);
     });
   });
 };
