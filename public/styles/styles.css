@@ -1030,4 +1030,10 @@
   .create-recipe-container {
     width: 90%;
   }
+  .create-recipe-label {
+    font-size: var(--size-small);
+  }
+  .form-label {
+    font-size: var(--ws-small-x1);
+  }
 }
