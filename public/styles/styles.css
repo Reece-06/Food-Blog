@@ -982,7 +982,7 @@
     flex-basis: 100px;
   }
 }
-@container (width < 340px) {
+@container (width < 345px) {
   .recipe-detail {
     flex-basis: 80px;
   }
@@ -992,9 +992,6 @@
   }
 }
 @container (width < 285px) {
-  /* .recipe-detail {
-    justify-content: center;
-  } */
   .recipe-detail:not(:last-child) {
     justify-content: center;
   }
@@ -1029,5 +1026,8 @@
   }
   .recipe-img {
     width: 27%;
+  }
+  .create-recipe-container {
+    width: 90%;
   }
 }
