@@ -942,6 +942,15 @@
     font-size: var(--size-small-x2);
     padding: 1.2rem 2rem;
   }
+  .important-icon {
+    font-size: 26px;
+  }
+  .plus-icon {
+    font-size: 56px;
+  }
+  .floating-create-recipe::after {
+    width: 15rem;
+  }
 }
 @container (width < 580px) {
   .recipe-details {
@@ -1004,9 +1013,21 @@
     font-size: var(--size-small-x1);
   }
   .main {
-    padding-top: var(--ws-xl-x2);
+    padding-top: var(--ws-xl-x3);
   }
   .recipe {
     padding: 0 var(--ws-medium);
+  }
+  .recipe-name {
+    font-size: var(--size-small);
+  }
+  .important-icon {
+    font-size: 23px;
+  }
+  .plus-icon {
+    font-size: 50px;
+  }
+  .recipe-img {
+    width: 27%;
   }
 }
