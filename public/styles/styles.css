@@ -1028,12 +1028,35 @@
     width: 27%;
   }
   .create-recipe-container {
-    width: 90%;
+    width: 95%;
   }
   .create-recipe-label {
     font-size: var(--size-small);
   }
   .form-label {
     font-size: var(--ws-small-x1);
+  }
+  .timer-label {
+    flex: 1;
+  }
+  .create-input-timer {
+    width: 100%;
+  }
+  .ingredient-inputs {
+    display: grid;
+    grid-template-columns: auto repeat(2, 1fr) 2fr auto;
+  }
+  .ing-details-input,
+  .ing-name-input {
+    width: 100%;
+  }
+  .upper-container {
+    margin-bottom: var(--ws-small);
+  }
+  .ingredient-dets-label {
+    padding-right: 7rem;
+  }
+  .delete-ingredient-btn {
+    width: 5rem;
   }
 }
