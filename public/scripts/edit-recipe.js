@@ -1,5 +1,6 @@
 import { showCreateRecipeModal } from "./create-recipe.js";
 import { addDelBtnListener } from "./instruction-buttons.js";
+import { addIngredientAndDeleteListener } from "./ingredient-buttons.js";
 // Retrieve recipe from the server
 const retreiveData = async (recipeId) => {
   try {
@@ -267,6 +268,35 @@ const changeSetNum = (lastIngInputsEl) => {
     }
   });
 };
+// Disables del set btn if there are more than 1
+
+const reenableDelSetBtn = () => {
+  const delBtns = document.querySelectorAll(".delete-set-btn");
+  const reenableDelBtn = delBtns.length > 1;
+  if (reenableDelBtn) {
+    delBtns.forEach((delBtn) => {
+      delBtn.removeAttribute("disabled");
+    });
+  }
+};
+// Adds a new del set btn listener
+// const addDelSetBtnListener = (delBtn) => {
+//   delBtn.addEventListener("click", (event) => {
+//     const btnParent = event.target.parentElement;
+//     const btnIngSetParent = btnParent.parentElement;
+
+//     if (
+//       btnIngSetParent.nextElementSibling !== null &&
+//       btnIngSetParent.nextElementSibling.nodeName !== "BUTTON"
+//     ) {
+//       btnIngSetParent.nextElementSibling.remove();
+//     } else {
+//       console.log(btnIngSetParent.previousElementSibling);
+//       btnIngSetParent.previousElementSibling.remove();
+//     }
+//     // btnIngSetParent.remove();
+//   });
+// };
 // Add ingredient inputs based on number of sets and inputs
 const addIngredientInputs = (ingredients) => {
   ingredients.forEach((ingredient, index) => {
@@ -274,14 +304,25 @@ const addIngredientInputs = (ingredients) => {
     let lastIngInputsEl = ingInputsEls[ingInputsEls.length - 1];
 
     if (index !== 0) {
+      const hrEl = document.createElement("hr");
+      hrEl.classList.add("divider", "divider-create-recipe");
       const newIngInputsEl = lastIngInputsEl.cloneNode(true);
-      lastIngInputsEl = lastIngInputsEl.parentElement.insertBefore(
-        newIngInputsEl,
+      const newHr = lastIngInputsEl.parentElement.insertBefore(
+        hrEl,
         lastIngInputsEl.nextElementSibling
       );
+      lastIngInputsEl = lastIngInputsEl.parentElement.insertBefore(
+        newIngInputsEl,
+        newHr.nextElementSibling
+      );
+      const newDelSetBtn = lastIngInputsEl.querySelector(".delete-set-btn");
+      const newIngBtn = lastIngInputsEl.querySelector(".add-ingredient-btn");
       changeSetNameAttrs(lastIngInputsEl);
       changeSetNum(lastIngInputsEl);
       removeExcessInputs(lastIngInputsEl);
+      addIngredientAndDeleteListener(newDelSetBtn, newIngBtn);
+      // addDelSetBtnListener(newDelSetBtn);
+      reenableDelSetBtn();
     }
     const setName = Object.keys(ingredient)[0];
 
