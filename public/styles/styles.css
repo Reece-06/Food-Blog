@@ -1003,6 +1003,9 @@
   .header {
     height: 50vh;
   }
+  .no-recipe-h1 {
+    font-size: var(--size-small);
+  }
   .title {
     font-size: var(--size-small);
   }
@@ -1034,7 +1037,8 @@
     font-size: var(--size-small);
   }
   .form-label {
-    font-size: var(--ws-small-x1);
+    font-size: var(--ws-small);
+    font-weight: var(--regular);
   }
   .timer-label {
     flex: 1;
@@ -1058,5 +1062,14 @@
   }
   .delete-ingredient-btn {
     width: 5rem;
+  }
+  .set-name-input {
+    font-size: var(--ws-small);
+  }
+  .instruction-input {
+    width: 100%;
+  }
+  .nutrition-qty-input {
+    width: 100%;
   }
 }
