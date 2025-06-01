@@ -404,4 +404,4 @@ ingDelInputsBtn.forEach((delBtn) => {
 disableDelIngInput();
 disableDelSetBtn();
 
-export { addIngredientAndDeleteListener };
+export { addIngredientAndDeleteListener, deleteIngredientInputs };

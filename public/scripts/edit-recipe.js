@@ -1,6 +1,9 @@
 import { showCreateRecipeModal } from "./create-recipe.js";
 import { addDelBtnListener } from "./instruction-buttons.js";
-import { addIngredientAndDeleteListener } from "./ingredient-buttons.js";
+import {
+  addIngredientAndDeleteListener,
+  deleteIngredientInputs,
+} from "./ingredient-buttons.js";
 // Retrieve recipe from the server
 const retreiveData = async (recipeId) => {
   try {
@@ -141,9 +144,7 @@ const insertInputsLabels = (inputsLabelsArr) => {
     }
 
     el.parentElement.insertBefore(newEl, lastEl.nextElementSibling);
-    if (el.nodeName !== "BUTTON") {
-      newInputsLabels.push(newEl);
-    }
+    newInputsLabels.push(newEl);
     lastEl = newEl;
   });
   return newInputsLabels;
@@ -279,24 +280,32 @@ const reenableDelSetBtn = () => {
     });
   }
 };
-// Adds a new del set btn listener
-// const addDelSetBtnListener = (delBtn) => {
-//   delBtn.addEventListener("click", (event) => {
-//     const btnParent = event.target.parentElement;
-//     const btnIngSetParent = btnParent.parentElement;
 
-//     if (
-//       btnIngSetParent.nextElementSibling !== null &&
-//       btnIngSetParent.nextElementSibling.nodeName !== "BUTTON"
-//     ) {
-//       btnIngSetParent.nextElementSibling.remove();
-//     } else {
-//       console.log(btnIngSetParent.previousElementSibling);
-//       btnIngSetParent.previousElementSibling.remove();
-//     }
-//     // btnIngSetParent.remove();
-//   });
-// };
+// Reenables ingredients del input btn
+const reenableDelIngInput = () => {
+  const ingInputsParent = document.querySelectorAll(".ingredient-inputs");
+
+  ingInputsParent.forEach((parent) => {
+    const delBtns = parent.querySelectorAll(".delete-ingredient-btn");
+    const reenableBtns = delBtns.length > 1;
+
+    if (reenableBtns) {
+      delBtns.forEach((delBtn) => {
+        delBtn.removeAttribute("disabled");
+      });
+    }
+  });
+};
+// Add event listeners to newly added del btn sets
+const addEventListenerToDelBtnSets = (lastSet) => {
+  const delBtn = lastSet.querySelector(".delete-ingredient-btn");
+  delBtn.addEventListener("click", deleteIngredientInputs);
+};
+// Add event listener to del btns on the second row or more
+const addEventListenerToNewDelBtns = (delBtn) => {
+  delBtn.addEventListener("click", deleteIngredientInputs);
+};
+
 // Add ingredient inputs based on number of sets and inputs
 const addIngredientInputs = (ingredients) => {
   ingredients.forEach((ingredient, index) => {
@@ -323,6 +332,7 @@ const addIngredientInputs = (ingredients) => {
       addIngredientAndDeleteListener(newDelSetBtn, newIngBtn);
       // addDelSetBtnListener(newDelSetBtn);
       reenableDelSetBtn();
+      addEventListenerToDelBtnSets(lastIngInputsEl);
     }
     const setName = Object.keys(ingredient)[0];
 
@@ -334,6 +344,7 @@ const addIngredientInputs = (ingredients) => {
 
       if (index !== 0) {
         const newInputsLabels = insertInputsLabels(inputsLabelsArr);
+        const delBtn = newInputsLabels.find((el) => el.nodeName === "BUTTON");
         const filteredLabels = newInputsLabels.filter(
           (el) => el.nodeName === "LABEL"
         );
@@ -348,6 +359,8 @@ const addIngredientInputs = (ingredients) => {
 
         changeOtherInputAttrs(filteredLabels);
         changeOtherInputAttrs(filteredInputs);
+
+        addEventListenerToNewDelBtns(delBtn);
       }
       changeIngInputValues(setInputVal, lastIngInputsEl);
     });
@@ -377,6 +390,7 @@ const populateFormWithData = (recipe) => {
   document.querySelector("#nutrition-fat").value = recipe.fat;
   populateInstructions(recipe.instructions);
   addIngredientInputs(recipe.ingredientSets);
+  reenableDelIngInput();
 };
 // Identifies which recipe to edit
 const handleEdit = async (recipeId) => {
