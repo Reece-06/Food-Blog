@@ -1,4 +1,5 @@
 import { showCreateRecipeModal } from "./create-recipe.js";
+import { addDelBtnListener } from "./instruction-buttons.js";
 // Retrieve recipe from the server
 const retreiveData = async (recipeId) => {
   try {
@@ -12,6 +13,19 @@ const retreiveData = async (recipeId) => {
     return null;
   }
 };
+// Reenables del btns if del btn is more than 1
+const reenableDelBtns = () => {
+  const allDelBtns = document.querySelectorAll(".delete-instruction-btn");
+  if (allDelBtns.length > 1) {
+    allDelBtns.forEach((delBtn) => {
+      const isDisabled = delBtn.getAttribute("disabled") !== null;
+
+      if (isDisabled) {
+        delBtn.removeAttribute("disabled");
+      }
+    });
+  }
+};
 // Add instruction inputs based on the instruction length
 const addInstructionInputs = (insLen) => {
   let numOfExistingIns = 1; // Default 1 existing
@@ -22,7 +36,7 @@ const addInstructionInputs = (insLen) => {
     const lastInsContainer = insContainerEls[insContainerEls.length - 1];
 
     const newInsContainer = lastInsContainer.cloneNode(true);
-
+    const newDelBtn = newInsContainer.querySelector(".delete-instruction-btn");
     const newInsInput = newInsContainer.querySelector(".instruction-input");
 
     const newInsLabel = newInsContainer.querySelector(".ins-label");
@@ -38,8 +52,10 @@ const addInstructionInputs = (insLen) => {
       newInsContainer,
       lastInsContainer.nextSibling
     );
+    addDelBtnListener(newDelBtn);
     numOfExistingIns++;
   }
+  reenableDelBtns();
 };
 
 // Populate instructions

@@ -1018,6 +1018,9 @@
   .recipe {
     padding: 0 var(--ws-medium);
   }
+  .recipe:not(:last-child) {
+    padding-bottom: var(--ws-xl-x2);
+  }
   .recipe-name {
     font-size: var(--size-small);
   }

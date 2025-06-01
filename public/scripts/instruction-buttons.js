@@ -102,3 +102,5 @@ delInsBtns.forEach((delInsBtn) => {
   delInsBtn.addEventListener("click", deleteInstruction);
 });
 disableFirstDelBtn();
+
+export { addDelBtnListener };

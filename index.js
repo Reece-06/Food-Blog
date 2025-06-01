@@ -2,7 +2,6 @@ import express from "express";
 
 import path from "node:path";
 import multer from "multer";
-import { error } from "node:console";
 
 const port = 3000;
 const foodBlog = express();
@@ -39,8 +38,6 @@ const storeRecipes = (recipe, photo) => {
     mimeType: photo ? photo.mimeType : null,
   };
   recipes.push(newRecipe);
-
-  console.log(newRecipe);
 };
 
 foodBlog.get("/", (req, res) => {
