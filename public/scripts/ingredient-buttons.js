@@ -129,6 +129,8 @@ const addIngredientsSet = () => {
   const newIngBtn = newIngredientSetEl.querySelector(".add-ingredient-btn");
   addIngredientAndDeleteListener(newDelSetBtn, newIngBtn);
   disableDelSetBtn();
+  const delBtn = newIngredientSetEl.querySelector(".delete-ingredient-btn");
+  addDelIngBtnListener(delBtn);
 };
 // Disables Delete Btn Set (If 1 set remains)
 const disableDelSetBtn = () => {
