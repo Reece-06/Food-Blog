@@ -1,16 +1,17 @@
 # 🍽️ Food Blog App
 
-A simple web app built with **Node.js**, **Express**, and **EJS** that lets users create, view, and delete recipe entries.
+A simple web app built with **JavaScript**, **Node.js**, **Express**, and **EJS** that lets users create, edit, and delete recipe entries.
 
 ## 🚀 Features
 
-- Add recipes with nutritional info, cooking details, and an optional photo
+- Add recipes with basic info, ingredient details, instructions, and nutritional info.
 - View all submitted recipes on the homepage
 - Delete recipes
-- Stores images as Base64 in memory (for now)
+- Edit recipes
 
 ## 🛠️ Tech Stack
 
+- JavaScript (for front-end)
 - Node.js
 - Express.js
 - EJS templating
@@ -38,6 +39,3 @@ A simple web app built with **Node.js**, **Express**, and **EJS** that lets user
 
     ```bash
     http://localhost:3000
-
-
-    
