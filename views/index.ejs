@@ -23,8 +23,9 @@
           <header class="recipe-header">
             <img
               src="data:<%= recipe.mimeType %>;base64,<%= recipe.photo %>"
-              alt="<%= recipe.recipeName %>"
+              alt="<%= recipe.recipeName ? recipe.recipeName : 'Recipe photo' %>"
               class="recipe-img"
+              onerror="this.style.borderRadius = '0%';"
             />
 
             <h2 class="recipe-name"><%= recipe.recipeName %></h2>
@@ -329,7 +330,6 @@
                   />
                   <span class="file-custom" data-before="Choose file..."></span>
                 </div>
-                <!-- <input type="file" id="recipe-photo" name="recipe-photo" /> -->
               </div>
               <div class="label-input-grouping">
                 <label for="num-serving" class="create-input-label"
