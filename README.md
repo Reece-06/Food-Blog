@@ -23,7 +23,7 @@ A simple web app built with **JavaScript**, **Node.js**, **Express**, and **EJS*
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/yourusername/food-blog-app.git
+   git clone https://github.com/yourusername/Food-Blog.git
    cd food-blog-app
 2. Install dependencies
 
