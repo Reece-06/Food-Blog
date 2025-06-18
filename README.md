@@ -1,6 +1,6 @@
 # 🍽️ Tasty Notebook (Food Blog)
 
-Tasty Notebook is a food blog where users can create, view, edit, and delete their own recipes. Each recipe includes basic information like the recipe name, photo, cooking time, and more. Users can also specify multiple sets of ingredients, detailed instructions, and nutritional information — great for health-conscious users.
+Tasty Notebook is a food blog where users can create, view, edit, and delete their own recipes. Each recipe includes basic information like the recipe name, photo, cooking time, and more. Users can also specify multiple sets of ingredients, detailed instructions, and nutritional information great for health-conscious users.
 
 In addition to creating recipes, users can edit existing entries or delete them when they’re no longer needed.
 
